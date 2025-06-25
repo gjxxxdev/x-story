@@ -12,8 +12,10 @@
     "@expo/cli": "^0.24.15",
     "@expo/image-utils": "^0.4.2",
     "@expo/prebuild-config": "^9.0.6",
+    "@invertase/react-native-apple-authentication": "^2.4.1",
     "@react-native-async-storage/async-storage": "1.18.2",
     "@react-native-community/masked-view": "^0.1.11",
+    "@react-native-google-signin/google-signin": "^15.0.0",
     "@react-navigation/bottom-tabs": "^6.5.11",
     "@react-navigation/drawer": "^6.6.6",
     "@react-navigation/material-top-tabs": "^6.6.5",
@@ -30,6 +32,7 @@
     "react-dom": "18.2.0",
     "react-native": "^0.72.17",
     "react-native-fast-image": "^8.6.3",
+    "react-native-fbsdk-next": "^13.4.1",
     "react-native-gesture-handler": "~2.12.0",
     "react-native-modal": "^13.0.1",
     "react-native-pager-view": "6.2.0",
@@ -41,6 +44,7 @@
     "react-native-screens": "~3.22.0",
     "react-native-tab-view": "^3.5.2",
     "react-native-web": "~0.19.9",
+    "react-native-wechat": "^1.9.12",
     "zustand": "^4.5.2"
   },
   "devDependencies": {
