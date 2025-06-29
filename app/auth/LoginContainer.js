@@ -1,9 +1,9 @@
 import LoginScreen from "../screens/LoginScreen";
 // Import facebookLogin and other login functions if not already imported
-//import { appleLogin } from "../utils/appleAuth";
-//import { facebookLogin } from "../utils/facebookAuth";
-//import { googleLogin } from "../utils/googleAuth";
-//import { wechatLogin } from "../utils/wechatAuth";
+import { appleLogin } from "../../components/utils/appleAuth";
+import { facebookLogin } from "../../components/utils/facebookAuth";
+import { googleLogin } from "../../components/utils/googleAuth";
+import { wechatLogin } from "../../components/utils/wechatAuth";
 
 
 export default function LoginContainer({ onLoginSuccess }) {
@@ -11,14 +11,9 @@ export default function LoginContainer({ onLoginSuccess }) {
     // 自家 Email 登入邏輯
     onLoginSuccess();
   };
-
-  const fakefeedback = () => {
-    // 假的回饋函數，實際應用中可以用來顯示錯誤或成功訊息
-    console.log("Fake feedback function called");
-  };
-
+  
   const handleFacebookLogin = async () => {
-    const token = await fakefeedback();
+    const token = await facebookLogin();
     if (token) {
       onLoginSuccess();
     } else {
@@ -27,7 +22,7 @@ export default function LoginContainer({ onLoginSuccess }) {
   };
 
   const handleGoogleLogin = async () => {
-    const token = await fakefeedback();
+    const token = await googleLogin();
     if (token) {
       onLoginSuccess();
     } else {
@@ -36,7 +31,7 @@ export default function LoginContainer({ onLoginSuccess }) {
   };
 
   const handleAppleLogin = async () => {
-    const token = await fakefeedback();
+    const token = await appleLogin();
     if (token) {
       onLoginSuccess();
     } else {
@@ -45,7 +40,7 @@ export default function LoginContainer({ onLoginSuccess }) {
   };
 
   const handleWeChatLogin = async () => {
-    const code = await fakefeedback();
+    const code = await wechatLogin();
     if (code) {
       onLoginSuccess();
     } else {

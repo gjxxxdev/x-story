@@ -1,13 +1,13 @@
+import { AppleButton } from "@invertase/react-native-apple-authentication";
 import React from "react";
 import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
   Image,
   Platform,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
-import { AppleButton } from "@invertase/react-native-apple-authentication";
 
 const loginOptions = [
   {
@@ -103,12 +103,14 @@ export default function LoginScreen(props) {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: "center", paddingHorizontal: 20 },
+  container: { flex: 1, justifyContent: "center", paddingHorizontal: 20,
+  backgroundColor: "#000000"},
   title: {
     fontSize: 24,
     fontWeight: "bold",
     marginBottom: 20,
     textAlign: "center",
+    color: "white",
   },
   button: {
     flexDirection: "row",
