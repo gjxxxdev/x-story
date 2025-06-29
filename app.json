@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "story-app-v2",
-   "slug": "story-app-v2",
+    "slug": "story-app-v2",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -18,7 +18,8 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.rueiyang.Story"
+      "bundleIdentifier": "com.rueiyang.Story",
+      "scheme": "xstoryscheme"
     },
     "android": {
       "adaptiveIcon": {
@@ -29,13 +30,34 @@
         "android.permission.RECORD_AUDIO",
         "android.permission.MODIFY_AUDIO_SETTINGS"
       ],
-      "package": "com.rueiyang.Story"
+      "package": "com.rueiyang.Story",
+      "intentFilters": [
+        {
+          "action": "VIEW",
+          "data": [
+            {
+              "scheme": "xstoryscheme"
+            }
+          ],
+          "category": [
+            "BROWSABLE",
+            "DEFAULT"
+          ]
+        }
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      "expo-av"
-    ]
+      "expo-asset",
+      "expo-secure-store"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "022de90a-4504-46f3-a0ad-af15dddb825f"
+      }
+    },
+    "scheme": "xstoryscheme"
   }
 }

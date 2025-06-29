@@ -1,0 +1,7 @@
+<resources>
+  <string name="app_name">story-app-v2</string>
+  <string name="expo_splash_screen_resize_mode" translatable="false">contain</string>
+  <string name="expo_splash_screen_status_bar_translucent" translatable="false">false</string>
+  <string name="facebook_app_id">734981945735087</string>
+  <string name="facebook_client_token">EAAKcdlHKt68BOySZANi04mmYXGEKkRkC0KP7kzYKoyPKTzW32v9w2Ah94ihQdnhmfuUhII74FOHkYOoau11PBH8Qvy1nxRLHCZAZCPlDNUepgLeZCTEpcRiBrkR2SIwnD5yMAdb6J7QVrxeaaOBv7upa2TePIRORN9ZBomI9W92emyBOkgTzjTN5VmJZB5KOnwP3BUaxksQ6SeWZBovmdj5AzdgQZAoQtRcB</string>
+</resources>

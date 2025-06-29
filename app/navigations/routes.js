@@ -1,3 +1,4 @@
+/*
 export default Object.freeze({
   HOME: "故事選擇",
   CONTINUE: "繼續觀看",
@@ -11,3 +12,20 @@ export default Object.freeze({
   STORY: "Story",
   IMAGE: "Image",
 });
+*/
+
+export default Object.freeze({
+  HOME: "home",
+  CONTINUE: "Continue",
+  REVIEW: "Review",
+  OTHERS: "Others",
+  VERSION: "Version",
+  CON_RE_TOPTAB: " ",
+
+  MAIN: "Main",
+  CHAPTER: "Chapter",
+  STORY: "Story",
+  IMAGE: "Image",
+});
+
+

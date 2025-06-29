@@ -1,13 +1,12 @@
-import React, { useMemo, useRef } from 'react';
-import { View, StyleSheet, Image, Pressable } from 'react-native';
+import React, { useMemo } from 'react';
+import { Image, Platform, Pressable, StyleSheet, View } from 'react-native';
 
+import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 import colors from '../../config/colors';
 import AppText from '../AppText';
+import NarratorOption from './NarratorOption';
 import NarratorSound from './NarratorSound';
 import NarratorVideo from './NarratorVideo';
-import NarratorOption from './NarratorOption';
-import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
-import useStore from '../../store/story';
 
 function Narrator(props) {
   const {
@@ -24,7 +23,6 @@ function Narrator(props) {
     textContentBaseColor,
     choseRef,
   } = props;
-  const imgSize = useStore((state) => state.imgSize);
   const imgUrl = useMemo(
     () => 'http://api.xstudio-mclub.url.tw/images/update/' + imgMsg,
     [imgMsg]

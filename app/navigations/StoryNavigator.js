@@ -1,13 +1,12 @@
-import React, { useState } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import HomeScreen from "../screens/HomeScreen";
-import StoryScreen from "../screens/StoryScreen";
 import ChapterScreen from "../screens/ChapterScreen";
+import HomeScreen from "../screens/HomeScreen";
 import ShowImageScreen from "../screens/ShowImageScreen";
+import StoryScreen from "../screens/StoryScreen";
 
-import routes from "./routes";
 import colors from "../config/colors";
+import routes from "./routes";
 
 const Stack = createStackNavigator();
 
