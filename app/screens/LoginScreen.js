@@ -42,7 +42,17 @@ const loginOptions = [
 ];
 
 export default function LoginScreen(props) {
-  // 模擬按下登入按鈕成功，呼叫 onLoginSuccess
+  // 統一按鈕事件處理器，呼叫對應的 props 函式
+  const handlePress = (handlerName) => {
+    console.log("觸發事件:", handlerName);
+    if (props[handlerName] && typeof props[handlerName] === "function") {
+      props[handlerName]();
+    } else {
+      console.warn(`Handler for ${handlerName} not implemented`);
+    }
+  };
+
+  // 測試登入成功按鈕
   const handleTestLoginSuccess = () => {
     if (props.onLoginSuccess) {
       props.onLoginSuccess();
@@ -52,23 +62,13 @@ export default function LoginScreen(props) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>登入頁面</Text>
-    
-      {/* 你的第三方登入按鈕(按鈕目前只是印出按鈕名稱，沒實際登入流程) */}
+
       {loginOptions.map(
-        ({
-          key,
-          title,
-          onPressProp,
-          backgroundColor,
-          icon,
-          textColor,
-        }) => (
+        ({ key, title, onPressProp, backgroundColor, icon, textColor }) => (
           <TouchableOpacity
             key={key}
             style={[styles.button, { backgroundColor }]}
-            onPress={() =>
-              console.log(`${key} 按鈕被點擊，但尚未實作登入流程`)
-            }
+            onPress={() => handlePress(onPressProp)}
             activeOpacity={0.7}
           >
             {icon && <Image source={icon} style={styles.icon} />}
@@ -79,19 +79,15 @@ export default function LoginScreen(props) {
         )
       )}
 
-      {/* Apple Button 只在 iOS 顯示 */}
       {Platform.OS === "ios" && (
         <AppleButton
           buttonStyle={AppleButton.Style.BLACK}
           buttonType={AppleButton.Type.SIGN_IN}
           style={styles.appleButton}
-          onPress={() =>
-            console.log("Apple 登入按鈕被點擊，但尚未實作登入流程")
-          }
+          onPress={() => handlePress("onAppleLogin")}
         />
       )}
 
-      {/* 測試用：直接模擬登入成功 */}
       <TouchableOpacity
         style={[styles.button, { backgroundColor: "#28a745" }]}
         onPress={handleTestLoginSuccess}
@@ -103,8 +99,12 @@ export default function LoginScreen(props) {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: "center", paddingHorizontal: 20,
-  backgroundColor: "#000000"},
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    paddingHorizontal: 20,
+    backgroundColor: "#000000",
+  },
   title: {
     fontSize: 24,
     fontWeight: "bold",

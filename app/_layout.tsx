@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { ActivityIndicator, StyleSheet, View } from "react-native";
 import AppNavigator from "./navigations/AppNavigator";
-import LoginScreen from "./screens/LoginScreen";
+import LoginContainer from "./auth/LoginContainer";
 
 export default function RootLayout() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [checkingLogin, setCheckingLogin] = useState(true);
 
   useEffect(() => {
-    // 這裡放登入檢查邏輯（可換成實際 async 檢查）
     setTimeout(() => {
       setCheckingLogin(false);
     }, 1000);
@@ -23,13 +22,11 @@ export default function RootLayout() {
   }
 
   if (isLoggedIn) {
-    return <AppNavigator />;
-  } else {
     return (
-      <LoginScreen
-        onLoginSuccess={() => setIsLoggedIn(true)}
-      />
+        <AppNavigator />
     );
+  } else {
+    return <LoginContainer onLoginSuccess={() => setIsLoggedIn(true)} />;
   }
 }
 

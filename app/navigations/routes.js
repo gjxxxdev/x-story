@@ -1,4 +1,4 @@
-/*
+
 export default Object.freeze({
   HOME: "故事選擇",
   CONTINUE: "繼續觀看",
@@ -12,8 +12,8 @@ export default Object.freeze({
   STORY: "Story",
   IMAGE: "Image",
 });
-*/
 
+/*
 export default Object.freeze({
   HOME: "home",
   CONTINUE: "Continue",
@@ -27,5 +27,6 @@ export default Object.freeze({
   STORY: "Story",
   IMAGE: "Image",
 });
+*/
 
 
