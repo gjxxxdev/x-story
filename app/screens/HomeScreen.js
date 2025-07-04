@@ -62,7 +62,16 @@ function HomeScreen() {
           storyList: storyList?.data ?? [],
         });
       } catch (error) {
-        console.error('API 請求失敗：', error);
+        console.error('API 請求失敗「HomeScreen」：', error.message);
+    if (error.response) {
+      console.error('「HomeScreen」Response data:', error.response.data);
+      console.error('「HomeScreen」Response status:', error.response.status);
+      console.error('「HomeScreen」Response headers:', error.response.headers);
+    } else if (error.request) {
+      console.error('「HomeScreen」Request made but no response:', error.request);
+    } else {
+      console.error('「HomeScreen」Error config:', error.config);
+    }
       }
     };
     async function getStories() {

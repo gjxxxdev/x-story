@@ -63,7 +63,7 @@ const ChapterScreen = () => {
         //   throw new Error('API 請求成功，但未返回預期的數據');
         // }
       } catch (error) {
-        console.error('API 請求失敗：', error);
+        console.error('API 請求失敗「ChapterScreen」：', error);
       }
     };
 
