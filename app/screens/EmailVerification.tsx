@@ -1,34 +1,20 @@
 import { useState } from "react";
-import { TextInput, View, Text, TouchableOpacity, ActivityIndicator, StyleSheet } from "react-native";
+import {
+  TextInput,
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+} from "react-native";
 
 interface EmailVerificationProps {
   onCancel: () => void;
   onSuccess: () => void;
 }
 
-export function EmailVerification({ onCancel, onSuccess }: EmailVerificationProps) {
+export function EmailVerification({ onCancel }: EmailVerificationProps) {
   const [email, setEmail] = useState("");
-  const [isSending, setIsSending] = useState(false);
-  const [waitingVerification, setWaitingVerification] = useState(false);
-
-  const sendVerificationEmail = () => {
-    if (!email) {
-      alert("請輸入 Email");
-      return;
-    }
-    setIsSending(true);
-
-    // 模擬發送驗證信
-    setTimeout(() => {
-      setIsSending(false);
-      setWaitingVerification(true);
-
-      // 模擬等待3秒後驗證成功
-      setTimeout(() => {
-        onSuccess();
-      }, 3000);
-    }, 1000);
-  };
+  const [password, setPassword] = useState("");
 
   const styles = StyleSheet.create({
     container: {
@@ -39,10 +25,10 @@ export function EmailVerification({ onCancel, onSuccess }: EmailVerificationProp
       paddingHorizontal: 20,
     },
     title: {
-      fontSize: 20,
+      fontSize: 22,
       fontWeight: "bold",
       color: "#ffffff",
-      marginBottom: 20,
+      marginBottom: 30,
     },
     input: {
       width: "100%",
@@ -74,48 +60,69 @@ export function EmailVerification({ onCancel, onSuccess }: EmailVerificationProp
     cancelButtonText: {
       color: "#cccccc",
     },
-    waitingText: {
-      color: "#cccccc",
-      fontSize: 16,
-      textAlign: "center",
-      paddingHorizontal: 20,
+    linkRow: {
+      flexDirection: "row",
+      justifyContent: "space-between",
+      width: "100%",
+      marginTop: 10,
+    },
+    linkButton: {
+      paddingVertical: 6,
+      paddingHorizontal: 12,
+    },
+    linkText: {
+      color: "#007AFF",
+      fontSize: 14,
+      fontWeight: "600",
     },
   });
 
   return (
     <View style={styles.container}>
-      {!waitingVerification ? (
-        <>
-          <Text style={styles.title}>請輸入 Email 並發送驗證信</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="輸入 Email"
-            placeholderTextColor="#888888"
-            value={email}
-            onChangeText={setEmail}
-            editable={!isSending}
-            keyboardType="email-address"
-            autoCapitalize="none"
-            autoCorrect={false}
-          />
-          {isSending ? (
-            <ActivityIndicator size="small" color="#007AFF" />
-          ) : (
-            <TouchableOpacity style={styles.button} onPress={sendVerificationEmail}>
-              <Text style={styles.buttonText}>發送驗證信</Text>
-            </TouchableOpacity>
-          )}
-          <TouchableOpacity
-            style={[styles.button, styles.cancelButton]}
-            onPress={onCancel}
-            disabled={isSending}
-          >
-            <Text style={[styles.buttonText, styles.cancelButtonText]}>取消</Text>
-          </TouchableOpacity>
-        </>
-      ) : (
-        <Text style={styles.waitingText}>驗證信已發送，請等待驗證中... （3秒後自動登入成功）</Text>
-      )}
+      <Text style={styles.title}>登入xStory帳號</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Email"
+        placeholderTextColor="#888888"
+        value={email}
+        onChangeText={setEmail}
+        keyboardType="email-address"
+        autoCapitalize="none"
+        autoCorrect={false}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="密碼"
+        placeholderTextColor="#888888"
+        value={password}
+        onChangeText={setPassword}
+        secureTextEntry
+        autoCapitalize="none"
+        autoCorrect={false}
+      />
+      <TouchableOpacity style={styles.button} onPress={() => { /* 預留登入動作 */ }}>
+        <Text style={styles.buttonText}>登入</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={[styles.button, styles.cancelButton]}
+        onPress={onCancel}
+      >
+        <Text style={[styles.buttonText, styles.cancelButtonText]}>取消</Text>
+      </TouchableOpacity>
+      <View style={styles.linkRow}>
+        <TouchableOpacity
+          style={styles.linkButton}
+          onPress={() => { /* 預留註冊動作 */ }}
+        >
+          <Text style={styles.linkText}>註冊帳號</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.linkButton}
+          onPress={() => { /* 預留忘記密碼動作 */ }}
+        >
+          <Text style={styles.linkText}>忘記密碼？</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
