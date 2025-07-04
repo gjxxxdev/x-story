@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { appleLogin } from "../../components/utils/appleAuth";
 import { facebookLogin } from "../../components/utils/facebookAuth";
 import { googleLogin } from "../../components/utils/googleAuth";
 import { wechatLogin } from "../../components/utils/wechatAuth";
 import LoginScreen from "../screens/LoginScreen";
+import { EmailVerification } from "../screens/EmailVerification";
 
 export default function LoginContainer({ onLoginSuccess }) {
+  const [showEmailVerification, setShowEmailVerification] = useState(false);
+
+
   const handleXStoryLogin = () => {
-    onLoginSuccess();
+    setShowEmailVerification(true);
+  };
+
+  const handleEmailVerificationCancel = () => {
+    setShowEmailVerification(false);
   };
 
   const handleFacebookLogin = async () => {
@@ -49,7 +57,15 @@ export default function LoginContainer({ onLoginSuccess }) {
     }
   };
 
-  return (
+  return showEmailVerification ? (
+    <EmailVerification
+      onCancel={handleEmailVerificationCancel}
+      onSuccess={() => {
+        setShowEmailVerification(false);
+        onLoginSuccess();
+      }}
+    />
+  ) : (
     <LoginScreen
       onLoginSuccess={onLoginSuccess}
       onXStoryLogin={handleXStoryLogin}
