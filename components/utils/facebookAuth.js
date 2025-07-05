@@ -1,5 +1,7 @@
 // app/auth/facebookAuth.js
-import { LoginManager, AccessToken } from "react-native-fbsdk-next";
+import { LoginManager, AccessToken, Settings } from "react-native-fbsdk-next";
+
+Settings.initializeSDK()
 
 export async function facebookLogin() {
   try {

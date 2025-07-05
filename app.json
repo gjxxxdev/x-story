@@ -18,7 +18,7 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.rueiyang.Story",
+      "bundleIdentifier": "com.rueiyang.story",
       "scheme": "xstoryscheme"
     },
     "android": {
@@ -30,7 +30,7 @@
         "android.permission.RECORD_AUDIO",
         "android.permission.MODIFY_AUDIO_SETTINGS"
       ],
-      "package": "com.rueiyang.Story",
+      "package": "com.rueiyang.story",
       "intentFilters": [
         {
           "action": "VIEW",

@@ -44,6 +44,7 @@ function RootContent() {
   const handleLoginSuccess = async () => {
     showLoading();
     await new Promise((res) => setTimeout(res, 500));
+    setIsLoggedIn(true);
     hideLoading();
     ;
   };
