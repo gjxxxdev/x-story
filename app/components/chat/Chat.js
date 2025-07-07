@@ -119,16 +119,22 @@ function Chat({
             />
           ) : null}
           {soundMsg ? (
-            <ChatSoundArea
-              soundMsg={soundMsg}
-              backgroundColor={styles.rightBackground}
-            />
+            <View style={{ alignSelf: 'center', marginRight: 8 }}>
+              <ChatSoundArea
+                soundMsg={soundMsg}
+                backgroundColor={
+                  textContentBaseColor
+                    ? { backgroundColor: textContentBaseColor }
+                    : styles.rightBackground
+                }
+              />
+            </View>
           ) : null}
           {imgMsg ? (
             <ChatImageArea
               imgMsg={imgMsg}
               backgroundColor={styles.imgBackground}
-              // size={size}
+            // size={size}
             />
           ) : null}
           {videoMsg ? <ChatVideoArea videoMsg={videoMsg} /> : null}
