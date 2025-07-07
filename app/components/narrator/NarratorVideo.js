@@ -33,7 +33,7 @@ function NarratorVideo({ videoMsg, videoDirection }) {
   }, []);
 
   const onPlaybackStatusUpdate = useCallback(status => {
-    console.log('[NarratorVideo] onPlaybackStatusUpdate:', status);
+    //console.log('[NarratorVideo] onPlaybackStatusUpdate:', status);
   }, []);
 
   return (

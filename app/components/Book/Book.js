@@ -75,26 +75,41 @@ function Book(props) {
 
   return (
     <View style={[styles.container]}>
+
       <Pressable
         style={styles.container}
         onPress={() => {
           if (!isOpen) return;
 
           if (showIcon) {
-            navigation.navigate(routes.STORY, {
-              ...props,
-              ...storyPayload,
+            // 繼續觀看
+            navigation.navigate(routes.HOME, {
+              screen: routes.STORY,
+              params: {
+                ...props,
+                ...storyPayload,
+              },
             });
           } else if (showReviewIcon) {
-            hasChapter
-              ? navigation.navigate(routes.CHAPTER, {
+            // 再次回味
+            if (hasChapter) {
+              navigation.navigate(routes.HOME, {
+                screen: routes.CHAPTER,
+                params: {
                   name: main_menu_name,
                   author,
                   storyId: id,
                   storyData,
-                })
-              : navigation.navigate(routes.STORY, storyPayload);
+                },
+              });
+            } else {
+              navigation.navigate(routes.HOME, {
+                screen: routes.STORY,
+                params: storyPayload,
+              });
+            }
           } else {
+            // 一般 Alert 選項
             Alert.alert(
               main_menu_title,
               main_menu_content,
@@ -102,14 +117,22 @@ function Book(props) {
                 {
                   text: main_menu_btn_left,
                   onPress: () => {
-                    hasChapter
-                      ? navigation.navigate(routes.CHAPTER, {
+                    if (hasChapter) {
+                      navigation.navigate(routes.HOME, {
+                        screen: routes.CHAPTER,
+                        params: {
                           name: main_menu_name,
                           author,
                           storyId: id,
                           storyData,
-                        })
-                      : navigation.navigate(routes.STORY, storyPayload);
+                        },
+                      });
+                    } else {
+                      navigation.navigate(routes.HOME, {
+                        screen: routes.STORY,
+                        params: storyPayload,
+                      });
+                    }
                   },
                 },
                 {
@@ -126,6 +149,7 @@ function Book(props) {
           }
         }}
       >
+        {/* 以下保持原本 JSX */}
         {showIcon ? (
           // 繼續觀看
           <View>
@@ -197,6 +221,7 @@ function Book(props) {
           </AppText>
         </View>
       </Pressable>
+
     </View>
   );
 }
