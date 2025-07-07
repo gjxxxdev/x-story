@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useMemo } from 'react';
+import React, { useRef, useMemo, useCallback } from 'react';
 import { View, StyleSheet, Dimensions } from 'react-native';
 import { Video } from 'expo-av';
 import colors from '../../config/colors';
@@ -17,19 +17,35 @@ function NarratorVideo({ videoMsg, videoDirection }) {
         : { width: screenWidth, height: screenWidth * (16 / 9) },
     [videoDirection]
   );
-  useEffect(() => {
-    video.current?.playAsync();
-  }, [videoMsg]);
+
+  const onLoad = useCallback(async () => {
+    if (!video.current) {
+      console.warn('[NarratorVideo] video ref is null onLoad');
+      return;
+    }
+    console.log('[NarratorVideo] onLoad fired, try playAsync');
+    try {
+      const status = await video.current.playAsync();
+      console.log('[NarratorVideo] playAsync success:', status);
+    } catch (error) {
+      console.error('[NarratorVideo] playAsync error:', error);
+    }
+  }, []);
+
+  const onPlaybackStatusUpdate = useCallback(status => {
+    console.log('[NarratorVideo] onPlaybackStatusUpdate:', status);
+  }, []);
+
   return (
     <View style={styles.container}>
       <Video
         ref={video}
         style={videoStyle}
         source={{ uri: videoUrl }}
-        resizeMode='contain'
-        // shouldPlay={false}
-        // isLooping
-        // onPlaybackStatusUpdate={(status) => setStatus(() => status)}
+        resizeMode="contain"
+        shouldPlay={false}
+        onLoad={onLoad}
+        onPlaybackStatusUpdate={onPlaybackStatusUpdate}
       />
     </View>
   );
@@ -38,9 +54,6 @@ function NarratorVideo({ videoMsg, videoDirection }) {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.dark,
-  },
-  text: {
-    color: colors.light,
   },
 });
 
