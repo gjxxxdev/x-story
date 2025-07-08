@@ -22,6 +22,9 @@ import { useIsFocused } from '@react-navigation/native';
 const domain = 'http://api.xstudio-mclub.url.tw/images/update/';
 const initStoryIdx = null;
 
+// 假設每個故事項目高度（請依實際item調整）
+const ITEM_HEIGHT = 120;
+
 function StoryScreen({ route, navigation }) {
   const router = useRoute();
   const isFocus = useIsFocused();
@@ -35,11 +38,14 @@ function StoryScreen({ route, navigation }) {
     cachedIndex = null,
     read_range_end,
   } = router.params;
+
   const [index, setIndex] = useState({
     story: initStoryIdx,
     screen: 0,
   });
+
   const [story, setStory] = useState([]);
+
   const [queryInfo, setQueryInfo] = useState({
     config: [],
     screenings: {},
@@ -47,9 +53,12 @@ function StoryScreen({ route, navigation }) {
     role: {},
     imageUrl: '',
   });
+
   const flatlistRef = useRef(null);
   const choseRef = useRef(false);
-  const initRef = useRef(false);
+
+  const [shouldScrollInit, setShouldScrollInit] = useState(false);
+
   const cacheData = useMemo(
     () => ({
       storyId,
@@ -91,7 +100,6 @@ function StoryScreen({ route, navigation }) {
   };
 
   useEffect(() => {
-    // set next scene
     const fetchStories = async () => {
       try {
         const _id = queryInfo.screenings?.[index.screen]?.id;
@@ -137,24 +145,53 @@ function StoryScreen({ route, navigation }) {
 
   useEffect(() => {
     if (!queryInfo?.content || index?.story === null) return;
+
     if (queryInfo?.content?.[index.story]?.contentPresent === '結尾') {
       setIndex((prev) => ({
         story: initStoryIdx,
         screen: prev.screen + 1,
       }));
     } else {
-      if (initRef.current) {
+      if (shouldScrollInit) {
+        console.log('開始初始化滑動');
+        console.log('index.story:', index.story);
+        console.log('queryInfo.content length:', queryInfo?.content?.length);
+        console.log('FlatList data length:', story.length);
+        console.log('滑動目標 item:', queryInfo?.content?.[index.story]);
+
         setStory(queryInfo?.content?.slice(0, index.story + 1));
-        initRef.current = false;
-        setTimeout(() => {
-          flatlistRef.current?.scrollToItem({
-            item: queryInfo?.content?.[index.story] ?? {},
-            animated: true,
-            viewPosition: 0,
-          });
-        }, 100);
+        setShouldScrollInit(false);
+
+        let attempts = 0;
+        const maxAttempts = 5;
+
+        const tryScroll = () => {
+          if (flatlistRef.current) {
+            console.log('執行 scrollToIndex, index.story:', index.story);
+            flatlistRef.current.scrollToIndex({
+              index: index.story,
+              animated: true,
+              viewPosition: 0,
+            });
+          } else if (attempts < maxAttempts) {
+            attempts++;
+            console.log(`flatlistRef 尚未就緒，重試第 ${attempts} 次`);
+            setTimeout(tryScroll, 150);
+          } else {
+            console.log('flatlistRef 仍未就緒，放棄滑動');
+          }
+        };
+        setTimeout(tryScroll, 100);
       } else {
-        setStory((prev) => [...prev, queryInfo?.content?.[index.story]]);
+        setStory((prev) => {
+          const newItem = queryInfo?.content?.[index.story];
+          const lastItem = prev[prev.length - 1];
+          if (lastItem?.id === newItem?.id) {
+            return prev;
+          }
+          return [...prev, newItem];
+        });
+
         storage.storeStory(
           {
             ...cacheData,
@@ -167,19 +204,7 @@ function StoryScreen({ route, navigation }) {
         );
       }
     }
-  }, [index.story, queryInfo?.content, cachedIndex?.story]);
-
-  useEffect(() => {
-    if (flatlistRef.current && story.length) {
-      setTimeout(() => {
-        flatlistRef.current?.scrollToItem({
-          item: queryInfo?.content?.[index.story] ?? {},
-          animated: true,
-          viewPosition: 0,
-        });
-      }, 100);
-    }
-  }, [index.story, story, queryInfo?.content]);
+  }, [index.story, queryInfo?.content, cachedIndex?.story, shouldScrollInit]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -198,24 +223,7 @@ function StoryScreen({ route, navigation }) {
           `http://api.xstudio-mclub.url.tw/api/v1/admin/setup-story-role`
         );
 
-        // let allScreenings = {};
-        // if (!screenings?.data.length) {
-        //   allScreenings = await axios.get(
-        //     `http://api.xstudio-mclub.url.tw/api/v1/admin/screenings/${storyId}`
-        //   );
-        // }
         const screenData = screenings?.data?.[cachedIndex?.screen ?? 0];
-
-        // if (screenData) {
-        // const content = await axios.get(
-        //   `http://api.xstudio-mclub.url.tw/api/v1/admin/content/1/3/60`
-        // );
-        // const content = await axios.get(
-        //   `http://api.xstudio-mclub.url.tw/api/v1/admin/content/${storyId}/${chapterId}/${screenData?.id}`
-        // );
-        // const storyContent = content?.data
-        //   ?.slice()
-        //   .sort((a, b) => a?.order - b?.order);
 
         setQueryInfo({
           config: config?.data[0] ?? {},
@@ -223,7 +231,6 @@ function StoryScreen({ route, navigation }) {
             ? screenings?.data.slice(0, +read_range_end)
             : screenings?.data ?? [],
           role: role?.data ?? {},
-          // content: storyContent,
           imageUrl: domain + screenData?.bg_view,
           roleConf: roleConf?.data?.[0],
         });
@@ -231,23 +238,24 @@ function StoryScreen({ route, navigation }) {
         console.error('API 請求失敗：', error);
       }
     };
-    if (cachedIndex) initRef.current = true;
+    if (cachedIndex) setShouldScrollInit(true);
     fetchData();
     setIndex({
       story: cachedIndex?.story ?? initStoryIdx,
       screen: cachedIndex?.screen ?? 0,
     });
   }, [read_range_end]);
+
   return (
     <ImageBackground
       fadeDuration={2000}
       style={[styles.container]}
-      resizeMode='cover'
+      resizeMode="cover"
       source={
         queryInfo?.imageUrl
           ? {
-              uri: queryInfo?.imageUrl,
-            }
+            uri: queryInfo?.imageUrl,
+          }
           : null
       }
     >
@@ -269,14 +277,20 @@ function StoryScreen({ route, navigation }) {
             keyExtractor={(item, index) => index.toString()}
             scrollEnabled={true}
             showsVerticalScrollIndicator={false}
+            getItemLayout={(data, index) => ({
+              length: ITEM_HEIGHT,
+              offset: ITEM_HEIGHT * index,
+              index,
+            })}
             onScrollToIndexFailed={({ index }) => {
+              console.log('scrollToIndexFailed, index:', index);
               setTimeout(() => {
-                flatlistRef.current?.scrollToItem({
-                  item: story[index] ?? {},
+                flatlistRef.current?.scrollToIndex({
+                  index,
                   animated: true,
-                  viewPosition: 0.5,
+                  viewPosition: 0,
                 });
-              }, 0);
+              }, 100);
             }}
             renderItem={({ item, index }) => {
               return (
