@@ -4,11 +4,13 @@ import { facebookLogin } from "../../components/utils/facebookAuth";
 import { googleLogin } from "../../components/utils/googleAuth";
 import { wechatLogin } from "../../components/utils/wechatAuth";
 import LoginScreen from "../screens/LoginScreen";
+import RegisterScreen from "../screens/RegisterScreen"
 import { EmailVerification } from "../screens/EmailVerification";
 import { Linking } from 'react-native';
 
 export default function LoginContainer({ onLoginSuccess }) {
   const [showEmailVerification, setShowEmailVerification] = useState(false);
+  const [showRegisterView, setshowRegisterView] = useState(false);
 
   useEffect(() => {
     Linking.getInitialURL().then((url) => {
@@ -83,6 +85,11 @@ export default function LoginContainer({ onLoginSuccess }) {
     }
   };
 
+
+  const handleRegister = async () => {
+    setshowRegisterView(true);
+  }
+
   return showEmailVerification ? (
     <EmailVerification
       onCancel={handleEmailVerificationCancel}
@@ -91,6 +98,8 @@ export default function LoginContainer({ onLoginSuccess }) {
         onLoginSuccess();
       }}
     />
+  ) : showRegisterView ? (
+    <RegisterScreen onRegisterSuccess={()=>{}} />
   ) : (
     <LoginScreen
       onLoginSuccess={onLoginSuccess}
@@ -99,6 +108,7 @@ export default function LoginContainer({ onLoginSuccess }) {
       onAppleLogin={handleAppleLogin}
       onGoogleLogin={handleGoogleLogin}
       onWeChatLogin={handleWeChatLogin}
+      onRegister={handleRegister}
     />
   );
 }

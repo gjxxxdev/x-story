@@ -1,5 +1,5 @@
 import { AppleButton } from "@invertase/react-native-apple-authentication";
-import React from "react";
+import React, { useState } from "react";
 import {
   Image,
   Platform,
@@ -12,33 +12,35 @@ import {
 const loginOptions = [
   {
     key: "xstory",
-    title: "使用 Email 登入",
+    title: "使用 Email 註冊",
     onPressProp: "onXStoryLogin",
     icon: require("../../assets/auth/xstory.png"),
   },
   {
     key: "facebook",
-    title: "使用 Facebook 登入",
+    title: "使用 Facebook 註冊",
     onPressProp: "onFacebookLogin",
     icon: require("../../assets/auth/facebook.png"),
   },
   {
     key: "google",
-    title: "使用 Google 登入",
+    title: "使用 Google 註冊",
     onPressProp: "onGoogleLogin",
     icon: require("../../assets/auth/google.png"),
     textColor: "#FFFFFF",
   },
   {
     key: "wechat",
-    title: "使用 WeChat 登入",
+    title: "使用 WeChat 註冊",
     onPressProp: "onWeChatLogin",
     icon: require("../../assets/auth/wechat.png"),
   },
-
 ];
 
-export default function LoginScreen(props) {
+export default function RegisterScreen(props) {
+  const [agreeChecked, setAgreeChecked] = useState(false);
+  const [loginTextPressed, setLoginTextPressed] = useState(false);
+
   const handlePress = (handlerName) => {
     if (props[handlerName] && typeof props[handlerName] === "function") {
       props[handlerName]();
@@ -49,6 +51,19 @@ export default function LoginScreen(props) {
     if (props.onLoginSuccess) {
       props.onLoginSuccess();
     }
+  };
+
+  const toggleAgree = () => {
+    setAgreeChecked((prev) => !prev);
+    console.log("同意服務條款勾選狀態:", !agreeChecked);
+  };
+
+  const handleLoginPress = () => {
+    setLoginTextPressed(true);
+    console.log("用戶點擊登入");
+    // 你可以這裡調用導頁或其他邏輯
+    // 延遲取消按下狀態，製造按鈕點擊效果
+    setTimeout(() => setLoginTextPressed(false), 200);
   };
 
   return (
@@ -62,11 +77,10 @@ export default function LoginScreen(props) {
         />
       </View>
 
-
       <View style={styles.container}>
 
         <Text style={styles.title}>歡迎回來 X Stories !</Text>
-        <Text style={styles.title}>請選擇登入方式</Text>
+        <Text style={styles.title}>請選擇註冊方式</Text>
 
         {loginOptions.map(({ key, title, onPressProp, icon, textColor }) => (
           <TouchableOpacity
@@ -122,14 +136,38 @@ export default function LoginScreen(props) {
           </Text>
         </TouchableOpacity>
 
-        {/* 新增底部行 */}
-        <View style={styles.bottomRow}>
-          <TouchableOpacity onPress={props.onRegister}>
-            <Text style={styles.bottomTextLeft}>註冊帳號</Text>
-          </TouchableOpacity>
+        {/* 服務條款勾選區 */}
+        <TouchableOpacity
+          style={styles.agreeContainer}
+          onPress={toggleAgree}
+          activeOpacity={0.7}
+        >
+          <View style={[styles.checkbox, agreeChecked && styles.checkboxChecked]}>
+            {agreeChecked && <View style={styles.checkboxTick} />}
+          </View>
+          <Text style={styles.agreeText}>
+            我已閱讀並同意{" "}
+            <Text style={styles.linkText}>X Stories 的 《服務條款》</Text> 及{" "}
+            <Text style={styles.linkText}>《隱私政策》</Text>。
+          </Text>
+        </TouchableOpacity>
 
+        {/* 底部登入文字 */}
+        <View style={styles.bottomRow}>
+          <Text style={styles.bottomText}>已有帳號？</Text>
+          <TouchableOpacity onPress={handleLoginPress} activeOpacity={0.7}>
+            <Text
+              style={[
+                styles.loginLink,
+                loginTextPressed && styles.loginLinkPressed,
+              ]}
+            >
+              登入
+            </Text>
+          </TouchableOpacity>
         </View>
       </View>
+
     </View>
   );
 }
@@ -154,12 +192,10 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 20,
     marginBottom: 15,
-    // 這裡移除 borderRadius，改用動態設定
   },
   buttonText: {
     fontSize: 16,
     marginLeft: 10,
-    // 預設文字顏色由外層動態指定
   },
   icon: {
     width: 24,
@@ -171,9 +207,69 @@ const styles = StyleSheet.create({
     height: 44,
     marginTop: 10,
   },
-  bottomTextLeft: {
+  bottomRow: {
+    marginTop: 40,
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  bottomText: {
     color: "#b68a36",
     fontSize: 14,
-    textDecorationLine: "underline",  // 加底線
+  },
+  loginLink: {
+    color: "#b68a36",
+    fontSize: 14,
+    marginLeft: 5,
+  },
+  loginLinkPressed: {
+    color: "#f5e0a8",
+  },
+  agreeContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: 30,
+    marginHorizontal: 10,
+  },
+  checkbox: {
+    width: 18,
+    height: 18,
+    borderWidth: 2,
+    borderColor: "#0abab5",
+    borderRadius: 4,
+    marginRight: 10,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  checkboxChecked: {
+    backgroundColor: "#0abab5",
+  },
+  checkboxTick: {
+    width: 8,
+    height: 12,
+    borderLeftWidth: 2,
+    borderBottomWidth: 2,
+    borderColor: "white",
+    transform: [{ rotate: "-45deg" }],
+  },
+  agreeText: {
+    flex: 1,
+    color: "white",
+    fontSize: 14,
+    lineHeight: 20,
+  },
+  linkText: {
+    color: "#0abab5",
+    textDecorationLine: "underline",
+  },
+  imgIcon: {
+    width: 40,
+    height: 40,
+    resizeMode: "contain",
+  },
+  logoContainer: {
+    position: "absolute",
+    top: 20,
+    left: 20,
+    zIndex: 10,
   },
 });
