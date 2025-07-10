@@ -6,10 +6,12 @@ import { wechatLogin } from "../../components/utils/wechatAuth";
 import LoginScreen from "../screens/LoginScreen";
 import RegisterScreen from "../screens/RegisterScreen"
 import { EmailVerification } from "../screens/EmailVerification";
+import { XStoryLogin } from "../screens/XStoryLogin"
 import { Linking } from 'react-native';
 
 export default function LoginContainer({ onLoginSuccess }) {
   const [showEmailVerification, setShowEmailVerification] = useState(false);
+  const [showEmailLogin, setShowEmailLogin] = useState(false);
   const [showRegisterView, setshowRegisterView] = useState(false);
 
   useEffect(() => {
@@ -36,7 +38,11 @@ export default function LoginContainer({ onLoginSuccess }) {
   }
 
   const handleXStoryLogin = () => {
-    setShowEmailVerification(true);
+    setShowEmailLogin(true);
+  };
+
+  const handleXStoryLoginCancel = () => {
+    setShowEmailLogin(false);
   };
 
   const handleEmailVerificationCancel = () => {
@@ -90,6 +96,26 @@ export default function LoginContainer({ onLoginSuccess }) {
     setshowRegisterView(true);
   }
 
+  const handleXStoryRegister = () => {
+    setShowEmailVerification(true);
+  };
+
+  const handleFacebookRegister = () => {
+
+  };
+
+  const handleAppleRegister = () => {
+
+  };
+
+  const handleGoogleRegister = () => {
+
+  };
+
+  const handleWeChatRegister = () => {
+
+  };
+
   return showEmailVerification ? (
     <EmailVerification
       onCancel={handleEmailVerificationCancel}
@@ -98,8 +124,23 @@ export default function LoginContainer({ onLoginSuccess }) {
         onLoginSuccess();
       }}
     />
+  ) : showEmailLogin ? (
+    <XStoryLogin
+      onLoginSuccess={handleXStoryLogin}
+      onCancel={handleXStoryLoginCancel}
+      onShowEmailVerification={() => { }}
+    />
   ) : showRegisterView ? (
-    <RegisterScreen onRegisterSuccess={()=>{}} />
+    <RegisterScreen
+      onRegisterSuccess={() => { }}
+      onXStoryRegister={handleXStoryRegister}
+      onFacebookRegister={handleFacebookRegister}
+      onAppleRegister={handleAppleRegister}
+      onGoogleRegister={handleGoogleRegister}
+      onWeChatRegister={handleWeChatRegister}
+      onRegister={handleRegister}
+      onCancel={() => setshowRegisterView(false)}
+    />
   ) : (
     <LoginScreen
       onLoginSuccess={onLoginSuccess}

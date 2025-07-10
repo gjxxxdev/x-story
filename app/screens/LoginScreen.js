@@ -7,6 +7,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Dimensions,
 } from "react-native";
 
 const loginOptions = [
@@ -39,6 +40,8 @@ const loginOptions = [
 ];
 
 export default function LoginScreen(props) {
+
+
   const handlePress = (handlerName) => {
     if (props[handlerName] && typeof props[handlerName] === "function") {
       props[handlerName]();
@@ -134,10 +137,14 @@ export default function LoginScreen(props) {
   );
 }
 
+const screenHeight = Dimensions.get("window").height;
+const paddingTopPercent = screenHeight * 0.1;
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: "flex-start",
+    paddingTop: paddingTopPercent,
     paddingHorizontal: 20,
     backgroundColor: "#39393B",
   },
@@ -175,5 +182,16 @@ const styles = StyleSheet.create({
     color: "#b68a36",
     fontSize: 14,
     textDecorationLine: "underline",  // 加底線
+  },
+  imgIcon: {
+    width: 40,
+    height: 40,
+    resizeMode: "contain",
+  },
+  logoContainer: {
+    position: "absolute",
+    top: 20,
+    left: 20,
+    zIndex: 10,
   },
 });

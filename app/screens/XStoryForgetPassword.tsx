@@ -16,11 +16,11 @@ interface Props {
   onSuccess: () => void;
 }
 
-export function EmailVerification({ email, onEmailChange, onCancel, onSuccess }: Props) {
+export function XStoryForgetPassword({ email, onEmailChange, onCancel, onSuccess }: Props) {
   const [isSending, setIsSending] = useState(false);
   const [waitingVerification, setWaitingVerification] = useState(false);
 
-  const sendVerificationEmail = () => {
+  const sendResetEmail = () => {
     if (!email) {
       alert("請輸入 Email");
       return;
@@ -48,7 +48,7 @@ export function EmailVerification({ email, onEmailChange, onCancel, onSuccess }:
         />
       </View>
 
-      <Text style={styles.title}>驗證碼</Text>
+      <Text style={styles.title}>忘記密碼</Text>
 
       {!waitingVerification ? (
         <>
@@ -67,8 +67,8 @@ export function EmailVerification({ email, onEmailChange, onCancel, onSuccess }:
           {isSending ? (
             <ActivityIndicator size="large" color="#0ABAB5" style={{ marginVertical: 20 }} />
           ) : (
-            <TouchableOpacity style={styles.sendButton} onPress={sendVerificationEmail}>
-              <Text style={styles.sendButtonText}>發送驗證信</Text>
+            <TouchableOpacity style={styles.sendButton} onPress={sendResetEmail}>
+              <Text style={styles.sendButtonText}>發送重設信</Text>
             </TouchableOpacity>
           )}
 
@@ -82,7 +82,7 @@ export function EmailVerification({ email, onEmailChange, onCancel, onSuccess }:
         </>
       ) : (
         <Text style={styles.waitingText}>
-          驗證信已發送，請到信箱確認。
+          重設信已發送，請到信箱確認。
           {"\n"}
           （3秒後自動返回登入畫面）
         </Text>

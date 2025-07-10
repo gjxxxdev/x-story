@@ -7,63 +7,53 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Dimensions,
 } from "react-native";
 
 const loginOptions = [
   {
     key: "xstory",
     title: "使用 Email 註冊",
-    onPressProp: "onXStoryLogin",
+    onPressProp: "onXStoryRegister",
     icon: require("../../assets/auth/xstory.png"),
   },
   {
     key: "facebook",
     title: "使用 Facebook 註冊",
-    onPressProp: "onFacebookLogin",
+    onPressProp: "onFacebookRegister",
     icon: require("../../assets/auth/facebook.png"),
   },
   {
     key: "google",
     title: "使用 Google 註冊",
-    onPressProp: "onGoogleLogin",
+    onPressProp: "onGoogleRegister",
     icon: require("../../assets/auth/google.png"),
     textColor: "#FFFFFF",
   },
   {
     key: "wechat",
     title: "使用 WeChat 註冊",
-    onPressProp: "onWeChatLogin",
+    onPressProp: "onWeChatRegister",
     icon: require("../../assets/auth/wechat.png"),
   },
 ];
 
 export default function RegisterScreen(props) {
   const [agreeChecked, setAgreeChecked] = useState(false);
-  const [loginTextPressed, setLoginTextPressed] = useState(false);
 
   const handlePress = (handlerName) => {
     if (props[handlerName] && typeof props[handlerName] === "function") {
       props[handlerName]();
     }
   };
-
-  const handleTestLoginSuccess = () => {
-    if (props.onLoginSuccess) {
-      props.onLoginSuccess();
-    }
-  };
-
+  
   const toggleAgree = () => {
     setAgreeChecked((prev) => !prev);
     console.log("同意服務條款勾選狀態:", !agreeChecked);
   };
 
-  const handleLoginPress = () => {
-    setLoginTextPressed(true);
-    console.log("用戶點擊登入");
-    // 你可以這裡調用導頁或其他邏輯
-    // 延遲取消按下狀態，製造按鈕點擊效果
-    setTimeout(() => setLoginTextPressed(false), 200);
+  const handleCancel = () => {
+    props.onCancel();
   };
 
   return (
@@ -76,6 +66,7 @@ export default function RegisterScreen(props) {
           source={require('../../assets/blueeye.png')}
         />
       </View>
+
 
       <View style={styles.container}>
 
@@ -112,29 +103,9 @@ export default function RegisterScreen(props) {
             buttonStyle={AppleButton.Style.BLACK}
             buttonType={AppleButton.Type.SIGN_IN}
             style={styles.appleButton}
-            onPress={() => handlePress("onAppleLogin")}
+            onPress={() => handlePress("onAppleRegister")}
           />
         )}
-
-        <TouchableOpacity
-          style={[
-            styles.button,
-            {
-              backgroundColor: "#000000",
-              borderColor: "#0abab5",
-              borderWidth: 2,
-              borderTopLeftRadius: 25,
-              borderBottomLeftRadius: 25,
-              borderTopRightRadius: 25,
-              borderBottomRightRadius: 25,
-            },
-          ]}
-          onPress={handleTestLoginSuccess}
-        >
-          <Text style={[styles.buttonText, { color: "#0abab5" }]}>
-            測試登入成功，切換畫面
-          </Text>
-        </TouchableOpacity>
 
         {/* 服務條款勾選區 */}
         <TouchableOpacity
@@ -155,11 +126,10 @@ export default function RegisterScreen(props) {
         {/* 底部登入文字 */}
         <View style={styles.bottomRow}>
           <Text style={styles.bottomText}>已有帳號？</Text>
-          <TouchableOpacity onPress={handleLoginPress} activeOpacity={0.7}>
+          <TouchableOpacity onPress={handleCancel} activeOpacity={0.7}>
             <Text
               style={[
-                styles.loginLink,
-                loginTextPressed && styles.loginLinkPressed,
+                styles.loginLink, styles.loginLinkPressed,
               ]}
             >
               登入
@@ -172,10 +142,15 @@ export default function RegisterScreen(props) {
   );
 }
 
+const screenHeight = Dimensions.get("window").height;
+const paddingTopPercent = screenHeight * 0.1;
+
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: "flex-start",
+    paddingTop: paddingTopPercent,
     paddingHorizontal: 20,
     backgroundColor: "#39393B",
   },
