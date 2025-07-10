@@ -17,6 +17,8 @@ interface Props {
 }
 
 export function EmailVerification({ email, onEmailChange, onCancel, onSuccess }: Props) {
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [isSending, setIsSending] = useState(false);
   const [waitingVerification, setWaitingVerification] = useState(false);
 
@@ -25,6 +27,26 @@ export function EmailVerification({ email, onEmailChange, onCancel, onSuccess }:
       alert("請輸入 Email");
       return;
     }
+    if (!password) {
+      alert("請輸入密碼");
+      return;
+    }
+    if (!confirmPassword) {
+      alert("請確認密碼");
+      return;
+    }
+    if (password !== confirmPassword) {
+      alert("兩次輸入的密碼不相同");
+      return;
+    }
+
+    // 密碼格式驗證：8-20字元，至少1大寫、1小寫、1數字
+    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,20}$/;
+    if (!passwordPattern.test(password)) {
+      alert("密碼需8-20字元，且包含至少一個大寫字母、一個小寫字母及一個數字");
+      return;
+    }
+
     setIsSending(true);
 
     setTimeout(() => {
@@ -63,6 +85,33 @@ export function EmailVerification({ email, onEmailChange, onCancel, onSuccess }:
             autoCorrect={false}
             editable={!isSending}
           />
+
+          <TextInput
+            style={styles.input}
+            placeholder="建立密碼"
+            placeholderTextColor="#7F7F7F"
+            value={password}
+            onChangeText={setPassword}
+            secureTextEntry
+            editable={!isSending}
+            autoCapitalize="none"
+            autoCorrect={false}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="確認密碼"
+            placeholderTextColor="#7F7F7F"
+            value={confirmPassword}
+            onChangeText={setConfirmPassword}
+            secureTextEntry
+            editable={!isSending}
+            autoCapitalize="none"
+            autoCorrect={false}
+          />
+
+          <Text style={styles.passwordHelpText}>
+            密碼須包含8-20字元，至少一個大寫字母、一個小寫字母及一個數字
+          </Text>
 
           {isSending ? (
             <ActivityIndicator size="large" color="#0ABAB5" style={{ marginVertical: 20 }} />
@@ -113,7 +162,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     fontSize: 16,
     color: "white",
-    marginBottom: 30,
+    marginBottom: 10,
+  },
+  passwordHelpText: {
+    color: "#AAAAAA",
+    fontSize: 12,
+    marginBottom: 20,
+    marginLeft: 10,
+    alignSelf: "flex-start",
   },
   sendButton: {
     width: "100%",

@@ -48,7 +48,7 @@ export default function LoginContainer({ onLoginSuccess }) {
 
   const handleXStoryLoginSuccess = async (token) => {
     console.log('handleXStoryLoginSuccess token: ' + token);
-      await tokenStorage.storeToken(token);
+    await tokenStorage.storeToken(token);
   };
 
   const handleEmailVerificationCancel = () => {
@@ -119,20 +119,59 @@ export default function LoginContainer({ onLoginSuccess }) {
     setShowEmailVerification(true);
   };
 
-  const handleFacebookRegister = () => {
-
+  const handleFacebookRegister = async () => {
+    try {
+      const token = await facebookLogin();
+      console.log('facebook login:' + token);
+      if (token) {
+        await tokenStorage.setStoreToken(token);
+        console.log("facebook login user token:", token);
+        onLoginSuccess();
+      }
+      else alert("Facebook 登入失敗或取消");
+    } catch (e) {
+      alert("Facebook 登入錯誤: " + e.message);
+    }
   };
 
-  const handleAppleRegister = () => {
-
+  const handleAppleRegister = async () => {
+    try {
+      const token = await appleLogin();
+      if (token) {
+        await tokenStorage.setStoreToken(token);
+        console.log('google login: ' + token);
+        onLoginSuccess();
+      }
+      else alert("Apple 登入失敗或取消");
+    } catch (e) {
+      alert("Apple 登入錯誤: " + e.message);
+    }
   };
 
-  const handleGoogleRegister = () => {
-
+  const handleGoogleRegister = async () => {
+    try {
+      const SignInResponse = await googleLogin();
+      await tokenStorage.setStoreToken(SignInResponse.data.idToken);
+      console.log('google login: ' + SignInResponse.data.user);
+      console.log('google login: ' + SignInResponse.data.idToken);
+      onLoginSuccess();
+    } catch (e) {
+      alert("Google 登入錯誤: " + e.message);
+    }
   };
 
-  const handleWeChatRegister = () => {
-
+  const handleWeChatRegister = async () => {
+    try {
+      const code = await wechatLogin();
+      if (code) {
+        await tokenStorage.setStoreToken(code);
+        console.log('google login: ' + code);
+        onLoginSuccess();
+      }
+      else alert("WeChat 登入失敗或取消");
+    } catch (e) {
+      alert("WeChat 登入錯誤: " + e.message);
+    }
   };
 
   return showEmailVerification ? (
@@ -145,7 +184,7 @@ export default function LoginContainer({ onLoginSuccess }) {
     />
   ) : showEmailLogin ? (
     <XStoryLogin
-      onLoginSuccess={(token) => {handleXStoryLoginSuccess(token)}}
+      onLoginSuccess={(token) => { handleXStoryLoginSuccess(token) }}
       onCancel={handleXStoryLoginCancel}
       onShowEmailVerification={() => { }}
     />
