@@ -8,6 +8,7 @@ import RegisterScreen from "../screens/RegisterScreen"
 import { EmailVerification } from "../screens/EmailVerification";
 import { XStoryLogin } from "../screens/XStoryLogin"
 import { Linking } from 'react-native';
+import tokenStorage from '../auth/tokenStorage'
 
 export default function LoginContainer({ onLoginSuccess }) {
   const [showEmailVerification, setShowEmailVerification] = useState(false);
@@ -45,6 +46,11 @@ export default function LoginContainer({ onLoginSuccess }) {
     setShowEmailLogin(false);
   };
 
+  const handleXStoryLoginSuccess = async (token) => {
+    console.log('handleXStoryLoginSuccess token: ' + token);
+      await tokenStorage.storeToken(token);
+  };
+
   const handleEmailVerificationCancel = () => {
     setShowEmailVerification(false);
   };
@@ -53,7 +59,11 @@ export default function LoginContainer({ onLoginSuccess }) {
     try {
       const token = await facebookLogin();
       console.log('facebook login:' + token);
-      if (token) onLoginSuccess();
+      if (token) {
+        await tokenStorage.setStoreToken(token);
+        console.log("facebook login user token:", token);
+        onLoginSuccess();
+      }
       else alert("Facebook 登入失敗或取消");
     } catch (e) {
       alert("Facebook 登入錯誤: " + e.message);
@@ -63,6 +73,7 @@ export default function LoginContainer({ onLoginSuccess }) {
   const handleGoogleLogin = async () => {
     try {
       const SignInResponse = await googleLogin();
+      await tokenStorage.setStoreToken(SignInResponse.data.idToken);
       console.log('google login: ' + SignInResponse.data.user);
       console.log('google login: ' + SignInResponse.data.idToken);
       onLoginSuccess();
@@ -74,7 +85,11 @@ export default function LoginContainer({ onLoginSuccess }) {
   const handleAppleLogin = async () => {
     try {
       const token = await appleLogin();
-      if (token) onLoginSuccess();
+      if (token) {
+        await tokenStorage.setStoreToken(token);
+        console.log('google login: ' + token);
+        onLoginSuccess();
+      }
       else alert("Apple 登入失敗或取消");
     } catch (e) {
       alert("Apple 登入錯誤: " + e.message);
@@ -84,7 +99,11 @@ export default function LoginContainer({ onLoginSuccess }) {
   const handleWeChatLogin = async () => {
     try {
       const code = await wechatLogin();
-      if (code) onLoginSuccess();
+      if (code) {
+        await tokenStorage.setStoreToken(code);
+        console.log('google login: ' + code);
+        onLoginSuccess();
+      }
       else alert("WeChat 登入失敗或取消");
     } catch (e) {
       alert("WeChat 登入錯誤: " + e.message);
@@ -126,7 +145,7 @@ export default function LoginContainer({ onLoginSuccess }) {
     />
   ) : showEmailLogin ? (
     <XStoryLogin
-      onLoginSuccess={handleXStoryLogin}
+      onLoginSuccess={(token) => {handleXStoryLoginSuccess(token)}}
       onCancel={handleXStoryLoginCancel}
       onShowEmailVerification={() => { }}
     />

@@ -1,16 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, StyleSheet } from 'react-native';
-import SafeAreaWrapper from './components/SafeAreaWrapper'; // 路徑請依實際調整
+import SafeAreaWrapper from './components/SafeAreaWrapper';
 import AppNavigator from './navigations/AppNavigator';
 import LoginContainer from './auth/LoginContainer';
-import { LoadingProvider, useLoading } from './screens/LoadingContext';
+import { LoadingProvider } from './screens/LoadingContext';
 import { LoadingOverlay } from './components/LoadingOverlay';
+import tokenStorage from './auth/tokenStorage';
 
 export default function RootLayout() {
   const [checkingLogin, setCheckingLogin] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => setCheckingLogin(false), 1000);
+    const checkLoginStatus = async () => {
+      const token = await tokenStorage.getToken();
+      setIsLoggedIn(!!token);
+      setCheckingLogin(false);
+    };
+    checkLoginStatus();
   }, []);
 
   if (checkingLogin) {
@@ -23,29 +30,15 @@ export default function RootLayout() {
 
   return (
     <LoadingProvider>
-      <SafeAreaWrapper>
-        <RootContent />
+      <SafeAreaWrapper style={{ flex: 1 }}>
+        {isLoggedIn ? (
+          <AppNavigator />
+        ) : (
+          <LoginContainer onLoginSuccess={() => setIsLoggedIn(true)} />
+        )}
+        <LoadingOverlay />
       </SafeAreaWrapper>
     </LoadingProvider>
-  );
-}
-
-function RootContent() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const { showLoading, hideLoading } = useLoading();
-
-  const handleLoginSuccess = async () => {
-    showLoading();
-    await new Promise((res) => setTimeout(res, 500));
-    setIsLoggedIn(true);
-    hideLoading();
-  };
-
-  return (
-    <SafeAreaWrapper>
-      {isLoggedIn ? <AppNavigator /> : <LoginContainer onLoginSuccess={handleLoginSuccess} />}
-      <LoadingOverlay />
-    </SafeAreaWrapper>
   );
 }
 

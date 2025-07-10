@@ -10,7 +10,7 @@ import {
 import { XStoryForgetPassword } from "./XStoryForgetPassword";
 
 interface Props {
-    onLoginSuccess: () => void;
+    onLoginSuccess:(token: string) => void;
     onCancel: () => void;
 }
 
@@ -20,8 +20,8 @@ export function XStoryLogin({ onLoginSuccess, onCancel }: Props) {
     const [showForgetPassword, setshowForgetPassword] = useState(false);
 
     const handleLogin = () => {
-        // 這裡放登入邏輯
-        onLoginSuccess();
+        const token = 'test_token_string';
+        onLoginSuccess(token);
     };
 
     return showForgetPassword ? (
