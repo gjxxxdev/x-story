@@ -46,7 +46,7 @@ export default function RegisterScreen(props) {
       props[handlerName]();
     }
   };
-  
+
   const toggleAgree = () => {
     setAgreeChecked((prev) => !prev);
     console.log("同意服務條款勾選狀態:", !agreeChecked);
@@ -70,33 +70,37 @@ export default function RegisterScreen(props) {
 
       <View style={styles.container}>
 
-        <Text style={styles.title}>歡迎回來 X Stories !</Text>
+        <Text style={styles.title}>歡迎加入 X Stories !</Text>
         <Text style={styles.title}>請選擇註冊方式</Text>
 
-        {loginOptions.map(({ key, title, onPressProp, icon, textColor }) => (
-          <TouchableOpacity
-            key={key}
-            style={[
-              styles.button,
-              {
-                backgroundColor: "#000000",
-                borderColor: "#0abab5",
-                borderWidth: 2,
-                borderTopLeftRadius: 25,
-                borderBottomLeftRadius: 25,
-                borderTopRightRadius: 25,
-                borderBottomRightRadius: 25,
-              },
-            ]}
-            onPress={() => handlePress(onPressProp)}
-            activeOpacity={0.7}
-          >
-            {icon && <Image source={icon} style={styles.icon} />}
-            <Text style={[styles.buttonText, { color: "white" }]}>
-              {title}
-            </Text>
-          </TouchableOpacity>
-        ))}
+        {loginOptions.map(({ key, title, onPressProp, icon }) => {
+          const disabled = !agreeChecked;
+          return (
+            <TouchableOpacity
+              key={key}
+              style={[
+                styles.button,
+                {
+                  backgroundColor: disabled ? "#555555" : "#000000",
+                  borderColor: disabled ? "#999999" : "#0abab5",
+                  borderWidth: 2,
+                  borderRadius: 25,
+                  opacity: disabled ? 0.5 : 1,
+                  justifyContent: "center",  // 水平置中
+                },
+              ]}
+              onPress={() => {
+                if (!disabled) handlePress(onPressProp);
+              }}
+              activeOpacity={disabled ? 1 : 0.7} // disabled時不透光變化
+              disabled={disabled}
+            >
+              {icon && <Image source={icon} style={styles.icon} />}
+              <Text style={[styles.buttonText, { color: "white" }]}>{title}</Text>
+            </TouchableOpacity>
+          );
+        })}
+
 
         {Platform.OS === "ios" && (
           <AppleButton
@@ -162,12 +166,13 @@ const styles = StyleSheet.create({
     color: "white",
   },
   button: {
-    flexDirection: "row",
-    alignItems: "center",
-    paddingVertical: 12,
-    paddingHorizontal: 20,
-    marginBottom: 15,
-  },
+  flexDirection: "row",
+  alignItems: "center",
+  paddingVertical: 12,
+  paddingHorizontal: 20,
+  marginBottom: 15,
+  borderRadius: 25,
+},
   buttonText: {
     fontSize: 16,
     marginLeft: 10,
@@ -176,6 +181,7 @@ const styles = StyleSheet.create({
     width: 24,
     height: 24,
     resizeMode: "contain",
+    marginRight: 10,
   },
   appleButton: {
     width: "100%",
@@ -184,6 +190,7 @@ const styles = StyleSheet.create({
   },
   bottomRow: {
     marginTop: 40,
+    color: "white",
     flexDirection: "row",
     justifyContent: "center",
   },

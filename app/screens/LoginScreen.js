@@ -80,10 +80,8 @@ export default function LoginScreen(props) {
                 backgroundColor: "#000000",
                 borderColor: "#0abab5",
                 borderWidth: 2,
-                borderTopLeftRadius: 25,
-                borderBottomLeftRadius: 25,
-                borderTopRightRadius: 25,
-                borderBottomRightRadius: 25,
+                borderRadius: 25,
+                justifyContent: "center",
               },
             ]}
             onPress={() => handlePress(onPressProp)}
@@ -161,7 +159,7 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 20,
     marginBottom: 15,
-    // 這裡移除 borderRadius，改用動態設定
+    borderRadius: 25,
   },
   buttonText: {
     fontSize: 16,
@@ -172,6 +170,7 @@ const styles = StyleSheet.create({
     width: 24,
     height: 24,
     resizeMode: "contain",
+    marginRight: 10,
   },
   appleButton: {
     width: "100%",

@@ -13,7 +13,7 @@ import tokenStorage from '../auth/tokenStorage'
 export default function LoginContainer({ onLoginSuccess }) {
   const [showEmailVerification, setShowEmailVerification] = useState(false);
   const [showEmailLogin, setShowEmailLogin] = useState(false);
-  const [showRegisterView, setshowRegisterView] = useState(false);
+  const [showRegisterView, setshowRegisterView] = useState(true);
 
   useEffect(() => {
     Linking.getInitialURL().then((url) => {
