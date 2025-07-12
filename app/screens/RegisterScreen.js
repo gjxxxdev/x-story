@@ -72,7 +72,7 @@ export default function RegisterScreen(props) {
 
         <Text style={styles.title}>歡迎加入 X Stories !</Text>
         <Text style={styles.title}>請選擇註冊方式</Text>
-
+        <View style={{ height: 30 }} />
         {loginOptions.map(({ key, title, onPressProp, icon }) => {
           const disabled = !agreeChecked;
           return (
@@ -166,13 +166,13 @@ const styles = StyleSheet.create({
     color: "white",
   },
   button: {
-  flexDirection: "row",
-  alignItems: "center",
-  paddingVertical: 12,
-  paddingHorizontal: 20,
-  marginBottom: 15,
-  borderRadius: 25,
-},
+    flexDirection: "row",
+    alignItems: "center",
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    marginBottom: 15,
+    borderRadius: 25,
+  },
   buttonText: {
     fontSize: 16,
     marginLeft: 10,
@@ -195,7 +195,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   bottomText: {
-    color: "#b68a36",
+    color: "#ffffff",
     fontSize: 14,
   },
   loginLink: {

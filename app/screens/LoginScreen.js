@@ -68,8 +68,9 @@ export default function LoginScreen(props) {
 
       <View style={styles.container}>
 
-        <Text style={styles.title}>歡迎回來 X Stories !</Text>
+        <Text style={styles.title}>歡迎加入 X Stories !</Text>
         <Text style={styles.title}>請選擇登入方式</Text>
+        <View style={{ height: 30 }} />
 
         {loginOptions.map(({ key, title, onPressProp, icon, textColor }) => (
           <TouchableOpacity
