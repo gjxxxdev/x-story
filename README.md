@@ -8,10 +8,10 @@
 ```
 
 All:
-http://api.xstudio-mclub.url.tw/api/v1/admin/member
+https://xstoryline.com/api/v1/admin/member
 
 FindOne:
-http://api.xstudio-mclub.url.tw/api/v1/admin/member/{id}
+https://xstoryline.com/api/v1/admin/member/{id}
 
 ```
 
@@ -29,10 +29,10 @@ http://api.xstudio-mclub.url.tw/api/v1/admin/member/{id}
 
 ```
 All:
-http://api.xstudio-mclub.url.tw/api/v1/admin/purchasehistory
+https://xstoryline.com/api/v1/admin/purchasehistory
 
 FindOne:
-http://api.xstudio-mclub.url.tw/api/v1/admin/purchasehistory/{memberId}
+https://xstoryline.com/api/v1/admin/purchasehistory/{memberId}
 
 ```
 
@@ -48,9 +48,9 @@ http://api.xstudio-mclub.url.tw/api/v1/admin/purchasehistory/{memberId}
 ```
 
 All:
-http://api.xstudio-mclub.url.tw/api/v1/admin/subscriptionrecord
+https://xstoryline.com/api/v1/admin/subscriptionrecord
 FindOne:
-http://api.xstudio-mclub.url.tw/api/v1/admin/subscriptionrecord/{memberId}
+https://xstoryline.com/api/v1/admin/subscriptionrecord/{memberId}
 
 ```
 
@@ -68,9 +68,9 @@ http://api.xstudio-mclub.url.tw/api/v1/admin/subscriptionrecord/{memberId}
 
 ```
 All:
-http://api.xstudio-mclub.url.tw/api/v1/admin/menu
+https://xstoryline.com/api/v1/admin/menu
 FindOne:
-http://api.xstudio-mclub.url.tw/api/v1/admin/menu/{id}
+https://xstoryline.com/api/v1/admin/menu/{id}
 
 
 ```
@@ -90,9 +90,9 @@ http://api.xstudio-mclub.url.tw/api/v1/admin/menu/{id}
 
 ```
 All:
-http://api.xstudio-mclub.url.tw/api/v1/admin/menu-foolproof
+https://xstoryline.com/api/v1/admin/menu-foolproof
 FindOne:
-http://api.xstudio-mclub.url.tw/api/v1/admin/menu-foolproof/{id}
+https://xstoryline.com/api/v1/admin/menu-foolproof/{id}
 
 ```
 
@@ -117,9 +117,9 @@ http://api.xstudio-mclub.url.tw/api/v1/admin/menu-foolproof/{id}
 ```
 
 All:
-http://api.xstudio-mclub.url.tw/api/v1/admin/setup-story-list
+https://xstoryline.com/api/v1/admin/setup-story-list
 FindOne:
-http://api.xstudio-mclub.url.tw/api/v1/admin/setup-story-list/{id}
+https://xstoryline.com/api/v1/admin/setup-story-list/{id}
 
 ```
 
@@ -145,9 +145,9 @@ http://api.xstudio-mclub.url.tw/api/v1/admin/setup-story-list/{id}
 ```
 
 All:
-http://api.xstudio-mclub.url.tw/api/v1/admin/setup-chapter
+https://xstoryline.com/api/v1/admin/setup-chapter
 FindOne:
-http://api.xstudio-mclub.url.tw/api/v1/admin/setup-chapter/{id}
+https://xstoryline.com/api/v1/admin/setup-chapter/{id}
 
 ```
 
@@ -164,9 +164,9 @@ http://api.xstudio-mclub.url.tw/api/v1/admin/setup-chapter/{id}
 
 ```
 All:
-http://api.xstudio-mclub.url.tw/api/v1/admin/setup-chapter-foolproof
+https://xstoryline.com/api/v1/admin/setup-chapter-foolproof
 FindOne:
-http://api.xstudio-mclub.url.tw/api/v1/admin/setup-chapter-foolproof/{id}
+https://xstoryline.com/api/v1/admin/setup-chapter-foolproof/{id}
 
 ```
 
@@ -190,9 +190,9 @@ http://api.xstudio-mclub.url.tw/api/v1/admin/setup-chapter-foolproof/{id}
 
 ```
 All:
-http://api.xstudio-mclub.url.tw/api/v1/admin/setup-story-role
+https://xstoryline.com/api/v1/admin/setup-story-role
 FindOne:
-http://api.xstudio-mclub.url.tw/api/v1/admin/setup-story-role/{id}
+https://xstoryline.com/api/v1/admin/setup-story-role/{id}
 
 ```
 
@@ -217,9 +217,9 @@ http://api.xstudio-mclub.url.tw/api/v1/admin/setup-story-role/{id}
 
 ```
 All:
-http://api.xstudio-mclub.url.tw/api/v1/admin/setup-story-role-foolproof
+https://xstoryline.com/api/v1/admin/setup-story-role-foolproof
 FindOne:
-http://api.xstudio-mclub.url.tw/api/v1/admin/setup-story-role-foolproof/{id}
+https://xstoryline.com/api/v1/admin/setup-story-role-foolproof/{id}
 
 ```
 
@@ -245,10 +245,10 @@ http://api.xstudio-mclub.url.tw/api/v1/admin/setup-story-role-foolproof/{id}
 ```
 
 All:
-http://api.xstudio-mclub.url.tw/api/v1/admin/news
+https://xstoryline.com/api/v1/admin/news
 
 FindOne:
-http://api.xstudio-mclub.url.tw/api/v1/admin/news/{id}
+https://xstoryline.com/api/v1/admin/news/{id}
 
 ```
 
@@ -262,9 +262,9 @@ http://api.xstudio-mclub.url.tw/api/v1/admin/news/{id}
 ```
 
 All:
-http://api.xstudio-mclub.url.tw/api/v1/admin/story-type
+https://xstoryline.com/api/v1/admin/story-type
 FindOne:
-http://api.xstudio-mclub.url.tw/api/v1/admin/story-type/{id}
+https://xstoryline.com/api/v1/admin/story-type/{id}
 
 ```
 
@@ -278,9 +278,9 @@ http://api.xstudio-mclub.url.tw/api/v1/admin/story-type/{id}
 ```
 
 All:
-http://api.xstudio-mclub.url.tw/api/v1/admin/story-list
+https://xstoryline.com/api/v1/admin/story-list
 FindOne:
-http://api.xstudio-mclub.url.tw/api/v1/admin/story-list/{id}
+https://xstoryline.com/api/v1/admin/story-list/{id}
 
 ```
 
@@ -311,9 +311,9 @@ http://api.xstudio-mclub.url.tw/api/v1/admin/story-list/{id}
 ```
 
 All:
-http://api.xstudio-mclub.url.tw/api/v1/admin/role
+https://xstoryline.com/api/v1/admin/role
 FindOne:
-http://api.xstudio-mclub.url.tw/api/v1/admin/role/{storyid}
+https://xstoryline.com/api/v1/admin/role/{storyid}
 
 ```
 
@@ -333,10 +333,10 @@ http://api.xstudio-mclub.url.tw/api/v1/admin/role/{storyid}
 ```
 
 All:
-http://api.xstudio-mclub.url.tw/api/v1/admin/chapter
+https://xstoryline.com/api/v1/admin/chapter
 
 FindOne:
-http://api.xstudio-mclub.url.tw/api/v1/admin/chapter/{storyid}
+https://xstoryline.com/api/v1/admin/chapter/{storyid}
 
 ```
 
@@ -362,10 +362,10 @@ http://api.xstudio-mclub.url.tw/api/v1/admin/chapter/{storyid}
 ```
 
 All:
-http://api.xstudio-mclub.url.tw/api/v1/admin/nochapter
+https://xstoryline.com/api/v1/admin/nochapter
 
 FindOne:
-http://api.xstudio-mclub.url.tw/api/v1/admin/nochapter/{storyid}
+https://xstoryline.com/api/v1/admin/nochapter/{storyid}
 
 ```
 
@@ -381,9 +381,9 @@ http://api.xstudio-mclub.url.tw/api/v1/admin/nochapter/{storyid}
 ```
 
 All:
-http://api.xstudio-mclub.url.tw/api/v1/admin/screenings
+https://xstoryline.com/api/v1/admin/screenings
 FindOne:
-http://api.xstudio-mclub.url.tw/api/v1/admin/screenings/{storyid}/{chapterid}
+https://xstoryline.com/api/v1/admin/screenings/{storyid}/{chapterid}
 
 ```
 
@@ -405,10 +405,10 @@ http://api.xstudio-mclub.url.tw/api/v1/admin/screenings/{storyid}/{chapterid}
 ```
 
 All:
-http://api.xstudio-mclub.url.tw/api/v1/admin/content
+https://xstoryline.com/api/v1/admin/content
 
 FindOne:
-http://api.xstudio-mclub.url.tw/api/v1/admin/content/{storyid}/{chapterid}/{screeningid}
+https://xstoryline.com/api/v1/admin/content/{storyid}/{chapterid}/{screeningid}
 
 ```
 
@@ -454,7 +454,7 @@ http://api.xstudio-mclub.url.tw/api/v1/admin/content/{storyid}/{chapterid}/{scre
 
 ```
 
-http://api.xstudio-mclub.url.tw/api/v1/admin/about
+https://xstoryline.com/api/v1/admin/about
 
 ```
 

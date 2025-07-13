@@ -16,14 +16,13 @@ import Chat from '../components/chat/Chat';
 import storage from '../storage/storage';
 import { useRoute } from '@react-navigation/native';
 import _ from 'lodash';
-import { useIsFocused } from '@react-navigation/native';
+import apiclient  from '../config/apiClient';
 
-const domain = 'http://api.xstudio-mclub.url.tw/images/update/';
+const domain = apiclient.currentBaseUrl() + 'images/update/';
 const initStoryIdx = null;
 
 function StoryScreen({ route, navigation }) {
   const router = useRoute();
-  const isFocus = useIsFocused();
   const {
     storyId = 1,
     chapterId,
@@ -99,8 +98,7 @@ function StoryScreen({ route, navigation }) {
       try {
         const _id = queryInfo.screenings?.[index.screen]?.id;
         if (_id) {
-          const content = await axios.get(
-            `http://api.xstudio-mclub.url.tw/api/v1/admin/content/${storyId}/${chapterId}/${_id}`
+          const content = await axios.get(apiclient.currentBaseUrl() + `api/v1/admin/content/${storyId}/${chapterId}/${_id}`
           );
           if (content?.data?.length) {
             const storyContent = content.data.slice().sort((a, b) => a.order - b.order);
@@ -197,10 +195,11 @@ function StoryScreen({ route, navigation }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const config = await axios.get(`http://api.xstudio-mclub.url.tw/api/v1/admin/setup-story-list`);
-        const screenings = await axios.get(`http://api.xstudio-mclub.url.tw/api/v1/admin/screenings/${storyId}/${chapterId}`);
-        const role = await axios.get(`http://api.xstudio-mclub.url.tw/api/v1/admin/role`);
-        const roleConf = await axios.get(`http://api.xstudio-mclub.url.tw/api/v1/admin/setup-story-role`);
+        const URL = apiclient.currentBaseUrl();
+        const config = await axios.get(URL + `api/v1/admin/setup-story-list`);
+        const screenings = await axios.get(URL + `api/v1/admin/screenings/${storyId}/${chapterId}`);
+        const role = await axios.get(URL + `api/v1/admin/role`);
+        const roleConf = await axios.get(URL + `api/v1/admin/setup-story-role`);
 
         const screenData = screenings?.data?.[cachedIndex?.screen ?? 0];
 

@@ -1,5 +1,6 @@
-import React, { useState, useMemo, useEffect } from 'react';
-import { View, StyleSheet, Dimensions, Image, Pressable } from 'react-native';
+import React, { useMemo, useEffect } from 'react';
+import { View, StyleSheet, Dimensions, Image, Pressable, Platform } from 'react-native';
+
 
 import colors from '../../config/colors';
 import ChatImageArea from './ChatImageArea';
@@ -9,8 +10,9 @@ import ChatTextArea from './ChatTextArea';
 import ChatVideoArea from './ChatVideoArea';
 import PersonalPhoto from './PersonalPhoto';
 import useStore from '../../store/story';
+import apiclient  from '../../config/apiClient';
 
-const domain = 'http://api.xstudio-mclub.url.tw/images/update/';
+const domain = apiclient.currentBaseUrl() + 'images/update/';
 const screenWidth = Dimensions.get('window').width;
 
 function Chat({

@@ -2,13 +2,14 @@ import React, { useRef, useMemo, useCallback } from 'react';
 import { View, StyleSheet, Dimensions } from 'react-native';
 import { Video } from 'expo-av';
 import colors from '../../config/colors';
+import apiclient  from '../../config/apiClient';
 
 const screenWidth = Dimensions.get('window').width;
 
 function NarratorVideo({ videoMsg, videoDirection }) {
   const video = useRef(null);
 
-  const videoUrl = 'http://api.xstudio-mclub.url.tw/images/update/' + videoMsg;
+  const videoUrl = apiclient.currentBaseUrl() + 'images/update/' + videoMsg;
 
   const videoStyle = useMemo(
     () =>

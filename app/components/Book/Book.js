@@ -12,6 +12,7 @@ import { useNavigation } from '@react-navigation/native';
 import routes from '../../navigations/routes';
 import AppText from '../AppText';
 import colors from '../../config/colors';
+import apiclient  from '../../config/apiClient';
 
 const screenWidth = Dimensions.get('window').width;
 
@@ -44,7 +45,7 @@ function Book(props) {
   } = storyData;
   const navigation = useNavigation();
   const imageUri =
-    'http://api.xstudio-mclub.url.tw/images/update/' + main_menu_image;
+    apiclient.currentBaseUrl() + 'images/update/' + main_menu_image;
   const hasChapter = chapter_type === '章節';
   const isOpen = open === '公開';
 

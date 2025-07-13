@@ -15,6 +15,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+import apiclient from '../config/apiClient';
 
 const ChapterItem = (props) => {
   const {
@@ -42,7 +43,7 @@ const ChapterItem = (props) => {
 
   const isFreeOpen = free_open === '開放';
   const navigation = useNavigation();
-  const imageUri = `http://api.xstudio-mclub.url.tw/images/update/${chapter_img}`;
+  const imageUri =  apiclient.currentBaseUrl() + `images/update/${chapter_img}`;
 
   const showAlert = () => {
     if (isFreeOpen) {

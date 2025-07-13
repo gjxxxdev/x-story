@@ -2,11 +2,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import { View, StyleSheet, Pressable } from 'react-native';
 import { Video } from 'expo-av';
 import colors from '../../config/colors';
+import apiclient  from '../../config/apiClient';
 
 function ChatVideoArea({ videoMsg }) {
   const video = useRef(null);
   // const [status, setStatus] = useState({});
-  const videoUrl = 'http://api.xstudio-mclub.url.tw/images/update/' + videoMsg;
+  const videoUrl = apiclient.currentBaseUrl() + 'images/update/' + videoMsg;
 
   useEffect(() => {
     video.current?.playAsync();

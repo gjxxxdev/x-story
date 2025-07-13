@@ -1,9 +1,10 @@
-import { View, Alert, FlatList, SafeAreaView } from 'react-native';
+import { FlatList, SafeAreaView } from 'react-native';
 import React, { useEffect, useState, useMemo } from 'react';
 import axios from 'axios';
 import ChapterItem from '../components/ChapterItem';
 import StoryHeader from '../components/StoryHeader';
 import { useRoute } from '@react-navigation/native';
+import apiclient  from '../config/apiClient';
 
 const ChapterScreen = () => {
   const [queryInfo, setQueryInfo] = useState({
@@ -11,6 +12,8 @@ const ChapterScreen = () => {
     toastConfig: {},
   });
   const routes = useRoute();
+
+  const url = apiclient.currentBaseUrl();
 
   const { name, author, storyId, storyData, nochapter } = useMemo(
     () => routes.params ?? { name: '', author: '', storyId: 1 },
@@ -35,19 +38,19 @@ const ChapterScreen = () => {
     const fetchData = async () => {
       try {
         const UIConfig = await axios.get(
-          'http://api.xstudio-mclub.url.tw/api/v1/admin/menu'
+          url + 'api/v1/admin/menu'
         );
         const chapterList = await axios.get(
-          `http://api.xstudio-mclub.url.tw/api/v1/admin/chapter/${storyId}`
+          url + `api/v1/admin/chapter/${storyId}`
         );
         const toastConfig = await axios.get(
-          'http://api.xstudio-mclub.url.tw/api/v1/admin/setup-chapter-foolproof'
+          url + 'api/v1/admin/setup-chapter-foolproof'
         );
         const uiConfig = await axios.get(
-          'http://api.xstudio-mclub.url.tw/api/v1/admin/setup-chapter'
+          url + 'api/v1/admin/setup-chapter'
         );
         const storyConfig = await axios.get(
-          `http://api.xstudio-mclub.url.tw/api/v1/admin/setup-story-list`
+          url + `api/v1/admin/setup-story-list`
         );
         setQueryInfo({
           listData: chapterList?.data ?? [],

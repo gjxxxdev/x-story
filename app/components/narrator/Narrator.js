@@ -7,6 +7,7 @@ import AppText from '../AppText';
 import NarratorOption from './NarratorOption';
 import NarratorSound from './NarratorSound';
 import NarratorVideo from './NarratorVideo';
+import apiClient  from '../../config/apiClient';
 
 function Narrator(props) {
   const {
@@ -23,12 +24,13 @@ function Narrator(props) {
     textContentBaseColor,
     choseRef,
   } = props;
+
   const imgUrl = useMemo(
-    () => 'http://api.xstudio-mclub.url.tw/images/update/' + imgMsg,
+    () => apiclient.currentBaseUrl() + 'images/update/' + imgMsg,
     [imgMsg]
   );
   return (
-    <Pressable style={[styles.contentContainer]} onPress={()=>onPressOption(null)}>
+    <Pressable style={[styles.contentContainer]} onPress={() => onPressOption(null)}>
       {textMsg ? (
         <View
           style={{

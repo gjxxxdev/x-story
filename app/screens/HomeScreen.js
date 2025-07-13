@@ -9,6 +9,9 @@ import AppHeader from '../components/AppHeader';
 import AppText from '../components/AppText';
 import Books from '../components/Book/Books';
 import storage from '../storage/storage';
+import apiclient  from '../config/apiClient';
+
+const url = apiclient.currentBaseUrl();
 
 function HomeScreen() {
   const isFocus = useIsFocused();
@@ -39,19 +42,19 @@ function HomeScreen() {
     const fetchData = async () => {
       try {
         const config = await axios.get(
-          'http://api.xstudio-mclub.url.tw/api/v1/admin/menu'
+          url + 'api/v1/admin/menu'
         );
         const newsData = await axios.get(
-          'http://api.xstudio-mclub.url.tw/api/v1/admin/news'
+          url + 'api/v1/admin/news'
         );
         const type = await axios.get(
-          'http://api.xstudio-mclub.url.tw/api/v1/admin/story-type'
+          url + 'api/v1/admin/story-type'
         );
         const nochapter = await axios.get(
-          `http://api.xstudio-mclub.url.tw/api/v1/admin/nochapter`
+          url + `api/v1/admin/nochapter`
         );
         const storyList = await axios.get(
-          `http://api.xstudio-mclub.url.tw/api/v1/admin/story-list`
+          url + `api/v1/admin/story-list`
         );
 
         setStoryInfo({

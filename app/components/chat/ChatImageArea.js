@@ -1,10 +1,11 @@
 import React, { useRef } from 'react';
-import { View, StyleSheet, Pressable, Image, Dimensions } from 'react-native';
+import { View, StyleSheet, Pressable, Image } from 'react-native';
 import ImageModal from '../ImageModal';
 import { useNavigation } from '@react-navigation/native';
 import routes from '../../navigations/routes';
+import apiclient  from '../../config/apiClient';
 
-const domain = 'http://api.xstudio-mclub.url.tw/images/update/';
+const domain = apiclient.currentBaseUrl() + 'images/update/';
 
 function ChatImageArea({ imgMsg, backgroundColor, imgSize }) {
   const imageUrl = domain + imgMsg;

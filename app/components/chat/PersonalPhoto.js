@@ -7,9 +7,10 @@ import {
   Alert,
   Platform,
 } from 'react-native';
+import apiclient  from '../../config/apiClient';
 
 import AppText from '../AppText';
-const domain = 'http://api.xstudio-mclub.url.tw/images/update/';
+const domain = apiclient.currentBaseUrl() + 'images/update/';
 
 function PersonalPhoto(props) {
   const {

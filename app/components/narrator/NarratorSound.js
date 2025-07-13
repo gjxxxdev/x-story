@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { StyleSheet, Pressable, Image } from 'react-native';
 import { Audio } from 'expo-av';
+import apiclient  from '../../config/apiClient';
 
 function NarratorSound({ soundMsg }) {
   const [sound, setSound] = useState('');
 
   const playSound = useCallback(async () => {
-    const soundUrl =
-      'http://api.xstudio-mclub.url.tw/images/update/' + soundMsg;
+    const soundUrl = apiclient.currentBaseUrl() + 'images/update/' + soundMsg;
     await Audio.setAudioModeAsync({ playsInSilentModeIOS: true });
     const { _sound } = await Audio.Sound.createAsync(
       { uri: soundUrl },
