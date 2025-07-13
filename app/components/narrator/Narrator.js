@@ -7,7 +7,7 @@ import AppText from '../AppText';
 import NarratorOption from './NarratorOption';
 import NarratorSound from './NarratorSound';
 import NarratorVideo from './NarratorVideo';
-import apiClient  from '../../config/apiClient';
+import apiclient  from '../../config/apiClient';
 
 function Narrator(props) {
   const {
