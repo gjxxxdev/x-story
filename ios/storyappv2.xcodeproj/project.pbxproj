@@ -7,29 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		07AF17C0840291C7069556C9 /* libPods-storyappv2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D6B659F230836298B9E7AD /* libPods-storyappv2.a */; };
+		01D0FA8D08E49014AF8B5C30 /* libPods-storyappv2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1701F5D56745D8D57BC270F6 /* libPods-storyappv2.a */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
-		4691AC97851AA92A8038DD8C /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 80503FE0C018D7E1D811E013 /* PrivacyInfo.xcprivacy */; };
-		80E98AC7093458BC0C60BC03 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE291FFBCAD4D2C3EEAB693 /* ExpoModulesProvider.swift */; };
+		6A6BA4923EFA2859D25E54F6 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E86A6A3C700AE4EA2073444 /* ExpoModulesProvider.swift */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
 		F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11748412D0307B40044C1D9 /* AppDelegate.swift */; };
+		F444263E27FCC6C8A9F8247C /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 20E28D7AB3435B7F33E632C0 /* PrivacyInfo.xcprivacy */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		13B07F961A680F5B00A75B9A /* storyappv2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = storyappv2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = storyappv2/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = storyappv2/Info.plist; sourceTree = "<group>"; };
-		2BE291FFBCAD4D2C3EEAB693 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-storyappv2/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
-		747E22DBEB2C56273ABDD118 /* Pods-storyappv2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-storyappv2.release.xcconfig"; path = "Target Support Files/Pods-storyappv2/Pods-storyappv2.release.xcconfig"; sourceTree = "<group>"; };
-		80503FE0C018D7E1D811E013 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = storyappv2/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		93D6B659F230836298B9E7AD /* libPods-storyappv2.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-storyappv2.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1701F5D56745D8D57BC270F6 /* libPods-storyappv2.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-storyappv2.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		20E28D7AB3435B7F33E632C0 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = storyappv2/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		7BC9F46D5949AED9E90F9E31 /* Pods-storyappv2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-storyappv2.debug.xcconfig"; path = "Target Support Files/Pods-storyappv2/Pods-storyappv2.debug.xcconfig"; sourceTree = "<group>"; };
+		7E86A6A3C700AE4EA2073444 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-storyappv2/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = storyappv2/SplashScreen.storyboard; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
+		D03D820E4C31E45BD2840CD9 /* Pods-storyappv2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-storyappv2.release.xcconfig"; path = "Target Support Files/Pods-storyappv2/Pods-storyappv2.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F11748412D0307B40044C1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = storyappv2/AppDelegate.swift; sourceTree = "<group>"; };
 		F11748442D0722820044C1D9 /* storyappv2-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "storyappv2-Bridging-Header.h"; path = "storyappv2/storyappv2-Bridging-Header.h"; sourceTree = "<group>"; };
-		F5F4B3079B513C2935BB53F8 /* Pods-storyappv2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-storyappv2.debug.xcconfig"; path = "Target Support Files/Pods-storyappv2/Pods-storyappv2.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,7 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07AF17C0840291C7069556C9 /* libPods-storyappv2.a in Frameworks */,
+				01D0FA8D08E49014AF8B5C30 /* libPods-storyappv2.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,7 +53,7 @@
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				80503FE0C018D7E1D811E013 /* PrivacyInfo.xcprivacy */,
+				20E28D7AB3435B7F33E632C0 /* PrivacyInfo.xcprivacy */,
 			);
 			name = storyappv2;
 			sourceTree = "<group>";
@@ -62,34 +62,17 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				93D6B659F230836298B9E7AD /* libPods-storyappv2.a */,
+				1701F5D56745D8D57BC270F6 /* libPods-storyappv2.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		3A6C99204156F9CA33D73BE0 /* storyappv2 */ = {
+		66C503A032B49EA4B1E62BF2 /* ExpoModulesProviders */ = {
 			isa = PBXGroup;
 			children = (
-				2BE291FFBCAD4D2C3EEAB693 /* ExpoModulesProvider.swift */,
-			);
-			name = storyappv2;
-			sourceTree = "<group>";
-		};
-		66A2709896D8B5D740E20647 /* ExpoModulesProviders */ = {
-			isa = PBXGroup;
-			children = (
-				3A6C99204156F9CA33D73BE0 /* storyappv2 */,
+				E8F3CCFF152CE0E4EFB66492 /* storyappv2 */,
 			);
 			name = ExpoModulesProviders;
-			sourceTree = "<group>";
-		};
-		6848BB176153E338866EFBC5 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				F5F4B3079B513C2935BB53F8 /* Pods-storyappv2.debug.xcconfig */,
-				747E22DBEB2C56273ABDD118 /* Pods-storyappv2.release.xcconfig */,
-			);
-			path = Pods;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -106,8 +89,8 @@
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				6848BB176153E338866EFBC5 /* Pods */,
-				66A2709896D8B5D740E20647 /* ExpoModulesProviders */,
+				D07FA29FE66B50057679E0DB /* Pods */,
+				66C503A032B49EA4B1E62BF2 /* ExpoModulesProviders */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -131,6 +114,23 @@
 			path = storyappv2/Supporting;
 			sourceTree = "<group>";
 		};
+		D07FA29FE66B50057679E0DB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7BC9F46D5949AED9E90F9E31 /* Pods-storyappv2.debug.xcconfig */,
+				D03D820E4C31E45BD2840CD9 /* Pods-storyappv2.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		E8F3CCFF152CE0E4EFB66492 /* storyappv2 */ = {
+			isa = PBXGroup;
+			children = (
+				7E86A6A3C700AE4EA2073444 /* ExpoModulesProvider.swift */,
+			);
+			name = storyappv2;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -139,13 +139,13 @@
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "storyappv2" */;
 			buildPhases = (
 				08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */,
-				1266B841C9E3B5E2532EDCD6 /* [Expo] Configure project */,
+				6B5398717CEB08219F2DA493 /* [Expo] Configure project */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
-				B95FB85C2D7F37A9AC9F8437 /* [CP] Embed Pods Frameworks */,
+				3DB602BC2F8BCCFA32F9216E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -195,7 +195,7 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				4691AC97851AA92A8038DD8C /* PrivacyInfo.xcprivacy in Resources */,
+				F444263E27FCC6C8A9F8247C /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,7 +239,37 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		1266B841C9E3B5E2532EDCD6 /* [Expo] Configure project */ = {
+		3DB602BC2F8BCCFA32F9216E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-storyappv2/Pods-storyappv2-frameworks.sh",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/FBAEMKit/FBAEMKit.framework/FBAEMKit",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework/FBSDKCoreKit",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/FBSDKCoreKit_Basics/FBSDKCoreKit_Basics.framework/FBSDKCoreKit_Basics",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/FBSDKGamingServicesKit/FBSDKGamingServicesKit.framework/FBSDKGamingServicesKit",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework/FBSDKLoginKit",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/FBSDKShareKit/FBSDKShareKit.framework/FBSDKShareKit",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/Pre-built/hermes.framework/hermes",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBAEMKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit_Basics.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKGamingServicesKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-storyappv2/Pods-storyappv2-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6B5398717CEB08219F2DA493 /* [Expo] Configure project */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -308,36 +338,6 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-storyappv2/Pods-storyappv2-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B95FB85C2D7F37A9AC9F8437 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-storyappv2/Pods-storyappv2-frameworks.sh",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/FBAEMKit/FBAEMKit.framework/FBAEMKit",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework/FBSDKCoreKit",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/FBSDKCoreKit_Basics/FBSDKCoreKit_Basics.framework/FBSDKCoreKit_Basics",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/FBSDKGamingServicesKit/FBSDKGamingServicesKit.framework/FBSDKGamingServicesKit",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework/FBSDKLoginKit",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/FBSDKShareKit/FBSDKShareKit.framework/FBSDKShareKit",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/Pre-built/hermes.framework/hermes",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBAEMKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit_Basics.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKGamingServicesKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-storyappv2/Pods-storyappv2-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -346,7 +346,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */,
-				80E98AC7093458BC0C60BC03 /* ExpoModulesProvider.swift in Sources */,
+				6A6BA4923EFA2859D25E54F6 /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,13 +355,13 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F5F4B3079B513C2935BB53F8 /* Pods-storyappv2.debug.xcconfig */;
+			baseConfigurationReference = 7BC9F46D5949AED9E90F9E31 /* Pods-storyappv2.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = storyappv2/storyappv2.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = RHE352G84Q;
+				DEVELOPMENT_TEAM = 584QBJVZ28;
 				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -392,13 +392,13 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 747E22DBEB2C56273ABDD118 /* Pods-storyappv2.release.xcconfig */;
+			baseConfigurationReference = D03D820E4C31E45BD2840CD9 /* Pods-storyappv2.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = storyappv2/storyappv2.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = RHE352G84Q;
+				DEVELOPMENT_TEAM = 584QBJVZ28;
 				INFOPLIST_FILE = storyappv2/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
