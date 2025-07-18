@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>BUNDLE_ID</key>
+	<string>com.rueiyang.story</string>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>
@@ -22,39 +24,33 @@
 	<string>1.0.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
-
-	<!-- URL Schemes: 原本 + Google Sign-In -->
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>xstoryscheme</string>
+				<string>xstoryscheme</string>
 				<string>com.rueiyang.story</string>
-				<string>com.googleusercontent.apps.927761409049-66o2rujvgaoaovopb4q3mvev3kceej95</string>
 			</array>
 		</dict>
 	</array>
-
 	<key>CFBundleVersion</key>
 	<string>1</string>
-
-	<!-- Facebook SDK 設定 -->
-	<key>FacebookClientToken</key>
-	<string>956e97e309a5751335ccc44517b8f12c</string>
-	<key>FacebookAppID</key>
-	<string>753717744007574</string>
-	<key>FacebookDisplayName</key>
-	<string>xStory-Dev</string>
+	<key>CLIENT_ID</key>
+	<string>927761409049-66o2rujvgaoaovopb4q3mvev3kceej95.apps.googleusercontent.com</string>
 	<key>FacebookAdvertiserIDCollectionEnabled</key>
 	<true/>
-
+	<key>FacebookAppID</key>
+	<string>753717744007574</string>
+	<key>FacebookClientToken</key>
+	<string>956e97e309a5751335ccc44517b8f12c</string>
+	<key>FacebookDisplayName</key>
+	<string>xStory-Dev</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>12.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-
-	<!-- App Transport Security -->
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
@@ -62,32 +58,29 @@
 		<key>NSAllowsLocalNetworking</key>
 		<true/>
 	</dict>
-
-	<!-- Usage descriptions -->
 	<key>NSFaceIDUsageDescription</key>
 	<string>Allow $(PRODUCT_NAME) to access your Face ID biometric data.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Allow $(PRODUCT_NAME) to access your microphone</string>
-
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.927761409049-66o2rujvgaoaovopb4q3mvev3kceej95</string>
 	<key>UILaunchStoryboardName</key>
 	<string>SplashScreen</string>
-
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>arm64</string>
 	</array>
-
 	<key>UIRequiresFullScreen</key>
 	<false/>
 	<key>UIStatusBarStyle</key>
-	<string>UIStatusBarStyleDefault</string>
-
+	<string></string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
-
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -95,20 +88,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-
-	<!-- Google Sign-In 其他相關資訊（非必要） -->
-	<key>CLIENT_ID</key>
-	<string>927761409049-66o2rujvgaoaovopb4q3mvev3kceej95.apps.googleusercontent.com</string>
-	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.927761409049-66o2rujvgaoaovopb4q3mvev3kceej95</string>
-	<key>PLIST_VERSION</key>
-	<string>1</string>
-	<key>BUNDLE_ID</key>
-	<string>com.rueiyang.story</string>
 </dict>
 </plist>
