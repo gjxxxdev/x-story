@@ -1,8 +1,10 @@
-const useStateRef = (defaultValue) => {
-  let [state, setState] = React.useState(defaultValue);
-  let ref = React.useRef(state);
+import { useState, useRef, useCallback } from 'react';
 
-  let dispatch = React.useCallback(function (val) {
+const useStateRef = (defaultValue) => {
+  let [state, setState] = useState(defaultValue);
+  let ref = useRef(state);
+
+  let dispatch = useCallback(function (val) {
     ref.current = typeof val === "function" ? val(ref.current) : val;
 
     setState(ref.current);

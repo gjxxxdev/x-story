@@ -6,7 +6,7 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 interface Props {
     children: ReactNode;
     style?: object;
-    edges?: Array<'top' | 'bottom' | 'left' | 'right'>;
+    edges?: ('top' | 'bottom' | 'left' | 'right')[];
     backgroundColor?: string;
 }
 
