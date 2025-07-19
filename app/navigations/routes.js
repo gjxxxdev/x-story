@@ -5,6 +5,7 @@ export default Object.freeze({
   REVIEW: "再次回味",
   OTHERS: "其他頁面",
   VERSION: "版本資訊",
+  RESET: "重設應用程序",
   CON_RE_TOPTAB: " ",
 
   MAIN: "主畫面",
