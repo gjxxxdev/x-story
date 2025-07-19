@@ -24,17 +24,18 @@
 	<string>1.0.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	
+	<!-- CFBundleURLTypes: 只包含 xstoryscheme -->
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>xstoryscheme</string>
-				<string>xstoryscheme</string>
-				<string>com.rueiyang.story</string>
 			</array>
 		</dict>
 	</array>
+
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>CLIENT_ID</key>

@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
-		4E71460A2E276F22001C2EE6 /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 4E7146092E276F22001C2EE6 /* main.jsbundle */; };
+		4E7146122E2A3EE1001C2EE6 /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 4E7146112E2A3EE1001C2EE6 /* main.jsbundle */; };
 		56B97C80AC2759A8F2398D4E /* libPods-storyappv2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 456007151244A623CA9E42D2 /* libPods-storyappv2.a */; };
 		A0EFDD6037DEE56C365FA07C /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6D0198185B2A199FD02751 /* ExpoModulesProvider.swift */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
@@ -23,7 +23,7 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = storyappv2/Info.plist; sourceTree = "<group>"; };
 		1A6D0198185B2A199FD02751 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-storyappv2/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		456007151244A623CA9E42D2 /* libPods-storyappv2.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-storyappv2.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4E7146092E276F22001C2EE6 /* main.jsbundle */ = {isa = PBXFileReference; lastKnownFileType = text; name = main.jsbundle; path = ios/main.jsbundle; sourceTree = "<group>"; };
+		4E7146112E2A3EE1001C2EE6 /* main.jsbundle */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		68597FCACD8DB1A3B050D82F /* Pods-storyappv2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-storyappv2.release.xcconfig"; path = "Target Support Files/Pods-storyappv2/Pods-storyappv2.release.xcconfig"; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = storyappv2/SplashScreen.storyboard; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
@@ -96,7 +96,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				4E7146092E276F22001C2EE6 /* main.jsbundle */,
+				4E7146112E2A3EE1001C2EE6 /* main.jsbundle */,
 				13B07FAE1A68108700A75B9A /* storyappv2 */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
@@ -195,7 +195,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E71460A2E276F22001C2EE6 /* main.jsbundle in Resources */,
+				4E7146122E2A3EE1001C2EE6 /* main.jsbundle in Resources */,
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,

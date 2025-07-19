@@ -104,7 +104,7 @@ export default function RegisterScreen(props) {
 
         {Platform.OS === "ios" && (
           <AppleButton
-            buttonStyle={AppleButton.Style.BLACK}
+            buttonStyle={AppleButton.Style.WHITE}
             buttonType={AppleButton.Type.SIGN_IN}
             style={styles.appleButton}
             onPress={() => handlePress("onAppleRegister")}
