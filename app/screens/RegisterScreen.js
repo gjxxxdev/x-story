@@ -231,7 +231,9 @@ const styles = StyleSheet.create({
     borderLeftWidth: 2,
     borderBottomWidth: 2,
     borderColor: "white",
-    transform: [{ rotate: "-45deg" }],
+    transform: [{ rotate: "45deg" },
+    { scaleX: -1 }
+    ],
   },
   agreeText: {
     flex: 1,

@@ -21,6 +21,9 @@ export function EmailVerification({ email, onEmailChange, onCancel, onSuccess }:
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isSending, setIsSending] = useState(false);
   const [waitingVerification, setWaitingVerification] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
 
   const sendVerificationEmail = () => {
     if (!email) {
@@ -70,7 +73,7 @@ export function EmailVerification({ email, onEmailChange, onCancel, onSuccess }:
         />
       </View>
 
-      <Text style={styles.title}>驗證碼</Text>
+      <Text style={styles.title}>註冊帳號</Text>
 
       {!waitingVerification ? (
         <>
@@ -86,28 +89,59 @@ export function EmailVerification({ email, onEmailChange, onCancel, onSuccess }:
             editable={!isSending}
           />
 
-          <TextInput
-            style={styles.input}
-            placeholder="建立密碼"
-            placeholderTextColor="#7F7F7F"
-            value={password}
-            onChangeText={setPassword}
-            secureTextEntry
-            editable={!isSending}
-            autoCapitalize="none"
-            autoCorrect={false}
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="確認密碼"
-            placeholderTextColor="#7F7F7F"
-            value={confirmPassword}
-            onChangeText={setConfirmPassword}
-            secureTextEntry
-            editable={!isSending}
-            autoCapitalize="none"
-            autoCorrect={false}
-          />
+          <View style={styles.passwordInputWrapper}>
+            <TextInput
+              style={styles.passwordInput}
+              placeholder="建立密碼"
+              placeholderTextColor="#7F7F7F"
+              value={password}
+              onChangeText={setPassword}
+              secureTextEntry={!showPassword}
+              editable={!isSending}
+              autoCapitalize="none"
+              autoCorrect={false}
+            />
+            <TouchableOpacity
+              style={styles.eyeButton}
+              onPress={() => setShowPassword(prev => !prev)}
+            >
+              <Image
+                source={
+                  showPassword
+                    ? require('../../assets/auth/eye_open.png')
+                    : require('../../assets/auth/eye_closed.png')
+                }
+                style={styles.eyeIcon}
+              />
+            </TouchableOpacity>
+          </View>
+          <View style={styles.passwordInputWrapper}>
+            <TextInput
+              style={styles.passwordInput}
+              placeholder="確認密碼"
+              placeholderTextColor="#7F7F7F"
+              value={confirmPassword}
+              onChangeText={setConfirmPassword}
+              secureTextEntry={!showConfirmPassword}
+              editable={!isSending}
+              autoCapitalize="none"
+              autoCorrect={false}
+            />
+            <TouchableOpacity
+              style={styles.eyeButton}
+              onPress={() => setShowConfirmPassword(prev => !prev)}
+            >
+              <Image
+                source={
+                  showConfirmPassword
+                    ? require('../../assets/auth/eye_open.png')
+                    : require('../../assets/auth/eye_closed.png')
+                }
+                style={styles.eyeIcon}
+              />
+            </TouchableOpacity>
+          </View>
+
 
           <Text style={styles.passwordHelpText}>
             密碼須包含8-20字元，至少一個大寫字母、一個小寫字母及一個數字
@@ -213,5 +247,28 @@ const styles = StyleSheet.create({
     top: 20,
     left: 20,
     zIndex: 10,
+  },
+  passwordInputWrapper: {
+    width: "100%",
+    height: 50,
+    borderRadius: 25,
+    backgroundColor: "#1C1C1C",
+    flexDirection: "row",
+    alignItems: "center",
+    paddingHorizontal: 20,
+    marginBottom: 10,
+  },
+  passwordInput: {
+    flex: 1,
+    fontSize: 16,
+    color: "white",
+  },
+  eyeButton: {
+    padding: 5,
+  },
+  eyeIcon: {
+    width: 24,
+    height: 24,
+    tintColor: "#AAAAAA", // 可自訂顏色
   },
 });

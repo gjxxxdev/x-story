@@ -10,7 +10,7 @@ import {
 import { XStoryForgetPassword } from "./XStoryForgetPassword";
 
 interface Props {
-    onLoginSuccess:(token: string) => void;
+    onLoginSuccess: (token: string) => void;
     onCancel: () => void;
 }
 
@@ -18,6 +18,7 @@ export function XStoryLogin({ onLoginSuccess, onCancel }: Props) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [showForgetPassword, setshowForgetPassword] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
 
     const handleLogin = () => {
         const token = 'test_token_string';
@@ -30,59 +31,74 @@ export function XStoryLogin({ onLoginSuccess, onCancel }: Props) {
             onEmailChange={() => { }}
             onCancel={() => { setshowForgetPassword(false) }}
             onSuccess={handleLogin} />
-        ):(
-            <View style={styles.container}>
-                {/* 左上角 Logo */}
-                <View style={styles.logoContainer}>
-                    <Image
-                        style={styles.imgIcon}
-                        source={require('../../assets/blueeye.png')}
-                    />
-                </View>
-
-                <Text style={styles.title}>登入 xStory 帳號</Text>
-
-                <TextInput
-                    style={styles.input}
-                    placeholder="Email"
-                    placeholderTextColor="#7F7F7F"
-                    value={email}
-                    onChangeText={setEmail}
-                    keyboardType="email-address"
-                    autoCapitalize="none"
-                    autoCorrect={false}
+    ) : (
+        <View style={styles.container}>
+            {/* 左上角 Logo */}
+            <View style={styles.logoContainer}>
+                <Image
+                    style={styles.imgIcon}
+                    source={require('../../assets/blueeye.png')}
                 />
+            </View>
 
+            <Text style={styles.title}>登入 xStory 帳號</Text>
+
+            <TextInput
+                style={styles.input}
+                placeholder="Email"
+                placeholderTextColor="#7F7F7F"
+                value={email}
+                onChangeText={setEmail}
+                keyboardType="email-address"
+                autoCapitalize="none"
+                autoCorrect={false}
+            />
+
+            <View style={styles.passwordInputWrapper}>
                 <TextInput
-                    style={styles.input}
+                    style={styles.passwordInput}
                     placeholder="密碼"
                     placeholderTextColor="#7F7F7F"
                     value={password}
                     onChangeText={setPassword}
-                    secureTextEntry
+                    secureTextEntry={!showPassword}
                     autoCapitalize="none"
                     autoCorrect={false}
                 />
-
-                <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
-                    <Text style={styles.loginButtonText}>登入</Text>
-                </TouchableOpacity>
-
                 <TouchableOpacity
-                    style={styles.cancelButton}
-                    onPress={onCancel}
+                    style={styles.eyeButton}
+                    onPress={() => setShowPassword(prev => !prev)}
                 >
-                    <Text style={styles.cancelButtonText}>取消</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity
-                    style={styles.linkButton}
-                    onPress={() => { setshowForgetPassword(true) }}
-                >
-                    <Text style={styles.linkButtonText}>忘記密碼</Text>
+                    <Image
+                        source={
+                            showPassword
+                                ? require('../../assets/auth/eye_open.png')
+                                : require('../../assets/auth/eye_closed.png')
+                        }
+                        style={styles.eyeIcon}
+                    />
                 </TouchableOpacity>
             </View>
-        );
+
+            <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
+                <Text style={styles.loginButtonText}>登入</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+                style={styles.cancelButton}
+                onPress={onCancel}
+            >
+                <Text style={styles.cancelButtonText}>取消</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+                style={styles.linkButton}
+                onPress={() => { setshowForgetPassword(true) }}
+            >
+                <Text style={styles.linkButtonText}>忘記密碼</Text>
+            </TouchableOpacity>
+        </View>
+    );
 }
 
 const styles = StyleSheet.create({
@@ -158,5 +174,27 @@ const styles = StyleSheet.create({
         top: 20,
         left: 20,
         zIndex: 10,
+    }, passwordInputWrapper: {
+        width: "100%",
+        height: 50,
+        borderRadius: 25,
+        backgroundColor: "#1C1C1C",
+        flexDirection: "row",
+        alignItems: "center",
+        paddingHorizontal: 20,
+        marginBottom: 10,
+    },
+    passwordInput: {
+        flex: 1,
+        fontSize: 16,
+        color: "white",
+    },
+    eyeButton: {
+        padding: 5,
+    },
+    eyeIcon: {
+        width: 24,
+        height: 24,
+        tintColor: "#AAAAAA", // 可自訂顏色
     },
 });
