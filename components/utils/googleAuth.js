@@ -1,7 +1,7 @@
 import { GoogleSignin, statusCodes } from '@react-native-google-signin/google-signin';
 
 GoogleSignin.configure({
-  webClientId: "758821714492-fg0lom34rq8668mlvjmuia7eq4mqd2ti.apps.googleusercontent.com",
+  iosClientId: '927761409049-66o2rujvgaoaovopb4q3mvev3kceej95.apps.googleusercontent.com',
 });
 
 export async function googleLogin() {
