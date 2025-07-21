@@ -32,6 +32,8 @@
 			<array>
 				<string>xstoryscheme</string>
 				<string>com.googleusercontent.apps.927761409049-66o2rujvgaoaovopb4q3mvev3kceej95</string>
+				<!-- Facebook Login URL Scheme -->
+				<string>fb753717744007574</string>
 			</array>
 		</dict>
 	</array>
@@ -55,12 +57,20 @@
 	<key>FacebookDisplayName</key>
 	<string>xStory-Dev</string>
 
+	<!-- Facebook URL Scheme Query Support -->
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fb-messenger-share-api</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
+	</array>
+
 	<key>LSMinimumSystemVersion</key>
 	<string>12.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 
-	<!-- ATS 特定網域允許 HTTP -->
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSExceptionDomains</key>
@@ -82,7 +92,7 @@
 
 	<key>PLIST_VERSION</key>
 	<string>1</string>
-	
+
 	<key>UILaunchStoryboardName</key>
 	<string>SplashScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
