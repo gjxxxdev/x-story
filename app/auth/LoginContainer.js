@@ -7,13 +7,15 @@ import LoginScreen from "../screens/LoginScreen";
 import RegisterScreen from "../screens/RegisterScreen"
 import { EmailVerification } from "../screens/EmailVerification";
 import { XStoryLogin } from "../screens/XStoryLogin"
-import { Linking } from 'react-native';
-import tokenStorage from '../auth/tokenStorage'
+import { Linking , BackHandler } from 'react-native';
+import tokenStorage from '../auth/tokenStorage';
 
 export default function LoginContainer({ onLoginSuccess }) {
   const [showEmailVerification, setShowEmailVerification] = useState(false);
   const [showEmailLogin, setShowEmailLogin] = useState(false);
   const [showRegisterView, setshowRegisterView] = useState(true);
+  const [historyStack, setHistoryStack] = useState([]);
+
 
   useEffect(() => {
     Linking.getInitialURL().then((url) => {
@@ -39,6 +41,7 @@ export default function LoginContainer({ onLoginSuccess }) {
   }
 
   const handleXStoryLogin = () => {
+    setHistoryStack((prev) => [...prev, 'emailLogin']);
     setShowEmailLogin(true);
   };
 
@@ -112,10 +115,12 @@ export default function LoginContainer({ onLoginSuccess }) {
 
 
   const handleRegister = async () => {
+    setHistoryStack((prev) => [...prev, 'register']);
     setshowRegisterView(true);
   }
 
   const handleXStoryRegister = () => {
+    setHistoryStack((prev) => [...prev, 'emailVerification']);
     setShowEmailVerification(true);
   };
 
@@ -172,6 +177,67 @@ export default function LoginContainer({ onLoginSuccess }) {
     } catch (e) {
       alert("WeChat 登入錯誤: " + e.message);
     }
+  };
+
+  useEffect(() => {
+    const backAction = () => {
+      console.log('Back button pressed');
+      console.log('Current historyStack:', historyStack);
+
+      if (historyStack.length > 0) {
+        const lastAction = historyStack[historyStack.length - 1];
+        console.log('Going back to:', lastAction);
+        goBack();
+        return true; // 阻止預設返回
+      }
+
+      console.log('No history, default back behavior');
+      return false; // 沒有上一步，交給系統處理（例如退出APP）
+    };
+
+    const backHandler = BackHandler.addEventListener("hardwareBackPress", backAction);
+
+    return () => backHandler.remove();
+  }, [historyStack]);
+
+  const goBack = () => {
+    setHistoryStack((prevStack) => {
+      if (prevStack.length > 0) {
+        const newStack = [...prevStack];
+        newStack.pop();
+
+        // 根據 newStack 的最後一個元素決定顯示畫面
+        const lastView = newStack[newStack.length - 1];
+        console.log('Switching to last view:', lastView);
+
+        switch (lastView) {
+          case 'register':
+            setshowRegisterView(true);
+            setShowEmailLogin(false);
+            setShowEmailVerification(false);
+            break;
+          case 'emailLogin':
+            setShowEmailLogin(true);
+            setshowRegisterView(false);
+            setShowEmailVerification(false);
+            break;
+          case 'emailVerification':
+            setShowEmailVerification(true);
+            setshowRegisterView(false);
+            setShowEmailLogin(false);
+            break;
+          default:
+            // 預設回到登入畫面
+            setshowRegisterView(false);
+            setShowEmailLogin(false);
+            setShowEmailVerification(false);
+        }
+
+        return newStack;
+      }
+
+      return prevStack;
+    });
   };
 
   return showEmailVerification ? (
