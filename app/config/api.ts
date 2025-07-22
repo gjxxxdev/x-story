@@ -15,6 +15,12 @@ export class RestfulApi {
         this.devBaseUrl = config.devBaseUrl;
         this.prodBaseUrl = config.prodBaseUrl;
         this.isDev = config.isDev;
+        if(this.isDev) {
+            console.warn("Running in development mode. Using devBaseUrl:", this.devBaseUrl);
+        }
+        else {
+            console.log("Running in production mode. Using prodBaseUrl:", this.prodBaseUrl);
+        }
     }
 
     private get baseUrl(): string {
