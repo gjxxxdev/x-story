@@ -22,6 +22,11 @@
       "scheme": "xstoryscheme"
     },
     "android": {
+      "splash": {
+        "image": "./assets/splash2_android.png",
+        "resizeMode": "cover",
+        "backgroundColor": "#000000"
+      },
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#FFFFFF"

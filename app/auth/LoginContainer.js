@@ -7,7 +7,7 @@ import LoginScreen from "../screens/LoginScreen";
 import RegisterScreen from "../screens/RegisterScreen"
 import { EmailVerification } from "../screens/EmailVerification";
 import { XStoryLogin } from "../screens/XStoryLogin"
-import { Linking , BackHandler } from 'react-native';
+import { Linking, BackHandler } from 'react-native';
 import tokenStorage from '../auth/tokenStorage';
 
 export default function LoginContainer({ onLoginSuccess }) {
@@ -76,10 +76,13 @@ export default function LoginContainer({ onLoginSuccess }) {
   const handleGoogleLogin = async () => {
     try {
       const SignInResponse = await googleLogin();
-      await tokenStorage.setStoreToken(SignInResponse.data.idToken);
       console.log('google login: ' + SignInResponse.data.user);
       console.log('google login: ' + SignInResponse.data.idToken);
-      onLoginSuccess();
+      await tokenStorage.setStoreToken(SignInResponse.data.idToken);
+      if (SignInResponse.data.idToken.length > 0) {
+        onLoginSuccess();
+      }
+      else alert(SignInResponse.data.message || "Google 登入失敗或取消");
     } catch (e) {
       alert("Google 登入錯誤: " + e.message);
     }
