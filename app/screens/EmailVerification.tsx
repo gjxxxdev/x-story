@@ -77,17 +77,19 @@ export function EmailVerification({ email, onEmailChange, onCancel, onSuccess }:
 
       {!waitingVerification ? (
         <>
-          <TextInput
-            style={styles.input}
-            placeholder="請輸入您的Email"
-            placeholderTextColor="#7F7F7F"
-            value={email}
-            onChangeText={onEmailChange}
-            keyboardType="email-address"
-            autoCapitalize="none"
-            autoCorrect={false}
-            editable={!isSending}
-          />
+          <View style={styles.passwordInputWrapper}>
+            <TextInput
+              style={styles.input}
+              placeholder="請輸入您的Email"
+              placeholderTextColor="#7F7F7F"
+              value={email}
+              onChangeText={onEmailChange}
+              keyboardType="email-address"
+              autoCapitalize="none"
+              autoCorrect={false}
+              editable={!isSending}
+            />
+          </View>
 
           <View style={styles.passwordInputWrapper}>
             <TextInput

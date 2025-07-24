@@ -7,7 +7,7 @@ import LoginScreen from "../screens/LoginScreen";
 import RegisterScreen from "../screens/RegisterScreen"
 import { EmailVerification } from "../screens/EmailVerification";
 import { XStoryLogin } from "../screens/XStoryLogin"
-import { Linking, BackHandler } from 'react-native';
+import { View, Linking, BackHandler, Keyboard, KeyboardAvoidingView, TouchableWithoutFeedback, Platform} from 'react-native';
 import tokenStorage from '../auth/tokenStorage';
 
 export default function LoginContainer({ onLoginSuccess }) {
@@ -243,40 +243,51 @@ export default function LoginContainer({ onLoginSuccess }) {
     });
   };
 
-  return showEmailVerification ? (
-    <EmailVerification
-      onCancel={handleEmailVerificationCancel}
-      onSuccess={() => {
-        setShowEmailVerification(false);
-        onLoginSuccess();
-      }}
-    />
-  ) : showEmailLogin ? (
-    <XStoryLogin
-      onLoginSuccess={(token) => { handleXStoryLoginSuccess(token) }}
-      onCancel={handleXStoryLoginCancel}
-      onShowEmailVerification={() => { }}
-    />
-  ) : showRegisterView ? (
-    <RegisterScreen
-      onRegisterSuccess={() => { }}
-      onXStoryRegister={handleXStoryRegister}
-      onFacebookRegister={handleFacebookRegister}
-      onAppleRegister={handleAppleRegister}
-      onGoogleRegister={handleGoogleRegister}
-      onWeChatRegister={handleWeChatRegister}
-      onRegister={handleRegister}
-      onCancel={() => setshowRegisterView(false)}
-    />
-  ) : (
-    <LoginScreen
-      onLoginSuccess={onLoginSuccess}
-      onXStoryLogin={handleXStoryLogin}
-      onFacebookLogin={handleFacebookLogin}
-      onAppleLogin={handleAppleLogin}
-      onGoogleLogin={handleGoogleLogin}
-      onWeChatLogin={handleWeChatLogin}
-      onRegister={handleRegister}
-    />
+  return (
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+      style={{ flex: 1 }}
+    >
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={{ flex: 1 }}>
+          {showEmailVerification ? (
+            <EmailVerification
+              onCancel={handleEmailVerificationCancel}
+              onSuccess={() => {
+                setShowEmailVerification(false);
+                onLoginSuccess();
+              }}
+            />
+          ) : showEmailLogin ? (
+            <XStoryLogin
+              onLoginSuccess={(token) => { handleXStoryLoginSuccess(token) }}
+              onCancel={handleXStoryLoginCancel}
+              onShowEmailVerification={() => { }}
+            />
+          ) : showRegisterView ? (
+            <RegisterScreen
+              onRegisterSuccess={() => { }}
+              onXStoryRegister={handleXStoryRegister}
+              onFacebookRegister={handleFacebookRegister}
+              onAppleRegister={handleAppleRegister}
+              onGoogleRegister={handleGoogleRegister}
+              onWeChatRegister={handleWeChatRegister}
+              onRegister={handleRegister}
+              onCancel={() => setshowRegisterView(false)}
+            />
+          ) : (
+            <LoginScreen
+              onLoginSuccess={onLoginSuccess}
+              onXStoryLogin={handleXStoryLogin}
+              onFacebookLogin={handleFacebookLogin}
+              onAppleLogin={handleAppleLogin}
+              onGoogleLogin={handleGoogleLogin}
+              onWeChatLogin={handleWeChatLogin}
+              onRegister={handleRegister}
+            />
+          )}
+        </View>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 }

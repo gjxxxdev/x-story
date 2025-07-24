@@ -52,6 +52,7 @@ export function XStoryForgetPassword({ email, onEmailChange, onCancel, onSuccess
 
       {!waitingVerification ? (
         <>
+                  <View style={styles.passwordInputWrapper}>
           <TextInput
             style={styles.input}
             placeholder="請輸入您的Email"
@@ -63,6 +64,7 @@ export function XStoryForgetPassword({ email, onEmailChange, onCancel, onSuccess
             autoCorrect={false}
             editable={!isSending}
           />
+          </View>
 
           {isSending ? (
             <ActivityIndicator size="large" color="#0ABAB5" style={{ marginVertical: 20 }} />
@@ -157,5 +159,15 @@ const styles = StyleSheet.create({
     top: 20,
     left: 20,
     zIndex: 10,
+  },
+  passwordInputWrapper: {
+    width: "100%",
+    height: 50,
+    borderRadius: 25,
+    backgroundColor: "#1C1C1C",
+    flexDirection: "row",
+    alignItems: "center",
+    paddingHorizontal: 20,
+    marginBottom: 10,
   },
 });
