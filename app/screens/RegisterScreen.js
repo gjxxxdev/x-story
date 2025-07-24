@@ -86,7 +86,9 @@ export default function RegisterScreen(props) {
                   borderWidth: 2,
                   borderRadius: 25,
                   opacity: disabled ? 0.5 : 1,
-                  justifyContent: "center",  // 水平置中
+                  justifyContent: "flex-start",
+                  paddingLeft: "25%",
+                  alignItems: "center",
                 },
               ]}
               onPress={() => {

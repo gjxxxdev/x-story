@@ -82,7 +82,9 @@ export default function LoginScreen(props) {
                 borderColor: "#0abab5",
                 borderWidth: 2,
                 borderRadius: 25,
-                justifyContent: "center",
+                justifyContent: "flex-start",
+                paddingLeft: "25%",
+                alignItems: "center",
               },
             ]}
             onPress={() => handlePress(onPressProp)}
