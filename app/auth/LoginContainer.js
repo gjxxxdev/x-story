@@ -7,7 +7,7 @@ import LoginScreen from "../screens/LoginScreen";
 import RegisterScreen from "../screens/RegisterScreen"
 import { EmailVerification } from "../screens/EmailVerification";
 import { XStoryLogin } from "../screens/XStoryLogin"
-import { View, Linking, BackHandler, Keyboard, KeyboardAvoidingView, TouchableWithoutFeedback, Platform} from 'react-native';
+import { View, Linking, BackHandler, Keyboard, KeyboardAvoidingView, TouchableWithoutFeedback, Platform } from 'react-native';
 import tokenStorage from '../auth/tokenStorage';
 
 export default function LoginContainer({ onLoginSuccess }) {
@@ -52,6 +52,9 @@ export default function LoginContainer({ onLoginSuccess }) {
   const handleXStoryLoginSuccess = async (token) => {
     console.log('handleXStoryLoginSuccess token: ' + token);
     await tokenStorage.storeToken(token);
+    if (token) {
+      onLoginSuccess();
+    }
   };
 
   const handleEmailVerificationCancel = () => {

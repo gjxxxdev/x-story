@@ -41,7 +41,7 @@ export function XStoryLogin({ onLoginSuccess, onCancel }: Props) {
                 />
             </View>
 
-            <Text style={styles.title}>登入 xStory 帳號</Text>
+            <Text style={styles.title}>登入帳號</Text>
 
             <TextInput
                 style={styles.input}
@@ -80,6 +80,13 @@ export function XStoryLogin({ onLoginSuccess, onCancel }: Props) {
                 </TouchableOpacity>
             </View>
 
+            <TouchableOpacity
+                style={styles.linkButton}
+                onPress={() => { setshowForgetPassword(true) }}
+            >
+                <Text style={styles.linkButtonText}>忘記密碼?</Text>
+            </TouchableOpacity>
+
             <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
                 <Text style={styles.loginButtonText}>登入</Text>
             </TouchableOpacity>
@@ -89,13 +96,6 @@ export function XStoryLogin({ onLoginSuccess, onCancel }: Props) {
                 onPress={onCancel}
             >
                 <Text style={styles.cancelButtonText}>取消</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-                style={styles.linkButton}
-                onPress={() => { setshowForgetPassword(true) }}
-            >
-                <Text style={styles.linkButtonText}>忘記密碼</Text>
             </TouchableOpacity>
         </View>
     );
@@ -154,11 +154,13 @@ const styles = StyleSheet.create({
         fontSize: 16,
     },
     linkButton: {
-        marginTop: 10,
+        marginBottom: 30,
+        marginRight: 10,
+        alignSelf: "flex-end",
     },
     linkButtonText: {
-        color: "#b68a36",
-        fontSize: 16,
+        color: "#f0ad57",
+        fontSize: 18,
         textDecorationLine: "underline",
     },
     imgIcon: {

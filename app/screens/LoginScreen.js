@@ -181,9 +181,16 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   bottomTextLeft: {
-    color: "#b68a36",
-    fontSize: 14,
+    color: "#f0ad57",
+    fontSize: 18,
+    textAlign: "Left",
     textDecorationLine: "underline",  // 加底線
+  },
+  bottomRow: {
+    marginTop: 40,
+    color: "white",
+    flexDirection: "row",
+    justifyContent: "center",
   },
   imgIcon: {
     width: 40,

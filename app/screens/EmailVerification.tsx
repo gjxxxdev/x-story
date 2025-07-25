@@ -10,20 +10,19 @@ import {
 } from "react-native";
 
 interface Props {
-  email: string;
-  onEmailChange: (email: string) => void;
   onCancel: () => void;
   onSuccess: () => void;
+  onEmailChange?: (email: string) => void;
 }
 
-export function EmailVerification({ email, onEmailChange, onCancel, onSuccess }: Props) {
+export function EmailVerification({ onCancel, onSuccess }: Props) {
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isSending, setIsSending] = useState(false);
   const [waitingVerification, setWaitingVerification] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
 
   const sendVerificationEmail = () => {
     if (!email) {
@@ -43,7 +42,6 @@ export function EmailVerification({ email, onEmailChange, onCancel, onSuccess }:
       return;
     }
 
-    // 密碼格式驗證：8-20字元，至少1大寫、1小寫、1數字
     const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,20}$/;
     if (!passwordPattern.test(password)) {
       alert("密碼需8-20字元，且包含至少一個大寫字母、一個小寫字母及一個數字");
@@ -69,7 +67,7 @@ export function EmailVerification({ email, onEmailChange, onCancel, onSuccess }:
       <View style={styles.logoContainer}>
         <Image
           style={styles.imgIcon}
-          source={require('../../assets/blueeye.png')}
+          source={require("../../assets/blueeye.png")}
         />
       </View>
 
@@ -81,14 +79,15 @@ export function EmailVerification({ email, onEmailChange, onCancel, onSuccess }:
             style={styles.input}
             placeholder="請輸入您的Email"
             placeholderTextColor="#7F7F7F"
-            value={email}
-            onChangeText={onEmailChange}
+            value={email} // 綁定內部狀態
+            onChangeText={setEmail} // 更新內部狀態
             keyboardType="email-address"
             autoCapitalize="none"
             autoCorrect={false}
             editable={!isSending}
           />
 
+          {/* 密碼輸入區 */}
           <View style={styles.passwordInputWrapper}>
             <TextInput
               style={styles.passwordInput}
@@ -103,18 +102,19 @@ export function EmailVerification({ email, onEmailChange, onCancel, onSuccess }:
             />
             <TouchableOpacity
               style={styles.eyeButton}
-              onPress={() => setShowPassword(prev => !prev)}
+              onPress={() => setShowPassword((prev) => !prev)}
             >
               <Image
                 source={
                   showPassword
-                    ? require('../../assets/auth/eye_open.png')
-                    : require('../../assets/auth/eye_closed.png')
+                    ? require("../../assets/auth/eye_open.png")
+                    : require("../../assets/auth/eye_closed.png")
                 }
                 style={styles.eyeIcon}
               />
             </TouchableOpacity>
           </View>
+
           <View style={styles.passwordInputWrapper}>
             <TextInput
               style={styles.passwordInput}
@@ -129,28 +129,34 @@ export function EmailVerification({ email, onEmailChange, onCancel, onSuccess }:
             />
             <TouchableOpacity
               style={styles.eyeButton}
-              onPress={() => setShowConfirmPassword(prev => !prev)}
+              onPress={() => setShowConfirmPassword((prev) => !prev)}
             >
               <Image
                 source={
                   showConfirmPassword
-                    ? require('../../assets/auth/eye_open.png')
-                    : require('../../assets/auth/eye_closed.png')
+                    ? require("../../assets/auth/eye_open.png")
+                    : require("../../assets/auth/eye_closed.png")
                 }
                 style={styles.eyeIcon}
               />
             </TouchableOpacity>
           </View>
 
-
           <Text style={styles.passwordHelpText}>
             密碼須包含8-20字元，至少一個大寫字母、一個小寫字母及一個數字
           </Text>
 
           {isSending ? (
-            <ActivityIndicator size="large" color="#0ABAB5" style={{ marginVertical: 20 }} />
+            <ActivityIndicator
+              size="large"
+              color="#0ABAB5"
+              style={{ marginVertical: 20 }}
+            />
           ) : (
-            <TouchableOpacity style={styles.sendButton} onPress={sendVerificationEmail}>
+            <TouchableOpacity
+              style={styles.sendButton}
+              onPress={sendVerificationEmail}
+            >
               <Text style={styles.sendButtonText}>發送驗證信</Text>
             </TouchableOpacity>
           )}
