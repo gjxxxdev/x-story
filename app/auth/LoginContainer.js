@@ -8,7 +8,7 @@ import RegisterScreen from "../screens/RegisterScreen"
 import { EmailVerification } from "../screens/EmailVerification";
 import { XStoryLogin } from "../screens/XStoryLogin"
 import { View, Linking, BackHandler, Keyboard, KeyboardAvoidingView, TouchableWithoutFeedback, Platform } from 'react-native';
-import tokenStorage from '../auth/tokenStorage';
+import tokenStorage from './Storage';
 
 export default function LoginContainer({ onLoginSuccess }) {
   const [showEmailVerification, setShowEmailVerification] = useState(false);
@@ -51,7 +51,7 @@ export default function LoginContainer({ onLoginSuccess }) {
 
   const handleXStoryLoginSuccess = async (token) => {
     console.log('handleXStoryLoginSuccess token: ' + token);
-    await tokenStorage.storeToken(token);
+    await tokenStorage.setStoreToken(token);
     if (token) {
       onLoginSuccess();
     }
