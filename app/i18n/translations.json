@@ -1,0 +1,197 @@
+{
+    "forgotPassword": {
+        "zh-TW": "忘記密碼",
+        "zh-CN": "忘记密码",
+        "en": "Forgot Password"
+    },
+    "enterEmail": {
+        "zh-TW": "請輸入您的 Email",
+        "zh-CN": "请输入您的 Email",
+        "en": "Enter your Email"
+    },
+    "sendVerification": {
+        "zh-TW": "發送驗證信",
+        "zh-CN": "发送验证信",
+        "en": "Send Verification Email"
+    },
+    "cancel": {
+        "zh-TW": "取消",
+        "zh-CN": "取消",
+        "en": "Cancel"
+    },
+    "resetEmailSentTitle": {
+        "zh-TW": "密碼重設信已發送",
+        "zh-CN": "密码重设信已发送",
+        "en": "Password reset email sent"
+    },
+    "resetEmailSentMessage": {
+        "zh-TW": "我們已將密碼重設連結寄到您的信箱，請點擊信中的連結進行密碼變更",
+        "zh-CN": "我们已将密码重设连接寄到您的信箱，请点击信中的连接进行密码变更",
+        "en": "We’ve sent you a link to reset your password. Click the link to set a new password."
+    },
+    "ok": {
+        "zh-TW": "確定",
+        "zh-CN": "确定",
+        "en": "OK"
+    },
+    "resetPassword": {
+        "zh-TW": "重設密碼\n（至少 8 個字元）",
+        "zh-CN": "重设密码\n（至少 8 个字符）",
+        "en": "Reset Password\n(at least 8 characters)"
+    },
+    "newPassword": {
+        "zh-TW": "請輸入新密碼",
+        "zh-CN": "请输入新密码",
+        "en": "New Password"
+    },
+    "confirmPassword": {
+        "zh-TW": "請再次輸入密碼",
+        "zh-CN": "请再次输入密码",
+        "en": "Confirm Password"
+    },
+    "updatePassword": {
+        "zh-TW": "密碼更新",
+        "zh-CN": "密码更新",
+        "en": "Update Password"
+    },
+    "welcomeBack": {
+        "zh-TW": "歡迎回來 X Stories！",
+        "zh-CN": "欢迎回来 X Stories！",
+        "en": "Welcome back to X Stories！"
+    },
+    "loginPrompt": {
+        "zh-TW": "請選擇登入方式",
+        "zh-CN": "请选择登录方式",
+        "en": "Log in to continue."
+    },
+    "signInWithEmail": {
+        "zh-TW": "使用 Email 登入",
+        "zh-CN": "使用 Email 登录",
+        "en": "Sign in with Email"
+    },
+    "signInWithApple": {
+        "zh-TW": "使用 Apple 登入",
+        "zh-CN": "使用 Apple 登录",
+        "en": "Sign in with Apple"
+    },
+    "signInWithGoogle": {
+        "zh-TW": "使用 Google 登入",
+        "zh-CN": "使用 Google 登录",
+        "en": "Sign in with Google"
+    },
+    "signInWithFacebook": {
+        "zh-TW": "使用 Facebook 登入",
+        "zh-CN": "使用 Facebook 登录",
+        "en": "Sign in with Facebook"
+    },
+    "signInWithWechat": {
+        "zh-TW": "使用 Wechat 登入",
+        "zh-CN": "使用 Wechat 登录",
+        "en": "Sign in with Wechat"
+    },
+    "signUp": {
+        "zh-TW": "註冊帳號",
+        "zh-CN": "注册账号",
+        "en": "Sign up"
+    },
+    "forgotPasswordLink": {
+        "zh-TW": "忘記密碼？",
+        "zh-CN": "忘记密码？",
+        "en": "Forgot password?"
+    },
+    "welcomeSignUp": {
+        "zh-TW": "歡迎加入 X Stories！",
+        "zh-CN": "欢迎加入 X Stories！",
+        "en": "Welcome to X Stories！"
+    },
+    "signUpPrompt": {
+        "zh-TW": "請選擇登入或註冊方式",
+        "zh-CN": "请选择登录或注册方式",
+        "en": "Sign up / Log in to get started."
+    },
+    "signUpWithEmail": {
+        "zh-TW": "使用 Email 註冊",
+        "zh-CN": "使用 Email 注册",
+        "en": "Sign up with Email"
+    },
+    "signUpWithApple": {
+        "zh-TW": "使用 Apple 註冊",
+        "zh-CN": "使用 Apple 注册",
+        "en": "Sign up with Apple"
+    },
+    "signUpWithGoogle": {
+        "zh-TW": "使用 Google 註冊",
+        "zh-CN": "使用 Google 注册",
+        "en": "Sign up with Google"
+    },
+    "signUpWithFacebook": {
+        "zh-TW": "使用 Facebook 註冊",
+        "zh-CN": "使用 Facebook 注册",
+        "en": "Sign up with Facebook"
+    },
+    "signUpWithWechat": {
+        "zh-TW": "使用 Wechat 註冊",
+        "zh-CN": "使用 Wechat 注册",
+        "en": "Sign up with Wechat"
+    },
+    "termsAgreement": {
+        "zh-TW": "我已閱讀並同意 X Stories 的《服務條款》及《隱私政策》。",
+        "zh-CN": "我已阅读并同意 X Stories 的《服务条款》及《隐私政策》。",
+        "en": "By creating an account, I accept X Stories’ 《Terms of Service》 and confirm that I have read X Stories’ Privacy Policy."
+    },
+    "alreadyHaveAccount": {
+        "zh-TW": "已有帳號？登入",
+        "zh-CN": "已有账号？登录",
+        "en": "Already have an account? Sign in"
+    },
+    "signInTitle": {
+        "zh-TW": "登入帳號",
+        "zh-CN": "登录账号",
+        "en": "Sign in"
+    },
+    "email": {
+        "zh-TW": "Email",
+        "zh-CN": "Email",
+        "en": "Email"
+    },
+    "password": {
+        "zh-TW": "密碼",
+        "zh-CN": "密码",
+        "en": "Password"
+    },
+    "forgot": {
+        "zh-TW": "忘記密碼？",
+        "zh-CN": "忘记密码？",
+        "en": "Forgot?"
+    },
+    "signIn": {
+        "zh-TW": "登入",
+        "zh-CN": "登录",
+        "en": "Sign in"
+    },
+    "createPassword": {
+        "zh-TW": "請設定您的密碼（至少 8 個字元）",
+        "zh-CN": "设定密码（至少 8 个字符）",
+        "en": "Create a Password\n(at least 8 characters)"
+    },
+    "enterPassword": {
+        "zh-TW": "請輸入密碼",
+        "zh-CN": "请输入密码",
+        "en": "Enter password"
+    },
+    "confirmSignUpPassword": {
+        "zh-TW": "請再次輸入密碼",
+        "zh-CN": "请再次输入密码",
+        "en": "Confirm password"
+    },
+    "register": {
+        "zh-TW": "註冊",
+        "zh-CN": "注册",
+        "en": "Sign up"
+    },
+    "addYourEmail": {
+        "zh-TW": "請輸入您的 Email",
+        "zh-CN": "请输入您的 Email",
+        "en": "Add your email"
+    }
+}
