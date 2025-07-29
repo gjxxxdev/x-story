@@ -9,34 +9,36 @@ import {
   View,
   Dimensions,
 } from "react-native";
+import { translate } from "../i18n/i18n";
 
 const loginOptions = [
   {
     key: "xstory",
-    title: "使用 Email 註冊",
+    title: translate("signUpWithEmail"),
     onPressProp: "onXStoryRegister",
     icon: require("../../assets/auth/xstory.png"),
   },
   {
     key: "facebook",
-    title: "使用 Facebook 註冊",
+    title: translate("signUpWithFacebook"),
     onPressProp: "onFacebookRegister",
     icon: require("../../assets/auth/facebook.png"),
   },
   {
     key: "google",
-    title: "使用 Google 註冊",
+    title: translate("signUpWithGoogle"),
     onPressProp: "onGoogleRegister",
     icon: require("../../assets/auth/google.png"),
     textColor: "#FFFFFF",
   },
   {
     key: "wechat",
-    title: "使用 WeChat 註冊",
+    title: translate("signUpWithWechat"),
     onPressProp: "onWeChatRegister",
     icon: require("../../assets/auth/wechat.png"),
   },
 ];
+
 
 export default function RegisterScreen(props) {
   const [agreeChecked, setAgreeChecked] = useState(false);
@@ -69,9 +71,10 @@ export default function RegisterScreen(props) {
 
 
       <View style={styles.container}>
+        {/* 標題 */}
+        <Text style={styles.title}>{translate("welcomeSignUp")}</Text>
+        <Text style={styles.title}>{translate("signUpPrompt")}</Text>
 
-        <Text style={styles.title}>歡迎加入 X Stories !</Text>
-        <Text style={styles.title}>請選擇註冊方式</Text>
         <View style={{ height: 30 }} />
         {loginOptions.map(({ key, title, onPressProp, icon }) => {
           const disabled = !agreeChecked;
@@ -123,22 +126,20 @@ export default function RegisterScreen(props) {
             {agreeChecked && <View style={styles.checkboxTick} />}
           </View>
           <Text style={styles.agreeText}>
-            我已閱讀並同意{" "}
-            <Text style={styles.linkText}>X Stories 的 《服務條款》</Text> 及{" "}
-            <Text style={styles.linkText}>《隱私政策》</Text>。
+            {translate("termsAgreement")}
           </Text>
         </TouchableOpacity>
 
         {/* 底部登入文字 */}
         <View style={styles.bottomRow}>
-          <Text style={styles.bottomText}>已有帳號？</Text>
+          <Text style={styles.bottomText}>{translate("alreadyHaveAccount")}</Text>
           <TouchableOpacity onPress={handleCancel} activeOpacity={0.7}>
             <Text
               style={[
                 styles.loginLink, styles.loginLinkPressed,
               ]}
             >
-              登入
+              {translate("signIn")}
             </Text>
           </TouchableOpacity>
         </View>

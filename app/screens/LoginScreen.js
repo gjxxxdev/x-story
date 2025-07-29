@@ -9,39 +9,37 @@ import {
   View,
   Dimensions,
 } from "react-native";
+import { translate } from "../i18n/i18n";
 
 const loginOptions = [
   {
     key: "xstory",
-    title: "使用 Email 登入",
+    title: translate("signInWithEmail"),
     onPressProp: "onXStoryLogin",
     icon: require("../../assets/auth/xstory.png"),
   },
   {
     key: "facebook",
-    title: "使用 Facebook 登入",
+    title: translate("signInWithFacebook"),
     onPressProp: "onFacebookLogin",
     icon: require("../../assets/auth/facebook.png"),
   },
   {
     key: "google",
-    title: "使用 Google 登入",
+    title: translate("signInWithGoogle"),
     onPressProp: "onGoogleLogin",
     icon: require("../../assets/auth/google.png"),
     textColor: "#FFFFFF",
   },
   {
     key: "wechat",
-    title: "使用 WeChat 登入",
+    title: translate("signInWithWechat"),
     onPressProp: "onWeChatLogin",
     icon: require("../../assets/auth/wechat.png"),
   },
-
 ];
 
 export default function LoginScreen(props) {
-
-
   const handlePress = (handlerName) => {
     if (props[handlerName] && typeof props[handlerName] === "function") {
       props[handlerName]();
@@ -56,23 +54,21 @@ export default function LoginScreen(props) {
 
   return (
     <View style={{ flex: 1, backgroundColor: "#39393B" }}>
-
       {/* 左上角 Logo */}
       <View style={styles.logoContainer}>
         <Image
           style={styles.imgIcon}
-          source={require('../../assets/blueeye.png')}
+          source={require("../../assets/blueeye.png")}
         />
       </View>
 
-
       <View style={styles.container}>
+        <Text style={styles.title}>{translate("welcomeBack")}</Text>
+        <Text style={styles.title}>{translate("loginPrompt")}</Text>
 
-        <Text style={styles.title}>歡迎加入 X Stories !</Text>
-        <Text style={styles.title}>請選擇登入方式</Text>
         <View style={{ height: 30 }} />
 
-        {loginOptions.map(({ key, title, onPressProp, icon, textColor }) => (
+        {loginOptions.map(({ key, title, onPressProp, icon }) => (
           <TouchableOpacity
             key={key}
             style={[
@@ -91,9 +87,7 @@ export default function LoginScreen(props) {
             activeOpacity={0.7}
           >
             {icon && <Image source={icon} style={styles.icon} />}
-            <Text style={[styles.buttonText, { color: "white" }]}>
-              {title}
-            </Text>
+            <Text style={[styles.buttonText, { color: "white" }]}>{title}</Text>
           </TouchableOpacity>
         ))}
 
@@ -122,16 +116,15 @@ export default function LoginScreen(props) {
           onPress={handleTestLoginSuccess}
         >
           <Text style={[styles.buttonText, { color: "#0abab5" }]}>
-            測試登入成功，切換畫面
+            {translate("testLoginSuccess")}
           </Text>
         </TouchableOpacity>
 
         {/* 新增底部行 */}
         <View style={styles.bottomRow}>
           <TouchableOpacity onPress={props.onRegister}>
-            <Text style={styles.bottomTextLeft}>註冊帳號</Text>
+            <Text style={styles.bottomTextLeft}>{translate("signUp")}</Text>
           </TouchableOpacity>
-
         </View>
       </View>
     </View>
@@ -167,7 +160,6 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 16,
     marginLeft: 10,
-    // 預設文字顏色由外層動態指定
   },
   icon: {
     width: 24,
@@ -184,7 +176,7 @@ const styles = StyleSheet.create({
     color: "#f0ad57",
     fontSize: 18,
     textAlign: "Left",
-    textDecorationLine: "underline",  // 加底線
+    textDecorationLine: "underline",
   },
   bottomRow: {
     marginTop: 40,

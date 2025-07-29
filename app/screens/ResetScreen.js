@@ -13,7 +13,7 @@ export function ResetScreen({ navigation }) {
             text: "取消",
             style: "cancel",
             onPress: () => {
-              navigation.goBack(); // 返回上一頁，避免停留在空白畫面
+              navigation.goBack();
             },
           },
           {

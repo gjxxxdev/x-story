@@ -8,6 +8,7 @@ import {
     Image,
 } from "react-native";
 import { XStoryForgetPassword } from "./XStoryForgetPassword";
+import { translate } from "../i18n/i18n";
 
 interface Props {
     onLoginSuccess: (token: string) => void;
@@ -28,9 +29,10 @@ export function XStoryLogin({ onLoginSuccess, onCancel }: Props) {
     return showForgetPassword ? (
         <XStoryForgetPassword
             email={""}
-            onEmailChange={() => { }}
-            onCancel={() => { setshowForgetPassword(false) }}
-            onSuccess={handleLogin} />
+            onEmailChange={() => {}}
+            onCancel={() => setshowForgetPassword(false)}
+            onSuccess={handleLogin}
+        />
     ) : (
         <View style={styles.container}>
             {/* 左上角 Logo */}
@@ -41,11 +43,11 @@ export function XStoryLogin({ onLoginSuccess, onCancel }: Props) {
                 />
             </View>
 
-            <Text style={styles.title}>登入帳號</Text>
+            <Text style={styles.title}>{translate("signInTitle")}</Text>
 
             <TextInput
                 style={styles.input}
-                placeholder="Email"
+                placeholder={translate("email")}
                 placeholderTextColor="#7F7F7F"
                 value={email}
                 onChangeText={setEmail}
@@ -57,7 +59,7 @@ export function XStoryLogin({ onLoginSuccess, onCancel }: Props) {
             <View style={styles.passwordInputWrapper}>
                 <TextInput
                     style={styles.passwordInput}
-                    placeholder="密碼"
+                    placeholder={translate("password")}
                     placeholderTextColor="#7F7F7F"
                     value={password}
                     onChangeText={setPassword}
@@ -82,20 +84,17 @@ export function XStoryLogin({ onLoginSuccess, onCancel }: Props) {
 
             <TouchableOpacity
                 style={styles.linkButton}
-                onPress={() => { setshowForgetPassword(true) }}
+                onPress={() => setshowForgetPassword(true)}
             >
-                <Text style={styles.linkButtonText}>忘記密碼?</Text>
+                <Text style={styles.linkButtonText}>{translate("forgotPasswordLink")}</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
-                <Text style={styles.loginButtonText}>登入</Text>
+                <Text style={styles.loginButtonText}>{translate("signIn")}</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity
-                style={styles.cancelButton}
-                onPress={onCancel}
-            >
-                <Text style={styles.cancelButtonText}>取消</Text>
+            <TouchableOpacity style={styles.cancelButton} onPress={onCancel}>
+                <Text style={styles.cancelButtonText}>{translate("cancel")}</Text>
             </TouchableOpacity>
         </View>
     );
@@ -176,7 +175,8 @@ const styles = StyleSheet.create({
         top: 20,
         left: 20,
         zIndex: 10,
-    }, passwordInputWrapper: {
+    },
+    passwordInputWrapper: {
         width: "100%",
         height: 50,
         borderRadius: 25,
@@ -197,6 +197,6 @@ const styles = StyleSheet.create({
     eyeIcon: {
         width: 24,
         height: 24,
-        tintColor: "#AAAAAA", // 可自訂顏色
+        tintColor: "#AAAAAA",
     },
 });

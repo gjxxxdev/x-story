@@ -8,6 +8,7 @@ import {
   StyleSheet,
   Image,
 } from "react-native";
+import { translate } from "../i18n/i18n";
 
 interface Props {
   onCancel: () => void;
@@ -63,7 +64,6 @@ export function EmailVerification({ onCancel, onSuccess }: Props) {
 
   return (
     <View style={styles.container}>
-      {/* 左上角 Logo */}
       <View style={styles.logoContainer}>
         <Image
           style={styles.imgIcon}
@@ -71,27 +71,26 @@ export function EmailVerification({ onCancel, onSuccess }: Props) {
         />
       </View>
 
-      <Text style={styles.title}>註冊帳號</Text>
+      <Text style={styles.title}>{translate("registerAccount")}</Text>
 
       {!waitingVerification ? (
         <>
           <TextInput
             style={styles.input}
-            placeholder="請輸入您的Email"
+            placeholder={translate("enterEmail")}
             placeholderTextColor="#7F7F7F"
-            value={email} // 綁定內部狀態
-            onChangeText={setEmail} // 更新內部狀態
+            value={email}
+            onChangeText={setEmail}
             keyboardType="email-address"
             autoCapitalize="none"
             autoCorrect={false}
             editable={!isSending}
           />
 
-          {/* 密碼輸入區 */}
           <View style={styles.passwordInputWrapper}>
             <TextInput
               style={styles.passwordInput}
-              placeholder="建立密碼"
+              placeholder={translate("enterPassword")}
               placeholderTextColor="#7F7F7F"
               value={password}
               onChangeText={setPassword}
@@ -118,7 +117,7 @@ export function EmailVerification({ onCancel, onSuccess }: Props) {
           <View style={styles.passwordInputWrapper}>
             <TextInput
               style={styles.passwordInput}
-              placeholder="確認密碼"
+              placeholder={translate("confirmPassword")}
               placeholderTextColor="#7F7F7F"
               value={confirmPassword}
               onChangeText={setConfirmPassword}
@@ -143,7 +142,7 @@ export function EmailVerification({ onCancel, onSuccess }: Props) {
           </View>
 
           <Text style={styles.passwordHelpText}>
-            密碼須包含8-20字元，至少一個大寫字母、一個小寫字母及一個數字
+            {translate("passwordRule")}
           </Text>
 
           {isSending ? (
@@ -157,7 +156,7 @@ export function EmailVerification({ onCancel, onSuccess }: Props) {
               style={styles.sendButton}
               onPress={sendVerificationEmail}
             >
-              <Text style={styles.sendButtonText}>發送驗證信</Text>
+              <Text style={styles.sendButtonText}>{translate("sendVerification")}</Text>
             </TouchableOpacity>
           )}
 
@@ -166,14 +165,12 @@ export function EmailVerification({ onCancel, onSuccess }: Props) {
             onPress={onCancel}
             disabled={isSending}
           >
-            <Text style={styles.cancelButtonText}>取消</Text>
+            <Text style={styles.cancelButtonText}>{translate("cancel")}</Text>
           </TouchableOpacity>
         </>
       ) : (
         <Text style={styles.waitingText}>
-          驗證信已發送，請到信箱確認。
-          {"\n"}
-          （3秒後自動返回登入畫面）
+          {translate("verificationSent")}
         </Text>
       )}
     </View>
