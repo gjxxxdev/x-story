@@ -38,7 +38,7 @@ export function XStoryLogin({ onLoginSuccess, onCancel }: Props) {
             email={""}
             onEmailChange={() => {}}
             onCancel={() => setshowForgetPassword(false)}
-            onSuccess={handleLogin}
+            onSuccess={() => setshowForgetPassword(false)}
         />
     ) : (
         <View style={styles.container}>

@@ -25,7 +25,9 @@ export interface XStoryAuthRequest {
  * xStory 註冊 Response（成功或失敗都回傳 true/false）
  */
 export interface XStoryAuthResponse {
+  success: boolean;
   message: string;
+  accessToken: string;
 }
 
 /**
@@ -42,7 +44,7 @@ export async function registerWithXStory(
       payload
     );
 
-    if (res && res.message === '註冊成功，請查收驗證信件') {
+    if (res && res.success) {
       return true;
     } else {
       console.warn("註冊失敗:", res?.message);
@@ -50,7 +52,7 @@ export async function registerWithXStory(
       return false;
     }
   } catch (error) {
-    alert(" 註冊發生錯誤，請稍後再試 /n" + (error instanceof Error ? error.message : "未知錯誤"));
+    alert(error instanceof Error ? error.message : "未知錯誤");
     console.error("註冊發生錯誤:", error);
     return false;
   }
@@ -77,7 +79,7 @@ export async function loginWithXStory(
       return false;
     }
   } catch (error) {
-    alert("註冊發生錯誤，請稍後再試 /n" + (error instanceof Error ? error.message : "未知錯誤"));
+    alert(error instanceof Error ? error.message : "未知錯誤");
     console.error("註冊發生錯誤:", error);
     return false;
   }
@@ -94,6 +96,7 @@ export interface XStoryForgotPasswordRequest {
  * 忘記密碼 Response 資料格式
  */
 export interface XStoryForgotPasswordResponse {
+  success: boolean;
   message: string;
 }
 
@@ -120,8 +123,73 @@ export async function forgotXStoryPassword(
       return false;
     }
   } catch (error) {
-    alert("重設密碼時發生錯誤，請稍後再試\n" + (error instanceof Error ? error.message : "未知錯誤"));
+    alert(error instanceof Error ? error.message : "未知錯誤");
     console.error("重設密碼時發生錯誤:", error);
+    return false;
+  }
+}
+
+/**
+ * 忘記密碼 Request 資料格式
+ */
+export interface XStoryVerifyRequest {
+  email: string;
+  token: string;
+}
+
+/**
+ * 忘記密碼 Response 資料格式
+ */
+export interface XStoryVerifyResponse {
+  success: boolean;
+  message: string;
+}
+
+/**
+ * 使用 xStory 驗證電子郵件
+ * @param payload - 包含 email 和 token
+ * @returns 
+ */
+export async function VerifyMail (payload: XStoryVerifyRequest): Promise<boolean> {
+  try {
+    const res = await authApi.post<XStoryVerifyResponse>(
+      "api/auth/verify-email",
+      payload
+    );
+    
+    if (res && res.success) {
+      alert("驗證成功，請重新登入");
+      return true;
+    } else {
+      alert(res?.message || "驗證失敗，請稍後再試");
+      console.warn("驗證失敗:", res?.message);
+      return false;
+    } 
+  } catch (error) {
+    alert(error instanceof Error ? error.message : "未知錯誤");
+    console.error("驗證時發生錯誤:", error);
+    return false;
+  }
+}
+
+/**
+ * 使用 xStory 登出帳號
+ * @returns Promise<boolean> 表示是否成功登出
+ */
+export async function logoutWithXStory(): Promise<boolean> {
+  try {
+    const res = await authApi.post<XStoryAuthResponse>("api/auth/logout", {});
+    
+    if (res && res.message === '登出成功') {
+      return true;
+    } else {
+      console.warn("登出失敗:", res?.message);
+      alert(res?.message || "登出失敗，請稍後再試");
+      return false;
+    } 
+  } catch (error) {
+    alert(error instanceof Error ? error.message : "未知錯誤");
+    console.error("登出時發生錯誤:", error);
     return false;
   }
 }

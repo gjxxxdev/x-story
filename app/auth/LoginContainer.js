@@ -16,30 +16,6 @@ export default function LoginContainer({ onLoginSuccess }) {
   const [showRegisterView, setshowRegisterView] = useState(true);
   const [historyStack, setHistoryStack] = useState([]);
 
-
-  useEffect(() => {
-    Linking.getInitialURL().then((url) => {
-      if (url) {
-        handleOpenURL(url);
-      }
-    });
-
-    const subscription = Linking.addEventListener("url", (event) => {
-      handleOpenURL(event.url);
-    });
-
-    return () => {
-      subscription.remove();  // 移除監聽
-    };
-  }, []);
-
-
-  function handleOpenURL(url) {
-    // 解析 URL 並取得 token 或 code
-    console.log('App 被深度連結喚醒，URL:', url);
-    // 這裡處理登入成功邏輯
-  }
-
   const handleXStoryLogin = () => {
     setHistoryStack((prev) => [...prev, 'emailLogin']);
     setShowEmailLogin(true);

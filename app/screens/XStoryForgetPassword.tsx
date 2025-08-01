@@ -8,6 +8,7 @@ import {
   StyleSheet,
   Image,
 } from "react-native";
+import { forgotXStoryPassword } from "../config/authApiClient";
 
 interface Props {
   email: string;
@@ -20,18 +21,28 @@ export function XStoryForgetPassword({ email, onEmailChange, onCancel, onSuccess
   const [isSending, setIsSending] = useState(false);
   const [waitingVerification, setWaitingVerification] = useState(false);
 
-  const sendResetEmail = () => {
+  const sendResetEmail = async () => {
     if (!email) {
       alert("請輸入 Email");
       return;
     }
     setIsSending(true);
 
-    const sendVerificationEmail = async () => {
+    const sendVerificationEmail = await forgotXStoryPassword({
+      email: email,
+    });
 
+    setIsSending(false);
+    setWaitingVerification(false);
+
+    if (sendVerificationEmail) {
+      alert("重設密碼驗證信已發送，請檢查您的信箱");
+        setWaitingVerification(false);
+        onSuccess();
     }
 
-    
+
+
     /*
     setTimeout(() => {
       setIsSending(false);
@@ -59,18 +70,18 @@ export function XStoryForgetPassword({ email, onEmailChange, onCancel, onSuccess
 
       {!waitingVerification ? (
         <>
-                  <View style={styles.passwordInputWrapper}>
-          <TextInput
-            style={styles.input}
-            placeholder="請輸入您的Email"
-            placeholderTextColor="#7F7F7F"
-            value={email}
-            onChangeText={onEmailChange}
-            keyboardType="email-address"
-            autoCapitalize="none"
-            autoCorrect={false}
-            editable={!isSending}
-          />
+          <View style={styles.passwordInputWrapper}>
+            <TextInput
+              style={styles.input}
+              placeholder="請輸入您的Email"
+              placeholderTextColor="#7F7F7F"
+              value={email}
+              onChangeText={onEmailChange}
+              keyboardType="email-address"
+              autoCapitalize="none"
+              autoCorrect={false}
+              editable={!isSending}
+            />
           </View>
 
           {isSending ? (
