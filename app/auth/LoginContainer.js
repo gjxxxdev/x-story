@@ -5,7 +5,7 @@ import { googleLogin } from "../../components/utils/googleAuth";
 import { wechatLogin } from "../../components/utils/wechatAuth";
 import LoginScreen from "../screens/LoginScreen";
 import RegisterScreen from "../screens/RegisterScreen"
-import { EmailVerification } from "../screens/EmailVerification";
+import { RegisterXStoryScreen } from "../screens/RegisterXStoryScreen";
 import { XStoryLogin } from "../screens/XStoryLogin"
 import { View, Linking, BackHandler, Keyboard, KeyboardAvoidingView, TouchableWithoutFeedback, Platform } from 'react-native';
 import tokenStorage from './Storage';
@@ -83,7 +83,7 @@ export default function LoginContainer({ onLoginSuccess }) {
       console.log('google login: ' + SignInResponse.data.idToken);
       await tokenStorage.setStoreToken(SignInResponse.data.idToken);
       if (SignInResponse.data.idToken.length > 0) {
-        onLoginSuccess();
+          onLoginSuccess();
       }
       else alert(SignInResponse.data.message || "Google 登入失敗或取消");
     } catch (e) {
@@ -254,7 +254,7 @@ export default function LoginContainer({ onLoginSuccess }) {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={{ flex: 1 }}>
           {showEmailVerification ? (
-            <EmailVerification
+            <RegisterXStoryScreen
               onCancel={handleEmailVerificationCancel}
               onSuccess={() => {
                 setShowEmailVerification(false);

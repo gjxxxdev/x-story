@@ -9,6 +9,7 @@ import {
   Image,
 } from "react-native";
 import { translate } from "../i18n/i18n";
+import { registerWithXStory } from "../config/authApiClient";
 
 interface Props {
   onCancel: () => void;
@@ -16,7 +17,7 @@ interface Props {
   onEmailChange?: (email: string) => void;
 }
 
-export function EmailVerification({ onCancel, onSuccess }: Props) {
+export function RegisterXStoryScreen({ onCancel, onSuccess }: Props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -25,7 +26,7 @@ export function EmailVerification({ onCancel, onSuccess }: Props) {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const sendVerificationEmail = () => {
+  const sendVerificationEmail = async () => {
     if (!email) {
       alert("請輸入 Email");
       return;
@@ -51,15 +52,21 @@ export function EmailVerification({ onCancel, onSuccess }: Props) {
 
     setIsSending(true);
 
-    setTimeout(() => {
-      setIsSending(false);
-      setWaitingVerification(true);
+    const registerAccount = await registerWithXStory({
+      email: email,
+      password: password,
+    });
 
-      setTimeout(() => {
-        setWaitingVerification(false);
-        onSuccess();
-      }, 3000);
-    }, 1000);
+    setIsSending(false);
+    setWaitingVerification(true);
+
+    if (registerAccount) {
+      setWaitingVerification(false);
+      onSuccess();
+    }
+    else {
+      setWaitingVerification(false);
+    }
   };
 
   return (

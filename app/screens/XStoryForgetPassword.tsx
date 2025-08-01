@@ -27,6 +27,12 @@ export function XStoryForgetPassword({ email, onEmailChange, onCancel, onSuccess
     }
     setIsSending(true);
 
+    const sendVerificationEmail = async () => {
+
+    }
+
+    
+    /*
     setTimeout(() => {
       setIsSending(false);
       setWaitingVerification(true);
@@ -36,6 +42,7 @@ export function XStoryForgetPassword({ email, onEmailChange, onCancel, onSuccess
         onSuccess();
       }, 3000);
     }, 1000);
+    */
   };
 
   return (
