@@ -99,7 +99,9 @@ export default function LoginScreen(props) {
             onPress={() => handlePress("onAppleLogin")}
           />
         )}
-
+        
+        <View style={{ height: 15 }} />
+         
         <TouchableOpacity
           style={[
             styles.button,
