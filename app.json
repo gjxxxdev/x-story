@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "story-app-v2",
-    "slug": "story-app-v2",
+    "name": "xStory",
+    "slug": "xStory",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -19,7 +19,8 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.rueiyang.story",
-      "scheme": "xstoryscheme"
+      "scheme": "xstoryscheme",
+      "jsEngine": "hermes"
     },
     "android": {
       "splash": {
