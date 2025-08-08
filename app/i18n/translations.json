@@ -29,6 +29,11 @@
         "zh-CN": "我们已将密码重设连接寄到您的信箱，请点击信中的连接进行密码变更",
         "en": "We’ve sent you a link to reset your password. Click the link to set a new password."
     },
+    "registerEmailSentMessage": {
+        "zh-TW": "我們已將註冊連結寄到您的信箱，請點擊信中的連結進行註冊認證",
+        "zh-CN": "我们已将注册连接寄到您的信箱，请点击信中的连接进行注册认证",
+        "en": "We’ve sent you a link to complete your registration. Click the link in the email to verify your account."
+    },
     "ok": {
         "zh-TW": "確定",
         "zh-CN": "确定",

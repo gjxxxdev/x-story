@@ -114,8 +114,8 @@ export async function forgotXStoryPassword(
       payload
     );
 
-    if (res && res.message === '重設密碼驗證信已發送') {
-      alert("重設密碼驗證信已發送，請檢查您的信箱");
+    if (res && res.success) {
+      alert("成功重設密碼，請重新登入");
       return true;
     } else {
       alert(res?.message || "重設密碼失敗，請稍後再試");

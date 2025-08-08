@@ -27,20 +27,20 @@ export default function RootLayout() {
     return () => subscription.remove(); // 清除事件
   }, []);
 
-  const handleDeepLink = async(url: string) => {
+  const handleDeepLink = async (url: string) => {
     const parsed = Linking.parse(url);
     console.log("📨 接收到 URL:", parsed);
 
     // 預期格式：xstoryscheme://verify-email?token=xxxx
-    if (parsed.path === "verify-email" && parsed.queryParams?.token) {
+    if ((parsed.path === "verify-email" || parsed.hostname === "verify-email")
+      && parsed.queryParams?.token) {
       const token = parsed.queryParams.token as string;
       console.log("🔗 處理驗證連結，token:", token);
 
-      const requestVerification = await VerifyMail({
+      await VerifyMail({
         email: parsed.queryParams.email as string,
-        token: token,
+        token,
       });
-      
     } else {
       console.log("⛔️ 不支援的連結格式");
     }

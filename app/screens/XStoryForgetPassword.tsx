@@ -1,5 +1,6 @@
 import { useState } from "react";
 import {
+  Alert,
   TextInput,
   View,
   Text,
@@ -9,6 +10,7 @@ import {
   Image,
 } from "react-native";
 import { forgotXStoryPassword } from "../config/authApiClient";
+import { translate } from "../i18n/i18n";
 
 interface Props {
   email: string;
@@ -36,9 +38,15 @@ export function XStoryForgetPassword({ email, onEmailChange, onCancel, onSuccess
     setWaitingVerification(false);
 
     if (sendVerificationEmail) {
-      alert("重設密碼驗證信已發送，請檢查您的信箱");
-        setWaitingVerification(false);
-        onSuccess();
+      Alert.alert(
+        translate("resetEmailSentTitle"),
+        translate("resetEmailSentMessage"),
+        [
+          { text: translate("ok") }
+        ]
+      );
+      setWaitingVerification(false);
+      onSuccess();
     }
 
 

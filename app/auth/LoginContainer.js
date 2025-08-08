@@ -7,8 +7,9 @@ import LoginScreen from "../screens/LoginScreen";
 import RegisterScreen from "../screens/RegisterScreen"
 import { RegisterXStoryScreen } from "../screens/RegisterXStoryScreen";
 import { XStoryLogin } from "../screens/XStoryLogin"
-import { View, Linking, BackHandler, Keyboard, KeyboardAvoidingView, TouchableWithoutFeedback, Platform } from 'react-native';
+import { Alert, View, Linking, BackHandler, Keyboard, KeyboardAvoidingView, TouchableWithoutFeedback, Platform } from 'react-native';
 import tokenStorage from './Storage';
+import { translate } from "../i18n/i18n";
 
 export default function LoginContainer({ onLoginSuccess }) {
   const [showEmailVerification, setShowEmailVerification] = useState(false);
@@ -59,7 +60,7 @@ export default function LoginContainer({ onLoginSuccess }) {
       console.log('google login: ' + SignInResponse.data.idToken);
       await tokenStorage.setStoreToken(SignInResponse.data.idToken);
       if (SignInResponse.data.idToken.length > 0) {
-          onLoginSuccess();
+        onLoginSuccess();
       }
       else alert(SignInResponse.data.message || "Google 登入失敗或取消");
     } catch (e) {
@@ -234,7 +235,12 @@ export default function LoginContainer({ onLoginSuccess }) {
               onCancel={handleEmailVerificationCancel}
               onSuccess={() => {
                 setShowEmailVerification(false);
-                onLoginSuccess();
+                Alert.alert(
+                  translate("registerEmailSentMessage"),
+                  [
+                    { text: translate("ok") }
+                  ]
+                );
               }}
             />
           ) : showEmailLogin ? (
