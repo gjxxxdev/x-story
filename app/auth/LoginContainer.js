@@ -7,7 +7,7 @@ import LoginScreen from "../screens/LoginScreen";
 import RegisterScreen from "../screens/RegisterScreen"
 import { RegisterXStoryScreen } from "../screens/RegisterXStoryScreen";
 import { XStoryLogin } from "../screens/XStoryLogin"
-import { Alert, View, Linking, BackHandler, Keyboard, KeyboardAvoidingView, TouchableWithoutFeedback, Platform } from 'react-native';
+import { Alert, View, BackHandler, Keyboard, KeyboardAvoidingView, TouchableWithoutFeedback, Platform } from 'react-native';
 import tokenStorage from './Storage';
 import { translate } from "../i18n/i18n";
 

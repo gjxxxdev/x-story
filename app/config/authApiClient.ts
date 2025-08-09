@@ -47,12 +47,12 @@ export async function registerWithXStory(
     if (res && res.success) {
       return true;
     } else {
-      console.warn("註冊失敗:", res?.message);
+      console.warn("註冊失敗:", res.message);
       alert(res?.message || "註冊失敗，請稍後再試");
       return false;
     }
   } catch (error) {
-    alert(error instanceof Error ? error.message : "未知錯誤");
+    alert(extractErrorMessage(error));
     console.error("註冊發生錯誤:", error);
     return false;
   }
@@ -64,24 +64,30 @@ export async function registerWithXStory(
  */
 export async function loginWithXStory(
   payload: XStoryAuthRequest
-): Promise<boolean> {
+): Promise<string | null> {
   try {
     const res = await authApi.post<XStoryAuthResponse>(
       "api/auth/login",
       payload
     );
 
-    if (res && res.message === '信箱驗證成功，請重新登入') {
-      return true;
+    if (res && res.success) {
+      const token = res.accessToken;
+      console.log("登入成功，token:", token);
+      // 這裡可以儲存 token 或進行其他登入後的處理
+      // 例如：AsyncStorage.setItem('xStoryToken', token);
+      // 或者使用 Redux/Context API 儲存登入狀態
+
+      return token;
     } else {
-      alert(res?.message || "註冊失敗，請稍後再試");
-      console.warn("註冊失敗:", res?.message);
-      return false;
+      alert(res?.message || "登入失敗，請稍後再試");
+      console.warn("登入失敗:", res?.message);
+      return null;
     }
   } catch (error) {
-    alert(error instanceof Error ? error.message : "未知錯誤");
-    console.error("註冊發生錯誤:", error);
-    return false;
+    alert(extractErrorMessage(error));
+    console.error("登入發生錯誤:", error);
+    return null;
   }
 }
 
@@ -115,15 +121,14 @@ export async function forgotXStoryPassword(
     );
 
     if (res && res.success) {
-      alert("成功重設密碼，請重新登入");
       return true;
     } else {
-      alert(res?.message || "重設密碼失敗，請稍後再試");
-      console.warn("重設密碼失敗:", res?.message);
+      alert(res?.message || "重設密碼寄信失敗，請稍後再試");
+      console.warn("重設密碼寄信失敗:", res?.message);
       return false;
     }
   } catch (error) {
-    alert(error instanceof Error ? error.message : "未知錯誤");
+    alert(extractErrorMessage(error));
     console.error("重設密碼時發生錯誤:", error);
     return false;
   }
@@ -150,13 +155,13 @@ export interface XStoryVerifyResponse {
  * @param payload - 包含 email 和 token
  * @returns 
  */
-export async function VerifyMail (payload: XStoryVerifyRequest): Promise<boolean> {
+export async function VerifyMail(payload: XStoryVerifyRequest): Promise<boolean> {
   try {
     const res = await authApi.post<XStoryVerifyResponse>(
       "api/auth/verify-email",
       payload
     );
-    
+
     if (res && res.success) {
       alert("驗證成功，請重新登入");
       return true;
@@ -164,9 +169,9 @@ export async function VerifyMail (payload: XStoryVerifyRequest): Promise<boolean
       alert(res?.message || "驗證失敗，請稍後再試");
       console.warn("驗證失敗:", res?.message);
       return false;
-    } 
+    }
   } catch (error) {
-    alert(error instanceof Error ? error.message : "未知錯誤");
+    alert(extractErrorMessage(error));
     console.error("驗證時發生錯誤:", error);
     return false;
   }
@@ -179,17 +184,82 @@ export async function VerifyMail (payload: XStoryVerifyRequest): Promise<boolean
 export async function logoutWithXStory(): Promise<boolean> {
   try {
     const res = await authApi.post<XStoryAuthResponse>("api/auth/logout", {});
-    
+
     if (res && res.message === '登出成功') {
       return true;
     } else {
       console.warn("登出失敗:", res?.message);
       alert(res?.message || "登出失敗，請稍後再試");
       return false;
-    } 
+    }
   } catch (error) {
-    alert(error instanceof Error ? error.message : "未知錯誤");
+    alert(extractErrorMessage(error));
     console.error("登出時發生錯誤:", error);
     return false;
   }
+}
+
+export interface ResetPasswordRequest {
+  token: string;
+  newPassword: string;
+}
+
+export interface ResetPasswordResponse {
+  success: boolean;
+  message: string;
+}
+
+// 重設密碼 API
+// 這個 API 用於處理重設密碼的請求
+// 需要提供 token 和新的密碼
+// 成功時返回 success: true，失敗時返回 success: false 並帶有錯誤訊息
+export async function resetXStoryPassword(
+  payload: ResetPasswordRequest
+): Promise<boolean> {
+  try {
+    const res = await authApi.post<ResetPasswordResponse>(
+      "api/auth/reset-password",
+      payload
+    );
+
+    if (res && res.success) {
+      alert("密碼已成功重設，請重新登入");
+      return true;
+    } else {
+      alert(res?.message || "密碼重設失敗，請稍後再試");
+      console.warn("密碼重設失敗:", res?.message);
+      return false;
+    }
+  } catch (error) {
+    alert(extractErrorMessage(error));
+    console.error("密碼重設時發生錯誤:", error);
+    return false;
+  }
+}
+
+function extractErrorMessage(err: unknown): string {
+  // 如果是 Error 且 message 裡可能包含 JSON
+  if (err instanceof Error) {
+    try {
+      // 嘗試從 message 中解析 JSON
+      const match = err.message.match(/\{.*\}/);
+      if (match) {
+        const parsed = JSON.parse(match[0]);
+        if (parsed && typeof parsed.message === "string") {
+          return parsed.message;
+        }
+      }
+    } catch (_) {
+      // 忽略 JSON parse 失敗
+    }
+    // 否則回傳原本的簡訊息
+    return err.message;
+  }
+
+  // 如果是 Response 物件或一般物件
+  if (typeof err === "object" && err !== null && "message" in err) {
+    return String((err as any).message);
+  }
+
+  return "未知錯誤";
 }

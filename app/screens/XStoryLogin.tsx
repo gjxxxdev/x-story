@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { XStoryForgetPassword } from "./XStoryForgetPassword";
 import { translate } from "../i18n/i18n";
-import { loginWithXStory} from '../config/authApiClient';
+import { loginWithXStory } from '../config/authApiClient';
 
 interface Props {
     onLoginSuccess: (token: string) => void;
@@ -22,21 +22,20 @@ export function XStoryLogin({ onLoginSuccess, onCancel }: Props) {
     const [showForgetPassword, setshowForgetPassword] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
 
-    const handleLogin = async() => {
+    const handleLogin = async () => {
         const requestSignIn = await loginWithXStory({
-          email: email,
-          password: password
+            email: email,
+            password: password
         });
-        if (requestSignIn) {
-        const token = 'test_token_string';
-        onLoginSuccess(token);
+        if (requestSignIn && requestSignIn.length > 0) {
+            onLoginSuccess(requestSignIn);
         }
     };
 
     return showForgetPassword ? (
         <XStoryForgetPassword
             email={""}
-            onEmailChange={() => {}}
+            onEmailChange={() => { }}
             onCancel={() => setshowForgetPassword(false)}
             onSuccess={() => setshowForgetPassword(false)}
         />
