@@ -11,6 +11,7 @@ import * as Linking from "expo-linking";
 import { VerifyMail } from './config/authApiClient';
 import tokenStorage from './auth/Storage';
 import { ResetPasswordScreen } from './screens/ResetPasswordScreen';
+import { AuthProvider } from "./auth/AuthContext";
 
 
 export default function RootLayout() {
@@ -93,6 +94,10 @@ export default function RootLayout() {
     }
   };
 
+  const logout = async () => {
+    setIsLoggedIn(false);
+  };
+
   if (checking) {
     return (
       <SafeAreaWrapper style={styles.loadingContainer}>
@@ -103,25 +108,27 @@ export default function RootLayout() {
 
   return (
     <LoadingProvider>
-      <SafeAreaWrapper style={{ flex: 1 }}>
-        {isLoggedIn ? (
-          // ✅ 已登入：進入主導覽
-          <AppNavigator />
-        ) : isResetPassword && token ? (
-          // 🔐 重設密碼畫面
-          <ResetPasswordScreen
-            token={token}
-            onCancel={() => setIsResetPassword(false)}   // 取消回到登入頁
-            onSuccess={() => setIsResetPassword(false)}  // 成功後回到登入頁（也可改成直接導向登入）
-          />
-        ) : (
-          // 🔑 尚未登入：顯示登入容器
-          <LoginContainer onLoginSuccess={() => setIsLoggedIn(true)} />
-        )}
+      <AuthProvider value={{ isLoggedIn, setIsLoggedIn, logout }}>
+        <SafeAreaWrapper style={{ flex: 1 }}>
+          {isLoggedIn ? (
+            // ✅ 已登入：進入主導覽
+            <AppNavigator />
+          ) : isResetPassword && token ? (
+            // 🔐 重設密碼畫面
+            <ResetPasswordScreen
+              token={token}
+              onCancel={() => setIsResetPassword(false)}   // 取消回到登入頁
+              onSuccess={() => setIsResetPassword(false)}  // 成功後回到登入頁（也可改成直接導向登入）
+            />
+          ) : (
+            // 🔑 尚未登入：顯示登入容器
+            <LoginContainer onLoginSuccess={() => setIsLoggedIn(true)} />
+          )}
 
-        {/* 全域載入覆蓋層 */}
-        <LoadingOverlay />
-      </SafeAreaWrapper>
+          {/* 全域載入覆蓋層 */}
+          <LoadingOverlay />
+        </SafeAreaWrapper>
+      </AuthProvider>
     </LoadingProvider>
   );
 

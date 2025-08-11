@@ -73,7 +73,7 @@ export default function LoginContainer({ onLoginSuccess }) {
       const token = await appleLogin();
       if (token) {
         await tokenStorage.setStoreToken(token);
-        console.log('google login: ' + token);
+        console.log('apple login: ' + token);
         onLoginSuccess();
       }
       else alert("Apple 登入失敗或取消");

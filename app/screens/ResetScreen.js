@@ -1,8 +1,11 @@
 import { useEffect } from "react";
 import { Alert } from "react-native";
 import * as SecureStore from "expo-secure-store";
+import { useAuth } from "../auth/AuthContext";
 
 export function ResetScreen({ navigation }) {
+  const { setIsLoggedIn } = useAuth();
+  
   useEffect(() => {
     const unsubscribe = navigation.addListener("focus", async () => {
       Alert.alert(
@@ -22,12 +25,15 @@ export function ResetScreen({ navigation }) {
             onPress: async () => {
               await SecureStore.deleteItemAsync("authToken");
               await SecureStore.deleteItemAsync("userId");
-
               Alert.alert("已重置", "資料已清除");
+              setIsLoggedIn(false);
+              /*
               navigation.reset({
                 index: 0,
                 routes: [{ name: "Login" }],
               });
+              */
+             
             },
           },
         ],

@@ -24,7 +24,6 @@
 	<string>1.0.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
-
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -32,22 +31,14 @@
 			<array>
 				<string>xstoryscheme</string>
 				<string>com.googleusercontent.apps.927761409049-66o2rujvgaoaovopb4q3mvev3kceej95</string>
-				<!-- Facebook Login URL Scheme -->
 				<string>fb753717744007574</string>
 			</array>
 		</dict>
 	</array>
-
 	<key>CFBundleVersion</key>
 	<string>1</string>
-
 	<key>CLIENT_ID</key>
 	<string>927761409049-66o2rujvgaoaovopb4q3mvev3kceej95.apps.googleusercontent.com</string>
-	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.927761409049-66o2rujvgaoaovopb4q3mvev3kceej95</string>
-	<key>GIDClientID</key>
-	<string>927761409049-66o2rujvgaoaovopb4q3mvev3kceej95.apps.googleusercontent.com</string>
-
 	<key>FacebookAdvertiserIDCollectionEnabled</key>
 	<true/>
 	<key>FacebookAppID</key>
@@ -56,8 +47,8 @@
 	<string>956e97e309a5751335ccc44517b8f12c</string>
 	<key>FacebookDisplayName</key>
 	<string>xStory-Dev</string>
-
-	<!-- Facebook URL Scheme Query Support -->
+	<key>GIDClientID</key>
+	<string>927761409049-66o2rujvgaoaovopb4q3mvev3kceej95.apps.googleusercontent.com</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
@@ -65,12 +56,10 @@
 		<string>fbauth2</string>
 		<string>fbshareextension</string>
 	</array>
-
 	<key>LSMinimumSystemVersion</key>
 	<string>12.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSExceptionDomains</key>
@@ -84,15 +73,14 @@
 			</dict>
 		</dict>
 	</dict>
-
 	<key>NSFaceIDUsageDescription</key>
 	<string>Allow $(PRODUCT_NAME) to access your Face ID biometric data.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Allow $(PRODUCT_NAME) to access your microphone</string>
-
 	<key>PLIST_VERSION</key>
 	<string>1</string>
-
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.927761409049-66o2rujvgaoaovopb4q3mvev3kceej95</string>
 	<key>UILaunchStoryboardName</key>
 	<string>SplashScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
