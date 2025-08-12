@@ -8,11 +8,11 @@ import {
   Alert,
   Platform,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import routes from '../../navigations/routes';
 import AppText from '../AppText';
 import colors from '../../config/colors';
 import apiclient  from '../../config/apiClient';
+import { useGuardedNavigate } from '@/hooks/useAuthNavigation';
 
 const screenWidth = Dimensions.get('window').width;
 
@@ -43,7 +43,7 @@ function Book(props) {
     id,
     lang,
   } = storyData;
-  const navigation = useNavigation();
+  const navigation = useGuardedNavigate();
   const imageUri =
     apiclient.currentBaseUrl() + 'images/update/' + main_menu_image;
   const hasChapter = chapter_type === '章節';

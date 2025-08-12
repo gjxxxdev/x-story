@@ -1,16 +1,16 @@
 import React, { useRef } from 'react';
 import { View, StyleSheet, Pressable, Image } from 'react-native';
 import ImageModal from '../ImageModal';
-import { useNavigation } from '@react-navigation/native';
 import routes from '../../navigations/routes';
 import apiclient  from '../../config/apiClient';
+import { useGuardedNavigate } from '@/hooks/useAuthNavigation';
 
 const domain = apiclient.currentBaseUrl() + 'images/update/';
 
 function ChatImageArea({ imgMsg, backgroundColor, imgSize }) {
   const imageUrl = domain + imgMsg;
   const modalRef = useRef(null);
-  const navigation = useNavigation();
+  const navigation = useGuardedNavigate();
   return (
     <View style={[{ flex: 1 }]}>
       <Pressable

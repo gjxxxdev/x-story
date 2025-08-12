@@ -1,14 +1,15 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import { useNavigation, DrawerActions } from "@react-navigation/native";
+import { DrawerActions } from "@react-navigation/native";
 
+import { useGuardedNavigate } from '@/hooks/useAuthNavigation';
 import IconButton from "./IconButton";
 import routes from "../navigations/routes";
 
 //navigation.dispatch(DrawerActions.openDrawer())
 
 function DrawerHeader() {
-  const navigation = useNavigation();
+  const navigation = useGuardedNavigate();
   return (
     <View style={styles.container}>
       <IconButton

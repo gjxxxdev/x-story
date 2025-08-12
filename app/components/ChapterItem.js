@@ -9,13 +9,13 @@ import {
 } from 'react-native';
 import React from 'react';
 import AppText from './AppText';
-import { useNavigation } from '@react-navigation/native';
 import routes from '../navigations/routes';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import apiclient from '../config/apiClient';
+import { useGuardedNavigate } from '@/hooks/useAuthNavigation';
 
 const ChapterItem = (props) => {
   const {
@@ -42,7 +42,7 @@ const ChapterItem = (props) => {
   } = props ?? {};
 
   const isFreeOpen = free_open === '開放';
-  const navigation = useNavigation();
+  const navigation = useGuardedNavigate();
   const imageUri =  apiclient.currentBaseUrl() + `images/update/${chapter_img}`;
 
   const showAlert = () => {

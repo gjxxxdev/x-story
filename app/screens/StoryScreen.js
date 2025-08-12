@@ -17,11 +17,13 @@ import storage from '../storage/storage';
 import { useRoute } from '@react-navigation/native';
 import _ from 'lodash';
 import apiclient  from '../config/apiClient';
+import { useGuardedNavigate } from '@/hooks/useAuthNavigation';
 
 const domain = apiclient.currentBaseUrl() + 'images/update/';
 const initStoryIdx = null;
 
-function StoryScreen({ route, navigation }) {
+function StoryScreen({ route }) {
+  const navigation = useGuardedNavigate();
   const router = useRoute();
   const {
     storyId = 1,
