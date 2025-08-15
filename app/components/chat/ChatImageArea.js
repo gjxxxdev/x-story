@@ -3,7 +3,7 @@ import { View, StyleSheet, Pressable, Image } from 'react-native';
 import ImageModal from '../ImageModal';
 import routes from '../../navigations/routes';
 import apiclient  from '../../config/apiClient';
-import { useGuardedNavigate } from '@/hooks/useAuthNavigation';
+import { useGuardedNavigate } from '../../../hooks/useGuardedNavigate';
 
 const domain = apiclient.currentBaseUrl() + 'images/update/';
 

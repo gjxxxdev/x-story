@@ -17,7 +17,7 @@ import storage from '../storage/storage';
 import { useRoute } from '@react-navigation/native';
 import _ from 'lodash';
 import apiclient  from '../config/apiClient';
-import { useGuardedNavigate } from '@/hooks/useAuthNavigation';
+import { useGuardedNavigate } from '../../hooks/useGuardedNavigate';
 
 const domain = apiclient.currentBaseUrl() + 'images/update/';
 const initStoryIdx = null;

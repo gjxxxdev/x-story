@@ -1,8 +1,7 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import { DrawerActions } from "@react-navigation/native";
-
-import { useGuardedNavigate } from '@/hooks/useAuthNavigation';
+import { useGuardedNavigate } from '../../hooks/useGuardedNavigate';
 import IconButton from "./IconButton";
 import routes from "../navigations/routes";
 

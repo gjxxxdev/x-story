@@ -12,7 +12,7 @@ import routes from '../../navigations/routes';
 import AppText from '../AppText';
 import colors from '../../config/colors';
 import apiclient  from '../../config/apiClient';
-import { useGuardedNavigate } from '@/hooks/useAuthNavigation';
+import { useGuardedNavigate } from '../../../hooks/useGuardedNavigate';
 
 const screenWidth = Dimensions.get('window').width;
 

@@ -10,6 +10,7 @@ import { XStoryLogin } from "../screens/XStoryLogin"
 import { Alert, View, BackHandler, Keyboard, KeyboardAvoidingView, TouchableWithoutFeedback, Platform } from 'react-native';
 import tokenStorage from './Storage';
 import { translate } from "../i18n/i18n";
+import { authApiClient } from '../config/authApiClient';
 
 export default function LoginContainer({ onLoginSuccess }) {
   const [showEmailVerification, setShowEmailVerification] = useState(false);
@@ -60,7 +61,13 @@ export default function LoginContainer({ onLoginSuccess }) {
       console.log('google login: ' + SignInResponse.data.idToken);
       await tokenStorage.setStoreToken(SignInResponse.data.idToken);
       if (SignInResponse.data.idToken.length > 0) {
-        onLoginSuccess();
+          const googleLoginServerRequest = { idToken: SignInResponse.data.idToken };
+          const serverGoogleLoginAccessToken = await authApiClient.googleLoginWithXStory(googleLoginServerRequest);
+          if(serverGoogleLoginAccessToken && serverGoogleLoginAccessToken.length > 0) {
+            onLoginSuccess();
+          } else {
+            alert("serverGoogleLoginAccessToken is empty, please try again");
+          }
       }
       else alert(SignInResponse.data.message || "Google 登入失敗或取消");
     } catch (e) {

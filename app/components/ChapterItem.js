@@ -15,7 +15,7 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import apiclient from '../config/apiClient';
-import { useGuardedNavigate } from '@/hooks/useAuthNavigation';
+import { useGuardedNavigate } from '../../hooks/useGuardedNavigate';
 
 const ChapterItem = (props) => {
   const {

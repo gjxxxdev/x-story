@@ -263,3 +263,46 @@ function extractErrorMessage(err: unknown): string {
 
   return "未知錯誤";
 }
+
+//=======================================================
+//============== xStory Google 登入相關 API ==============
+//=======================================================
+
+// Google 登入 Request
+export interface XStoryGoogleLoginRequest {
+  idToken: string;
+}
+
+// Google 登入 Response
+export interface XStoryGoogleLoginResponse {
+  success: boolean;
+  message: string;
+  accessToken?: string;
+  refreshToken?: string;
+  // 可能還會有 isNewUser、profile 等欄位，依後端再擴充
+}
+
+// 使用 xStory Google 登入
+export async function googleLoginWithXStory(
+  payload: XStoryGoogleLoginRequest
+): Promise<string | null> {
+  try {
+    const res = await authApi.post<XStoryGoogleLoginResponse>(
+      "api/auth/google-login",
+      payload
+    );
+
+    if (res && res.success && res.accessToken) {
+      console.log("Google 登入成功，token:", res.accessToken);
+      return res.accessToken;
+    } else {
+      alert(res?.message || "Google 登入失敗，請稍後再試");
+      console.warn("Google 登入失敗:", res?.message);
+      return null;
+    }
+  } catch (error) {
+    alert(extractErrorMessage(error));
+    console.error("Google 登入發生錯誤:", error);
+    return null;
+  }
+}
