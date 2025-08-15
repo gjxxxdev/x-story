@@ -44,9 +44,14 @@ export default function LoginContainer({ onLoginSuccess }) {
       const token = await facebookLogin();
       console.log('facebook login:' + token);
       if (token) {
-        await tokenStorage.setStoreToken(token);
+        const serverToken = await authApiClient.facebookLoginWithXStory(token);
+        if (serverToken && serverToken.length > 0) {
+          await tokenStorage.setStoreToken(serverToken);
+          onLoginSuccess();
+        } else {
+          alert("serverToken is empty, please try again");
+        }
         console.log("facebook login user token:", token);
-        onLoginSuccess();
       }
       else alert("Facebook 登入失敗或取消");
     } catch (e) {
@@ -59,15 +64,15 @@ export default function LoginContainer({ onLoginSuccess }) {
       const SignInResponse = await googleLogin();
       console.log('google login: ' + SignInResponse.data.user);
       console.log('google login: ' + SignInResponse.data.idToken);
-      await tokenStorage.setStoreToken(SignInResponse.data.idToken);
       if (SignInResponse.data.idToken.length > 0) {
-          const googleLoginServerRequest = { idToken: SignInResponse.data.idToken };
-          const serverGoogleLoginAccessToken = await authApiClient.googleLoginWithXStory(googleLoginServerRequest);
-          if(serverGoogleLoginAccessToken && serverGoogleLoginAccessToken.length > 0) {
-            onLoginSuccess();
-          } else {
-            alert("serverGoogleLoginAccessToken is empty, please try again");
-          }
+        const googleLoginServerRequest = { idToken: SignInResponse.data.idToken };
+        const serverGoogleLoginAccessToken = await authApiClient.googleLoginWithXStory(googleLoginServerRequest);
+        if (serverGoogleLoginAccessToken && serverGoogleLoginAccessToken.length > 0) {
+          await tokenStorage.setStoreToken(serverGoogleLoginAccessToken);
+          onLoginSuccess();
+        } else {
+          alert("serverGoogleLoginAccessToken is empty, please try again");
+        }
       }
       else alert(SignInResponse.data.message || "Google 登入失敗或取消");
     } catch (e) {
@@ -78,11 +83,16 @@ export default function LoginContainer({ onLoginSuccess }) {
   const handleAppleLogin = async () => {
     try {
       const appletoken = await appleLogin();
-        console.log('apple appletoken: ' + appletoken);
+      console.log('apple appletoken: ' + appletoken);
       if (appletoken) {
         const token = await authApiClient.appleLoginWithXStory({ idToken: appletoken });
-        await tokenStorage.setStoreToken(token);
-        onLoginSuccess();
+        if (token && token.length > 0) {
+          await tokenStorage.setStoreToken(token);
+          console.log('apple login: ' + token);
+          onLoginSuccess();
+        } else {
+          alert("token is empty, please try again");
+        }
       }
       else alert("Apple 登入失敗或取消");
     } catch (e) {

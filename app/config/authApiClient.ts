@@ -353,3 +353,51 @@ export async function appleLoginWithXStory(
     return null;
   }
 }
+
+//=======================================================
+//============== xStory Facebook 登入相關 API ==============
+//=======================================================
+
+// Facebook 登入 Request
+export interface XStoryFacebookLoginRequest {
+  accessToken: string;
+}
+
+// Facebook 登入 Response
+export interface XStoryFacebookLoginResponse {
+  success: boolean;
+  message: string;
+  accessToken?: string;
+  refreshToken?: string;
+  // 可視後端回傳內容再擴充
+}
+
+/**
+ * 使用 xStory Facebook 登入
+ * @param payload - 包含 Facebook 的 accessToken
+ * @returns 成功回傳 accessToken，失敗則為 null
+ */
+export async function facebookLoginWithXStory(
+  payload: XStoryFacebookLoginRequest
+): Promise<string | null> {
+  try {
+    const res = await authApi.post<XStoryFacebookLoginResponse>(
+      "api/auth/facebook-login",
+      payload
+    );
+
+    if (res && res.success && res.accessToken) {
+      console.log("Facebook 登入成功，token:", res.accessToken);
+      return res.accessToken;
+    } else {
+      alert(res?.message || "Facebook 登入失敗，請稍後再試");
+      console.warn("Facebook 登入失敗:", res?.message);
+      return null;
+    }
+  } catch (error) {
+    alert(extractErrorMessage(error));
+    console.error("Facebook 登入發生錯誤:", error);
+    return null;
+  }
+}
+
