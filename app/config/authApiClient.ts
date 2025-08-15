@@ -293,16 +293,63 @@ export async function googleLoginWithXStory(
     );
 
     if (res && res.success && res.accessToken) {
-      console.log("Google 登入成功，token:", res.accessToken);
+      console.log("api/auth/google-login 登入成功，token:", res.accessToken);
       return res.accessToken;
     } else {
       alert(res?.message || "Google 登入失敗，請稍後再試");
-      console.warn("Google 登入失敗:", res?.message);
+      console.warn("api/auth/google-login 登入失敗:", res?.message);
       return null;
     }
   } catch (error) {
     alert(extractErrorMessage(error));
-    console.error("Google 登入發生錯誤:", error);
+    console.error("api/auth/google-login 登入發生錯誤:", error);
+    return null;
+  }
+}
+
+
+//=======================================================
+//============== xStory Apple 登入相關 API ==============
+//=======================================================
+
+// Apple 登入 Request
+export interface XStoryAppleLoginRequest {
+  idToken: string;
+}
+
+// Apple 登入 Response
+export interface XStoryAppleLoginResponse {
+  success: boolean;
+  message: string;
+  accessToken?: string;
+  refreshToken?: string;
+}
+
+/**
+ * 使用 xStory Apple 登入
+ * @param payload - 包含 Apple 的 idToken
+ * @returns 成功回傳 accessToken，失敗則為 null
+ */
+export async function appleLoginWithXStory(
+  payload: XStoryAppleLoginRequest
+): Promise<string | null> {
+  try {
+    const res = await authApi.post<XStoryAppleLoginResponse>(
+      "api/auth/apple-login",
+      payload
+    );
+
+    if (res && res.success && res.accessToken) {
+      console.log("api/auth/apple-login 登入成功，token:", res.accessToken);
+      return res.accessToken;
+    } else {
+      alert(res?.message || "Apple 登入失敗，請稍後再試");
+      console.warn("api/auth/apple-login 登入失敗:", res?.message);
+      return null;
+    }
+  } catch (error) {
+    alert(extractErrorMessage(error));
+    console.error("api/auth/apple-login 登入發生錯誤:", error);
     return null;
   }
 }

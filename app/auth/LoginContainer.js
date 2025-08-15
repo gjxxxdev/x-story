@@ -77,10 +77,11 @@ export default function LoginContainer({ onLoginSuccess }) {
 
   const handleAppleLogin = async () => {
     try {
-      const token = await appleLogin();
-      if (token) {
+      const appletoken = await appleLogin();
+        console.log('apple appletoken: ' + appletoken);
+      if (appletoken) {
+        const token = await authApiClient.appleLoginWithXStory({ idToken: appletoken });
         await tokenStorage.setStoreToken(token);
-        console.log('apple login: ' + token);
         onLoginSuccess();
       }
       else alert("Apple 登入失敗或取消");
