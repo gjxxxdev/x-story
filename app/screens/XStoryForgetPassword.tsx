@@ -8,83 +8,71 @@ import {
   ActivityIndicator,
   StyleSheet,
   Image,
+  KeyboardAvoidingView,
+  Platform,
 } from "react-native";
 import { forgotXStoryPassword } from "../config/authApiClient";
 import { translate } from "../i18n/i18n";
 
 interface Props {
-  email: string;
   onEmailChange: (email: string) => void;
   onCancel: () => void;
   onSuccess: () => void;
 }
 
-export function XStoryForgetPassword({ email, onEmailChange, onCancel, onSuccess }: Props) {
+export function XStoryForgetPassword({ onEmailChange, onCancel, onSuccess }: Props) {
+  const [email, setEmail] = useState("");
   const [isSending, setIsSending] = useState(false);
   const [waitingVerification, setWaitingVerification] = useState(false);
 
   const sendResetEmail = async () => {
     if (!email) {
-      alert("請輸入 Email");
+      Alert.alert(translate("error"), translate("pleaseEnterEmail"));
       return;
     }
     setIsSending(true);
 
-    const sendVerificationEmail = await forgotXStoryPassword({
-      email: email,
-    });
+    const ok = await forgotXStoryPassword({ email });
 
     setIsSending(false);
     setWaitingVerification(false);
 
-    if (sendVerificationEmail) {
+    if (ok) {
+      // 同步回父層（可選）
+      onEmailChange(email);
+
       Alert.alert(
         translate("resetEmailSentTitle"),
         translate("resetEmailSentMessage"),
-        [
-          { text: translate("ok") }
-        ]
+        [{ text: translate("ok"), onPress: onSuccess }]
       );
-      setWaitingVerification(false);
-      onSuccess();
     }
-
-
-
-    /*
-    setTimeout(() => {
-      setIsSending(false);
-      setWaitingVerification(true);
-
-      setTimeout(() => {
-        setWaitingVerification(false);
-        onSuccess();
-      }, 3000);
-    }, 1000);
-    */
   };
 
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView
+      style={styles.screen}
+      behavior={Platform.select({ ios: "padding", android: undefined })}
+    >
       {/* 左上角 Logo */}
       <View style={styles.logoContainer}>
-        <Image
-          style={styles.imgIcon}
-          source={require('../../assets/blueeye.png')}
-        />
+        <Image style={styles.imgIcon} source={require("../../assets/blueeye.png")} />
       </View>
 
-      <Text style={styles.title}>忘記密碼</Text>
+      <Text style={styles.title}>{translate("forgotPasswordTitle") || "忘記密碼"}</Text>
 
       {!waitingVerification ? (
         <>
-          <View style={styles.passwordInputWrapper}>
+          <View style={styles.inputWrapper}>
             <TextInput
               style={styles.input}
-              placeholder="請輸入您的Email"
+              placeholder={translate("pleaseEnterEmail") || "請輸入您的Email"}
               placeholderTextColor="#7F7F7F"
               value={email}
-              onChangeText={onEmailChange}
+              onChangeText={(v) => {
+                setEmail(v);  
+                onEmailChange(v);
+              }}
               keyboardType="email-address"
               autoCapitalize="none"
               autoCorrect={false}
@@ -96,33 +84,28 @@ export function XStoryForgetPassword({ email, onEmailChange, onCancel, onSuccess
             <ActivityIndicator size="large" color="#0ABAB5" style={{ marginVertical: 20 }} />
           ) : (
             <TouchableOpacity style={styles.sendButton} onPress={sendResetEmail}>
-              <Text style={styles.sendButtonText}>發送重設信</Text>
+              <Text style={styles.sendButtonText}>{translate("sendResetEmail") || "發送重設信"}</Text>
             </TouchableOpacity>
           )}
 
-          <TouchableOpacity
-            style={styles.cancelButton}
-            onPress={onCancel}
-            disabled={isSending}
-          >
-            <Text style={styles.cancelButtonText}>取消</Text>
+          <TouchableOpacity style={styles.cancelButton} onPress={onCancel} disabled={isSending}>
+            <Text style={styles.cancelButtonText}>{translate("cancel") || "取消"}</Text>
           </TouchableOpacity>
         </>
       ) : (
         <Text style={styles.waitingText}>
-          重設信已發送，請到信箱確認。
-          {"\n"}
-          （3秒後自動返回登入畫面）
+          {translate("resetEmailSentMessage") || "重設信已發送，請到信箱確認。"}
         </Text>
       )}
-    </View>
+    </KeyboardAvoidingView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  // 用 Modal 後，這裡就是一個一般頁面容器即可
+  screen: {
     flex: 1,
-    backgroundColor: "#39393B",
+    backgroundColor: "#39393B", // 直接實色覆蓋底層，避免「看到底下畫面」
     justifyContent: "center",
     alignItems: "center",
     paddingHorizontal: 30,
@@ -133,15 +116,20 @@ const styles = StyleSheet.create({
     color: "white",
     marginBottom: 40,
   },
-  input: {
+  inputWrapper: {
     width: "100%",
     height: 50,
     borderRadius: 25,
     backgroundColor: "#1C1C1C",
+    flexDirection: "row",
+    alignItems: "center",
     paddingHorizontal: 20,
+    marginBottom: 10,
+  },
+  input: {
+    flex: 1,
     fontSize: 16,
     color: "white",
-    marginBottom: 30,
   },
   sendButton: {
     width: "100%",
@@ -151,6 +139,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginBottom: 20,
+    marginTop: 20,
   },
   sendButtonText: {
     color: "white",
@@ -185,15 +174,5 @@ const styles = StyleSheet.create({
     top: 20,
     left: 20,
     zIndex: 10,
-  },
-  passwordInputWrapper: {
-    width: "100%",
-    height: 50,
-    borderRadius: 25,
-    backgroundColor: "#1C1C1C",
-    flexDirection: "row",
-    alignItems: "center",
-    paddingHorizontal: 20,
-    marginBottom: 10,
   },
 });

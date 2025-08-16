@@ -10,7 +10,11 @@ import { XStoryLogin } from "../screens/XStoryLogin"
 import { Alert, View, BackHandler, Keyboard, KeyboardAvoidingView, TouchableWithoutFeedback, Platform } from 'react-native';
 import tokenStorage from './Storage';
 import { translate } from "../i18n/i18n";
-import { authApiClient } from '../config/authApiClient';
+import {
+  facebookLoginWithXStory,
+  googleLoginWithXStory,
+  appleLoginWithXStory
+} from '../config/authApiClient';
 
 export default function LoginContainer({ onLoginSuccess }) {
   const [showEmailVerification, setShowEmailVerification] = useState(false);
@@ -44,7 +48,8 @@ export default function LoginContainer({ onLoginSuccess }) {
       const token = await facebookLogin();
       console.log('facebook login:' + token);
       if (token) {
-        const serverToken = await authApiClient.facebookLoginWithXStory(token);
+        const facebookLoginServerRequest = { accessToken: token };
+        const serverToken = await facebookLoginWithXStory(facebookLoginServerRequest);
         if (serverToken && serverToken.length > 0) {
           await tokenStorage.setStoreToken(serverToken);
           onLoginSuccess();
@@ -66,7 +71,7 @@ export default function LoginContainer({ onLoginSuccess }) {
       console.log('google login: ' + SignInResponse.data.idToken);
       if (SignInResponse.data.idToken.length > 0) {
         const googleLoginServerRequest = { idToken: SignInResponse.data.idToken };
-        const serverGoogleLoginAccessToken = await authApiClient.googleLoginWithXStory(googleLoginServerRequest);
+        const serverGoogleLoginAccessToken = await googleLoginWithXStory(googleLoginServerRequest);
         if (serverGoogleLoginAccessToken && serverGoogleLoginAccessToken.length > 0) {
           await tokenStorage.setStoreToken(serverGoogleLoginAccessToken);
           onLoginSuccess();
@@ -85,7 +90,7 @@ export default function LoginContainer({ onLoginSuccess }) {
       const appletoken = await appleLogin();
       console.log('apple appletoken: ' + appletoken);
       if (appletoken) {
-        const token = await authApiClient.appleLoginWithXStory({ idToken: appletoken });
+        const token = await appleLoginWithXStory({ idToken: appletoken });
         if (token && token.length > 0) {
           await tokenStorage.setStoreToken(token);
           console.log('apple login: ' + token);
@@ -123,61 +128,6 @@ export default function LoginContainer({ onLoginSuccess }) {
   const handleXStoryRegister = () => {
     setHistoryStack((prev) => [...prev, 'emailVerification']);
     setShowEmailVerification(true);
-  };
-
-  const handleFacebookRegister = async () => {
-    try {
-      const token = await facebookLogin();
-      console.log('facebook login:' + token);
-      if (token) {
-        await tokenStorage.setStoreToken(token);
-        console.log("facebook login user token:", token);
-        onLoginSuccess();
-      }
-      else alert("Facebook 登入失敗或取消");
-    } catch (e) {
-      alert("Facebook 登入錯誤: " + e.message);
-    }
-  };
-
-  const handleAppleRegister = async () => {
-    try {
-      const token = await appleLogin();
-      if (token) {
-        await tokenStorage.setStoreToken(token);
-        console.log('google login: ' + token);
-        onLoginSuccess();
-      }
-      else alert("Apple 登入失敗或取消");
-    } catch (e) {
-      alert("Apple 登入錯誤: " + e.message);
-    }
-  };
-
-  const handleGoogleRegister = async () => {
-    try {
-      const SignInResponse = await googleLogin();
-      await tokenStorage.setStoreToken(SignInResponse.data.idToken);
-      console.log('google login: ' + SignInResponse.data.user);
-      console.log('google login: ' + SignInResponse.data.idToken);
-      onLoginSuccess();
-    } catch (e) {
-      alert("Google 登入錯誤: " + e.message);
-    }
-  };
-
-  const handleWeChatRegister = async () => {
-    try {
-      const code = await wechatLogin();
-      if (code) {
-        await tokenStorage.setStoreToken(code);
-        console.log('google login: ' + code);
-        onLoginSuccess();
-      }
-      else alert("WeChat 登入失敗或取消");
-    } catch (e) {
-      alert("WeChat 登入錯誤: " + e.message);
-    }
   };
 
   useEffect(() => {
@@ -254,10 +204,9 @@ export default function LoginContainer({ onLoginSuccess }) {
               onSuccess={() => {
                 setShowEmailVerification(false);
                 Alert.alert(
+                  translate("registerEmailSentTitle"),
                   translate("registerEmailSentMessage"),
-                  [
-                    { text: translate("ok") }
-                  ]
+                  [{ text: translate("ok") }]
                 );
               }}
             />
@@ -271,10 +220,10 @@ export default function LoginContainer({ onLoginSuccess }) {
             <RegisterScreen
               onRegisterSuccess={() => { }}
               onXStoryRegister={handleXStoryRegister}
-              onFacebookRegister={handleFacebookRegister}
-              onAppleRegister={handleAppleRegister}
-              onGoogleRegister={handleGoogleRegister}
-              onWeChatRegister={handleWeChatRegister}
+              onFacebookRegister={handleFacebookLogin}
+              onAppleRegister={handleAppleLogin}
+              onGoogleRegister={handleGoogleLogin}
+              onWeChatRegister={handleWeChatLogin}
               onRegister={handleRegister}
               onCancel={() => setshowRegisterView(false)}
             />

@@ -14,26 +14,26 @@ import { translate } from "../i18n/i18n";
 const loginOptions = [
   {
     key: "xstory",
-    title: translate("signInWithEmail"),
+    title: "signInWithEmail",
     onPressProp: "onXStoryLogin",
     icon: require("../../assets/auth/xstory.png"),
   },
   {
     key: "facebook",
-    title: translate("signInWithFacebook"),
+    title: "signInWithFacebook",
     onPressProp: "onFacebookLogin",
     icon: require("../../assets/auth/facebook.png"),
   },
   {
     key: "google",
-    title: translate("signInWithGoogle"),
+    title: "signInWithGoogle",
     onPressProp: "onGoogleLogin",
     icon: require("../../assets/auth/google.png"),
     textColor: "#FFFFFF",
   },
   {
     key: "wechat",
-    title: translate("signInWithWechat"),
+    title: "signInWithWechat",
     onPressProp: "onWeChatLogin",
     icon: require("../../assets/auth/wechat.png"),
   },
@@ -87,7 +87,7 @@ export default function LoginScreen(props) {
             activeOpacity={0.7}
           >
             {icon && <Image source={icon} style={styles.icon} />}
-            <Text style={[styles.buttonText, { color: "white" }]}>{title}</Text>
+            <Text style={[styles.buttonText, { color: "white" }]}>{translate(title)}</Text>
           </TouchableOpacity>
         ))}
 

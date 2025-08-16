@@ -56,7 +56,7 @@ export function RegisterXStoryScreen({ onCancel, onSuccess }: Props) {
       email: email,
       password: password,
     });
-
+    
     setIsSending(false);
     setWaitingVerification(true);
 

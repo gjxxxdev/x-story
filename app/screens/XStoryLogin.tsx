@@ -6,10 +6,11 @@ import {
     TouchableOpacity,
     StyleSheet,
     Image,
+    Modal,            // ← 新增
 } from "react-native";
 import { XStoryForgetPassword } from "./XStoryForgetPassword";
 import { translate } from "../i18n/i18n";
-import { loginWithXStory } from '../config/authApiClient';
+import { loginWithXStory } from "../config/authApiClient";
 
 interface Props {
     onLoginSuccess: (token: string) => void;
@@ -19,34 +20,20 @@ interface Props {
 export function XStoryLogin({ onLoginSuccess, onCancel }: Props) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [showForgetPassword, setshowForgetPassword] = useState(false);
+    const [showForgetPassword, setShowForgetPassword] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
 
     const handleLogin = async () => {
-        const requestSignIn = await loginWithXStory({
-            email: email,
-            password: password
-        });
-        if (requestSignIn && requestSignIn.length > 0) {
-            onLoginSuccess(requestSignIn);
-        }
+        const requestSignIn = await loginWithXStory({ email, password });
+        // TODO: 依你的 API 回傳格式調整：我先假設 requestSignIn 是 token 字串
+        if (requestSignIn) onLoginSuccess(requestSignIn);
     };
 
-    return showForgetPassword ? (
-        <XStoryForgetPassword
-            email={""}
-            onEmailChange={() => { }}
-            onCancel={() => setshowForgetPassword(false)}
-            onSuccess={() => setshowForgetPassword(false)}
-        />
-    ) : (
+    return (
         <View style={styles.container}>
             {/* 左上角 Logo */}
             <View style={styles.logoContainer}>
-                <Image
-                    style={styles.imgIcon}
-                    source={require('../../assets/blueeye.png')}
-                />
+                <Image style={styles.imgIcon} source={require("../../assets/blueeye.png")} />
             </View>
 
             <Text style={styles.title}>{translate("signInTitle")}</Text>
@@ -56,7 +43,7 @@ export function XStoryLogin({ onLoginSuccess, onCancel }: Props) {
                 placeholder={translate("email")}
                 placeholderTextColor="#7F7F7F"
                 value={email}
-                onChangeText={setEmail}
+                onChangeText={setEmail}  // ← 綁定內部狀態
                 keyboardType="email-address"
                 autoCapitalize="none"
                 autoCorrect={false}
@@ -73,25 +60,19 @@ export function XStoryLogin({ onLoginSuccess, onCancel }: Props) {
                     autoCapitalize="none"
                     autoCorrect={false}
                 />
-                <TouchableOpacity
-                    style={styles.eyeButton}
-                    onPress={() => setShowPassword(prev => !prev)}
-                >
+                <TouchableOpacity style={styles.eyeButton} onPress={() => setShowPassword((p) => !p)}>
                     <Image
                         source={
                             showPassword
-                                ? require('../../assets/auth/eye_open.png')
-                                : require('../../assets/auth/eye_closed.png')
+                                ? require("../../assets/auth/eye_open.png")
+                                : require("../../assets/auth/eye_closed.png")
                         }
                         style={styles.eyeIcon}
                     />
                 </TouchableOpacity>
             </View>
 
-            <TouchableOpacity
-                style={styles.linkButton}
-                onPress={() => setshowForgetPassword(true)}
-            >
+            <TouchableOpacity style={styles.linkButton} onPress={() => setShowForgetPassword(true)}>
                 <Text style={styles.linkButtonText}>{translate("forgotPasswordLink")}</Text>
             </TouchableOpacity>
 
@@ -102,6 +83,21 @@ export function XStoryLogin({ onLoginSuccess, onCancel }: Props) {
             <TouchableOpacity style={styles.cancelButton} onPress={onCancel}>
                 <Text style={styles.cancelButtonText}>{translate("cancel")}</Text>
             </TouchableOpacity>
+
+            {/* === 忘記密碼：使用 Modal 完整遮擋與阻擋點擊 === */}
+            <Modal
+                visible={showForgetPassword}
+                animationType="slide"                 // 你可改 "fade" / "none"
+                presentationStyle="overFullScreen"    // iOS：全螢幕覆蓋
+                transparent={false}                   // false = 直接覆蓋底色，不透明
+                onRequestClose={() => setShowForgetPassword(false)} // Android 返回鍵處理
+            >
+                <XStoryForgetPassword
+                    onEmailChange={(v) => setEmail(v)}          // ← 正確把字串值往上傳
+                    onCancel={() => setShowForgetPassword(false)}
+                    onSuccess={() => setShowForgetPassword(false)}
+                />
+            </Modal>
         </View>
     );
 }
@@ -172,9 +168,6 @@ const styles = StyleSheet.create({
         width: 40,
         height: 40,
         resizeMode: "contain",
-        position: "absolute",
-        top: 20,
-        left: 20,
     },
     logoContainer: {
         position: "absolute",
@@ -197,12 +190,6 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: "white",
     },
-    eyeButton: {
-        padding: 5,
-    },
-    eyeIcon: {
-        width: 24,
-        height: 24,
-        tintColor: "#AAAAAA",
-    },
+    eyeButton: { padding: 5 },
+    eyeIcon: { width: 24, height: 24, tintColor: "#AAAAAA" },
 });

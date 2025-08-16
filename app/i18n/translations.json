@@ -29,6 +29,11 @@
         "zh-CN": "我们已将密码重设连接寄到您的信箱，请点击信中的连接进行密码变更",
         "en": "We’ve sent you a link to reset your password. Click the link to set a new password."
     },
+    "registerEmailSentTitle": {
+        "zh-TW": "註冊",
+        "zh-CN": "注册",
+        "en": "Registration"
+    },
     "registerEmailSentMessage": {
         "zh-TW": "我們已將註冊連結寄到您的信箱，請點擊信中的連結進行註冊認證",
         "zh-CN": "我们已将注册连接寄到您的信箱，请点击信中的连接进行注册认证",
@@ -198,5 +203,70 @@
         "zh-TW": "請輸入您的 Email",
         "zh-CN": "请输入您的 Email",
         "en": "Add your email"
+    },
+    "resetLinkInvalidTitle": {
+        "zh-TW": "重設連結無效",
+        "zh-CN": "重设连接无效",
+        "en": "Reset Link Invalid"
+    },
+    "resetLinkInvalidMessage": {
+        "zh-TW": "重設連結已失效，請重新取得。",
+        "zh-CN": "重设连接已失效，请重新获取。",
+        "en": "The reset link has expired or is invalid. Please request a new one."
+    },
+    "passwordMismatchTitle": {
+        "zh-TW": "密碼不一致",
+        "zh-CN": "密码不一致",
+        "en": "Passwords Do Not Match"
+    },
+    "passwordMismatchMessage": {
+        "zh-TW": "兩次輸入的密碼不一致，請重新輸入。",
+        "zh-CN": "两次输入的密码不一致，请重新输入。",
+        "en": "The passwords you entered do not match. Please re-enter."
+    },
+    "passwordTooShortTitle": {
+        "zh-TW": "密碼過短",
+        "zh-CN": "密码过短",
+        "en": "Password Too Short"
+    },
+    "passwordTooShortMessage": {
+        "zh-TW": "密碼需至少 {minLen} 個字元。",
+        "zh-CN": "密码需至少 {minLen} 个字符。",
+        "en": "Your password must be at least {minLen} characters."
+    },
+    "passwordUpdatedTitle": {
+        "zh-TW": "密碼已更新",
+        "zh-CN": "密码已更新",
+        "en": "Password Updated"
+    },
+    "passwordUpdatedMessage": {
+        "zh-TW": "您的密碼已成功更新，請使用新密碼登入。",
+        "zh-CN": "您的密码已成功更新，请使用新密码登录。",
+        "en": "Your password has been updated. Please sign in with your new password."
+    },
+    "passwordUpdateFailedTitle": {
+        "zh-TW": "更新失敗",
+        "zh-CN": "更新失败",
+        "en": "Update Failed"
+    },
+    "passwordUpdateFailedMessage": {
+        "zh-TW": "密碼更新未完成，請稍後再試或重新取得重設連結。",
+        "zh-CN": "密码更新未完成，请稍后再试或重新获取重设连接。",
+        "en": "Password update failed. Please try again later or request a new reset link."
+    },
+    "passwordUpdateErrorTitle": {
+        "zh-TW": "發生錯誤",
+        "zh-CN": "发生错误",
+        "en": "Error"
+    },
+    "passwordUpdateErrorMessage": {
+        "zh-TW": "處理請求時發生錯誤，請稍後再試。",
+        "zh-CN": "处理请求时发生错误，请稍后再试。",
+        "en": "An error occurred while processing your request. Please try again later."
+    },
+    "registerAccount": {
+        "zh-TW": "註冊帳號",
+        "zh-CN": "注册账号",
+        "en": "Register Account"
     }
 }

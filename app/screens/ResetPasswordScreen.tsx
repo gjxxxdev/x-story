@@ -36,41 +36,58 @@ export function ResetPasswordScreen({ token, onCancel, onSuccess }: Props) {
 
     // ---- 送出 ----
     const submit = async () => {
+        // 統一的 Alert 介面：所有彈窗都走這裡
+        const showAlert = (
+            titleKey: string,
+            messageKey: string,
+            opts?: { success?: boolean }
+        ) => {
+            Alert.alert(
+                translate(titleKey),
+                translate(messageKey),
+                [{ text: translate("ok"), onPress: opts?.success ? onSuccess : undefined }],
+            );
+        };
+
+        // ✅ 本地驗證（僅在 !isValid 時檢查，維持你原本的邏輯）
         if (!isValid) {
             if (!token) {
-                Alert.alert("錯誤", "重設連結已失效，請重新取得。");
+                // 連結失效
+                showAlert("resetLinkInvalidTitle", "resetLinkInvalidMessage");
                 return;
             }
             if (pwd !== pwd2) {
-                Alert.alert("錯誤", "兩次輸入的密碼不一致。");
+                // 兩次密碼不一致
+                showAlert("passwordMismatchTitle", "passwordMismatchMessage");
                 return;
             }
             if (pwd.length < MIN_LEN) {
-                // 修正：原本缺少反引號
-                Alert.alert("錯誤", `密碼需至少 ${MIN_LEN} 個字元。`);
+                // 密碼過短（MIN_LEN 的數字請在 i18n 文字內處理）
+                showAlert("passwordTooShortTitle", "passwordTooShortMessage");
                 return;
             }
         }
 
+        // ✅ 呼叫 API
         try {
             setIsSending(true);
             const ok = await resetXStoryPassword({ token, newPassword: pwd });
             setIsSending(false);
 
             if (ok) {
-                Alert.alert(
-                    translate("passwordUpdatedTitle"),
-                    translate("passwordUpdatedMessage"),
-                    [{ text: translate("ok"), onPress: onSuccess }],
-                );
+                // 更新成功
+                showAlert("passwordUpdatedTitle", "passwordUpdatedMessage", { success: true });
             } else {
-                Alert.alert("更新失敗", "請稍後再試或重新取得重設連結。");
+                // API 回傳失敗
+                showAlert("passwordUpdateFailedTitle", "passwordUpdateFailedMessage");
             }
-        } catch (err) {
+        } catch (_err) {
             setIsSending(false);
-            Alert.alert("發生錯誤", "請稍後再試。" + (err instanceof Error ? err.message : ""));
+            // 例外錯誤（網路、中斷等）
+            showAlert("passwordUpdateErrorTitle", "passwordUpdateErrorMessage");
         }
     };
+
 
     return (
         <View style={styles.container}>

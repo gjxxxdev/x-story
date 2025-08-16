@@ -23,7 +23,14 @@ export async function appleLogin() {
     }
 
     const { identityToken } = appleAuthRequestResponse;
-
+if (identityToken) {
+      // 將 id_token 解碼並打印其中的 aud 欄位
+      const payload = parseJwt(identityToken);
+      console.log('Apple ID Token Payload:', payload);
+      console.log('aud:', payload?.aud);
+    } else {
+      console.warn('無法取得 Apple identityToken');
+    }
 
     if (identityToken) {
       // identityToken 通常會送後端驗證
@@ -33,6 +40,26 @@ export async function appleLogin() {
     }
   } catch (error) {
     console.error("Apple login error:", error);
+    return null;
+  }
+}
+
+function parseJwt(token) {
+  try {
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(
+      atob(base64)
+        .split('')
+        .map(c => {
+          return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        })
+        .join('')
+    );
+
+    return JSON.parse(jsonPayload);
+  } catch (e) {
+    console.error('解析 id_token 失敗', e);
     return null;
   }
 }

@@ -58,6 +58,49 @@ export async function registerWithXStory(
   }
 }
 
+/** 
+ * 重發註冊驗證信 Request 資料格式
+ */
+export interface ResentRegisterMailRequest {
+  email: string;
+}
+
+/** * 重發註冊驗證信 Response 資料格式
+ * 成功時回傳 success: true，message 為成功訊息
+ * 失敗時回傳 success: false，message 為錯誤訊息
+ */
+export interface ResentRegisterMailResponse {
+  success: boolean;
+  message: string;
+}
+
+/** * 重發註冊驗證信
+ * @param payload - 包含 email
+ * @returns Promise<boolean> 表示是否成功重發驗證信
+ */
+export async function resentRegisterMail(
+  payload: ResentRegisterMailRequest
+): Promise<boolean> {
+  try {
+    const res = await authApi.post<ResentRegisterMailResponse>(
+      "api/auth/resent-register-mail",
+      payload
+    );
+
+    if (res && res.success) {
+      alert("驗證信已重新寄出");
+      return true;
+    } else {
+      console.warn("重發驗證信失敗:", res.message);
+      alert(res?.message || "重發驗證信失敗，請稍後再試");
+      return false;
+    }
+  } catch (error) {
+    alert(extractErrorMessage(error));
+    console.error("重發驗證信時發生錯誤:", error);
+    return false;
+  }
+}
 
 /**
  * 使用 xStory 登入帳號
@@ -223,7 +266,6 @@ export async function resetXStoryPassword(
     );
 
     if (res && res.success) {
-      alert("密碼已成功重設，請重新登入");
       return true;
     } else {
       alert(res?.message || "密碼重設失敗，請稍後再試");
@@ -285,7 +327,7 @@ export interface XStoryGoogleLoginResponse {
 // 使用 xStory Google 登入
 export async function googleLoginWithXStory(
   payload: XStoryGoogleLoginRequest
-): Promise<string | null> {
+): Promise<string> {
   try {
     const res = await authApi.post<XStoryGoogleLoginResponse>(
       "api/auth/google-login",
@@ -298,15 +340,14 @@ export async function googleLoginWithXStory(
     } else {
       alert(res?.message || "Google 登入失敗，請稍後再試");
       console.warn("api/auth/google-login 登入失敗:", res?.message);
-      return null;
+      return "";
     }
   } catch (error) {
     alert(extractErrorMessage(error));
     console.error("api/auth/google-login 登入發生錯誤:", error);
-    return null;
+    return "";
   }
 }
-
 
 //=======================================================
 //============== xStory Apple 登入相關 API ==============
@@ -332,7 +373,7 @@ export interface XStoryAppleLoginResponse {
  */
 export async function appleLoginWithXStory(
   payload: XStoryAppleLoginRequest
-): Promise<string | null> {
+): Promise<string> {
   try {
     const res = await authApi.post<XStoryAppleLoginResponse>(
       "api/auth/apple-login",
@@ -345,12 +386,12 @@ export async function appleLoginWithXStory(
     } else {
       alert(res?.message || "Apple 登入失敗，請稍後再試");
       console.warn("api/auth/apple-login 登入失敗:", res?.message);
-      return null;
+      return "";
     }
   } catch (error) {
     alert(extractErrorMessage(error));
     console.error("api/auth/apple-login 登入發生錯誤:", error);
-    return null;
+    return "";
   }
 }
 
@@ -379,7 +420,7 @@ export interface XStoryFacebookLoginResponse {
  */
 export async function facebookLoginWithXStory(
   payload: XStoryFacebookLoginRequest
-): Promise<string | null> {
+): Promise<string> {
   try {
     const res = await authApi.post<XStoryFacebookLoginResponse>(
       "api/auth/facebook-login",
@@ -392,12 +433,12 @@ export async function facebookLoginWithXStory(
     } else {
       alert(res?.message || "Facebook 登入失敗，請稍後再試");
       console.warn("Facebook 登入失敗:", res?.message);
-      return null;
+      return "";
     }
   } catch (error) {
     alert(extractErrorMessage(error));
     console.error("Facebook 登入發生錯誤:", error);
-    return null;
+    return "";
   }
 }
 

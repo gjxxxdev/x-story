@@ -14,26 +14,26 @@ import { translate } from "../i18n/i18n";
 const loginOptions = [
   {
     key: "xstory",
-    title: translate("signUpWithEmail"),
+    title: "signUpWithEmail",
     onPressProp: "onXStoryRegister",
     icon: require("../../assets/auth/xstory.png"),
   },
   {
     key: "facebook",
-    title: translate("signUpWithFacebook"),
+    title: "signUpWithFacebook",
     onPressProp: "onFacebookRegister",
     icon: require("../../assets/auth/facebook.png"),
   },
   {
     key: "google",
-    title: translate("signUpWithGoogle"),
+    title: "signUpWithGoogle",
     onPressProp: "onGoogleRegister",
     icon: require("../../assets/auth/google.png"),
     textColor: "#FFFFFF",
   },
   {
     key: "wechat",
-    title: translate("signUpWithWechat"),
+    title: "signUpWithWechat",
     onPressProp: "onWeChatRegister",
     icon: require("../../assets/auth/wechat.png"),
   },
@@ -101,7 +101,7 @@ export default function RegisterScreen(props) {
               disabled={disabled}
             >
               {icon && <Image source={icon} style={styles.icon} />}
-              <Text style={[styles.buttonText, { color: "white" }]}>{title}</Text>
+              <Text style={[styles.buttonText, { color: "white" }]}>{translate(title)}</Text>
             </TouchableOpacity>
           );
         })}
