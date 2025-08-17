@@ -7,6 +7,7 @@
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash2.png",
+      "tabletImage": "./assets/splash_ipad.png",
       "resizeMode": "contain",
       "backgroundColor": "#000000"
     },
@@ -20,7 +21,10 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.rueiyang.story",
       "scheme": "xstoryscheme",
-      "jsEngine": "hermes"
+      "jsEngine": "hermes",
+      "infoPlist": {
+        "CFBundleAllowMixedLocalizations": true
+      }
     },
     "android": {
       "splash": {

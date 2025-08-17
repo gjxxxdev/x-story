@@ -108,12 +108,23 @@ export default function RegisterScreen(props) {
 
 
         {Platform.OS === "ios" && (
-          <AppleButton
-            buttonStyle={AppleButton.Style.WHITE}
-            buttonType={AppleButton.Type.SIGN_IN}
-            style={styles.appleButton}
-            onPress={() => handlePress("onAppleRegister")}
-          />
+          <View
+            style={[
+              styles.appleFrame,
+              agreeChecked ? styles.appleFrameEnabled : styles.appleFrameDisabled,
+            ]}
+            pointerEvents={agreeChecked ? "auto" : "none"} // 勾選前不可點
+          >
+            <AppleButton
+              buttonType={AppleButton.Type.SIGN_IN}
+              buttonStyle={AppleButton.Style.BLACK}
+              // 內層 Apple 按鈕自己的圓角，不被外層影響
+              cornerRadius={23}
+              style={styles.appleButton}
+              onPress={() => handlePress("onAppleRegister")}
+              accessibilityRole="button"
+            />
+          </View>
         )}
 
         {/* 服務條款勾選區 */}

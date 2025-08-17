@@ -92,16 +92,26 @@ export default function LoginScreen(props) {
         ))}
 
         {Platform.OS === "ios" && (
-          <AppleButton
-            buttonStyle={AppleButton.Style.WHITE}
-            buttonType={AppleButton.Type.SIGN_IN}
-            style={styles.appleButton}
-            onPress={() => handlePress("onAppleLogin")}
-          />
+          <View
+            style={[
+              styles.appleFrame,
+            ]}
+            pointerEvents={ "auto"}
+          >
+            <AppleButton
+              buttonType={AppleButton.Type.SIGN_IN}
+              buttonStyle={AppleButton.Style.BLACK}
+              // 內層 Apple 按鈕自己的圓角，不被外層影響
+              cornerRadius={23}
+              style={styles.appleButton}
+              onPress={() => handlePress("onAppleLogin")}
+              accessibilityRole="button"
+            />
+          </View>
         )}
-        
+
         <View style={{ height: 15 }} />
-         
+
         <TouchableOpacity
           style={[
             styles.button,

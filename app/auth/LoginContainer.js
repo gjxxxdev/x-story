@@ -56,7 +56,6 @@ export default function LoginContainer({ onLoginSuccess }) {
         } else {
           alert("serverToken is empty, please try again");
         }
-        console.log("facebook login user token:", token);
       }
       else alert("Facebook 登入失敗或取消");
     } catch (e) {
