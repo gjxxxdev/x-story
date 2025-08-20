@@ -1,52 +1,8 @@
 // app/auth/facebookAuth.js
-// ⚠️ 本檔案提供兩種登入：
-// 1) facebookLogin()         → 傳統登入，拿 accessToken（Android 推薦、iOS 也可用，但別跟 Limited 混用）
-// 2) facebookLimitedLoginIOS() → iOS 限制登入，拿 AuthenticationToken(JWT) + rawNonce（後端用 JWKS 驗章）
-//
-// ✅ iOS 限制登入（Limited Login）不會給 accessToken，請把 JWT + rawNonce 送到後端驗證。
-// ✅ 傳統登入請務必把 loginTracking 設為 'enabled'，避免在 iOS 上意外進入 Limited Login。
-
 import { Platform } from "react-native";
-import {
-  LoginManager,
-  AccessToken,
-  AuthenticationToken,
-  Settings,
-} from "react-native-fbsdk-next";
+import { AccessToken, LoginManager, AuthenticationToken } from "react-native-fbsdk-next";
+import { sha256 } from "js-sha256";
 
-// 初始化 SDK（Info.plist 已設定 FacebookAppID / DisplayName）
-Settings.initializeSDK();
-
-/** 產生隨機 nonce（用於 Limited Login 防重放） */
-function generateNonce(length = 32) {
-  const chars =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  let s = "";
-  for (let i = 0; i < length; i++) s += chars.charAt(Math.floor(Math.random() * chars.length));
-  return s;
-}
-
-/** 嘗試以 expo-crypto 或 react-native-sha256 做 SHA-256；若無可用實作則回傳原字串 */
-async function sha256Maybe(value) {
-  // 優先使用 expo-crypto（Expo 專案常見）
-  try {
-    const Crypto = require("expo-crypto");
-    if (Crypto?.digestStringAsync) {
-      return await Crypto.digestStringAsync(Crypto.CryptoDigestAlgorithm.SHA256, value);
-    }
-  } catch (_) {}
-
-  // 退而求其次使用 react-native-sha256（RN CLI 專案常見）
-  try {
-    const { sha256 } = require("react-native-sha256");
-    if (sha256) {
-      return await sha256(value);
-    }
-  } catch (_) {}
-
-  // 都沒有可用的 SHA-256：先回傳原值（後端需對應接受 rawNonce）
-  return value;
-}
 
 /**
  * 傳統 Facebook 登入（拿 accessToken）
@@ -79,58 +35,62 @@ export async function facebookLogin() {
   }
 }
 
+/** 產生 raw nonce（原始字串，用於防重放；要保留給後端比對） */
+function generateNonce(length = 32) {
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  let s = "";
+  for (let i = 0; i < length; i++) s += chars.charAt(Math.floor(Math.random() * chars.length));
+  return s;
+}
+
 /**
  * iOS 限制登入（Limited Login）
- * - 僅 iOS 可用；會拿到 OIDC 的 ID Token（JWT）與你當次送入的 rawNonce。
- * - 將 { idToken, rawNonce } 送到後端，使用 Facebook 的 JWKS 驗章並比對 iss/aud/nonce。
- * @returns {Promise<{ idToken: string, rawNonce: string }>} 成功回傳 JWT 與原始 nonce；失敗丟錯
+ * 回傳給呼叫端：{ idToken, rawNonce }
+ *   - idToken：= authenticationToken（JWT；就是你要的 id_token）
+ *   - rawNonce：你送入前的原始 nonce（未 SHA256），給後端比對
  */
+
 export async function facebookLimitedLoginIOS() {
   if (Platform.OS !== "ios") {
-    throw new Error("facebookLimitedLoginIOS 只適用於 iOS。");
+    console.warn("facebookLimitedLoginIOS 只支援 iOS");
+    return null;
   }
 
   try {
-    // 1) 產生 rawNonce，並嘗試做 SHA-256（FB 限制登入常見做法）
+    // 1) 產生 rawNonce
     const rawNonce = generateNonce();
-    const nonceForSDK = await sha256Maybe(rawNonce);
+    const nonceForSDK = sha256(rawNonce);
+    console.log("[FB LimitedLogin] rawNonce =", rawNonce);
+    console.log("[FB LimitedLogin] nonceForSDK (sha256) =", nonceForSDK);
 
-    // 2) 以 loginTracking='limited' 發起登入，第三參數傳入 nonce（建議為 SHA-256 後的值）
+    // 2) 發起 Limited Login
     const result = await LoginManager.logInWithPermissions(
       ["public_profile", "email"],
       "limited",
       nonceForSDK
     );
+    console.log("[FB LimitedLogin] result =", result);
 
     if (result.isCancelled) {
-      throw new Error("使用者取消 Facebook 限制登入");
+      console.warn("[FB LimitedLogin] 使用者取消登入");
+      return null;
     }
 
-    // 3) 僅能透過 AuthenticationToken 取得 OIDC ID Token（JWT）
-    const authToken = await AuthenticationToken.getAuthenticationToken();
-    const idToken = authToken?.authenticationToken;
+    // 3) 取得 AuthenticationToken (id_token)
+    const auth = await AuthenticationToken.getAuthenticationTokenIOS();
+    console.log("[FB LimitedLogin] AuthenticationToken =", auth);
 
+    const idToken = auth?.authenticationToken;
     if (!idToken) {
-      // 限制登入下不會有 accessToken，若拿不到 JWT 代表登入流程未完成或 SDK 未回傳
-      throw new Error("未取得 Facebook AuthenticationToken（JWT）。");
+      console.error("[FB LimitedLogin] 未取得 idToken (authenticationToken 為空)");
+      return null;
     }
 
-    // ✅ 將 { idToken, rawNonce } 回傳（送往後端 /facebook-limited-login）
-    return { idToken, rawNonce };
-  } catch (error) {
-    console.error("Facebook Limited Login (iOS) error:", error);
-    throw error;
-  }
-}
+    console.log("[FB LimitedLogin] idToken(JWT) 長度 =", idToken.length);
 
-/**
- * （可選）登出/清掉現有登入狀態
- * - 若你要強制使用者改選帳號，可先登出再重新登入。
- */
-export async function facebookLogout() {
-  try {
-    LoginManager.logOut();
-  } catch (error) {
-    console.warn("Facebook logout warning:", error);
+    return { idToken, rawNonce };
+  } catch (e) {
+    console.error("[FB LimitedLogin] error =", e);
+    return null;
   }
 }

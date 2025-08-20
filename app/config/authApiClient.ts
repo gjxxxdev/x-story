@@ -401,7 +401,7 @@ export async function appleLoginWithXStory(
 
 // Facebook 登入 Request
 export interface XStoryFacebookLoginRequest {
-  accessToken: string;
+  token: string;
 }
 
 // Facebook 登入 Response

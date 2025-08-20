@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { appleLogin } from "../../components/utils/appleAuth";
-import { facebookLogin } from "../../components/utils/facebookAuth";
+import { facebookLogin, facebookLimitedLoginIOS } from "../../components/utils/facebookAuth";
 import { googleLogin } from "../../components/utils/googleAuth";
 import { wechatLogin } from "../../components/utils/wechatAuth";
 import LoginScreen from "../screens/LoginScreen";
@@ -45,23 +45,44 @@ export default function LoginContainer({ onLoginSuccess }) {
 
   const handleFacebookLogin = async () => {
     try {
-      const token = await facebookLogin();
-      console.log('facebook login:' + token);
-      if (token) {
-        const facebookLoginServerRequest = { accessToken: token };
-        const serverToken = await facebookLoginWithXStory(facebookLoginServerRequest);
-        if (serverToken && serverToken.length > 0) {
-          await tokenStorage.setStoreToken(serverToken);
-          onLoginSuccess();
-        } else {
-          alert("serverToken is empty, please try again");
+      let body = null;
+
+      if (Platform.OS === "ios") {
+        // 走 Limited Login（id_token）
+        const r = await facebookLimitedLoginIOS();
+        if (r?.idToken) {
+          body = {
+            token: r.idToken,      // id_token (JWT)
+            rawNonce: r.rawNonce   // 強烈建議一併傳給後端做 nonce 驗證
+          };
+        }
+      } else {
+        // 走傳統 Access Token
+        const accessToken = await facebookLogin();
+        if (accessToken) {
+          body = {
+            token: accessToken     // 統一欄位名為 token
+          };
         }
       }
-      else alert("Facebook 登入失敗或取消");
+
+      if (!body) {
+        alert("Facebook 登入失敗或取消");
+        return;
+      }
+
+      const serverToken = await facebookLoginWithXStory(body); // 你的 API 呼叫
+      if (serverToken && serverToken.length > 0) {
+        await tokenStorage.setStoreToken(serverToken);
+        onLoginSuccess();
+      } else {
+        alert("serverToken is empty, please try again");
+      }
     } catch (e) {
       alert("Facebook 登入錯誤: " + e.message);
     }
   };
+
 
   const handleGoogleLogin = async () => {
     try {
