@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { appleLogin } from "../../components/utils/appleAuth";
 import { facebookLogin, facebookLimitedLoginIOS } from "../../components/utils/facebookAuth";
-import { googleLogin } from "../../components/utils/googleAuth";
+import {
+  googleSignInSilently,
+  googleSignInInteractive,
+  getGoogleTokens,
+} from '../../components/utils/googleAuth';
 import { wechatLogin } from "../../components/utils/wechatAuth";
 import LoginScreen from "../screens/LoginScreen";
 import RegisterScreen from "../screens/RegisterScreen"
@@ -83,25 +87,51 @@ export default function LoginContainer({ onLoginSuccess }) {
     }
   };
 
-
   const handleGoogleLogin = async () => {
     try {
-      const SignInResponse = await googleLogin();
-      console.log('google login: ' + SignInResponse.data.user);
-      console.log('google login: ' + SignInResponse.data.idToken);
-      if (SignInResponse.data.idToken.length > 0) {
-        const googleLoginServerRequest = { idToken: SignInResponse.data.idToken };
-        const serverGoogleLoginAccessToken = await googleLoginWithXStory(googleLoginServerRequest);
-        if (serverGoogleLoginAccessToken && serverGoogleLoginAccessToken.length > 0) {
-          await tokenStorage.setStoreToken(serverGoogleLoginAccessToken);
-          onLoginSuccess();
-        } else {
-          alert("serverGoogleLoginAccessToken is empty, please try again");
-        }
+      // 1) 先試靜默登入，有紀錄就不跳 UI；沒有再互動式登入
+      let res = await googleSignInSilently();
+      if (!res.ok) {
+        res = await googleSignInInteractive();
       }
-      else alert(SignInResponse.data.message || "Google 登入失敗或取消");
+
+      // 2) 取消或錯誤
+      if (!res.ok) {
+        const msg =
+          res.reason === 'cancelled'
+            ? '你已取消 Google 登入'
+            : `Google 登入錯誤：${res.code ?? ''} ${res.message ?? ''}`;
+        alert(msg.trim());
+        return;
+      }
+
+      // 3) 成功：拿到使用者與 token
+      console.log('google email:', res.user?.email);
+      console.log('google id:', res.user?.id);
+
+      // 優先用 wrapper 已帶回的 idToken；若沒有，再補拿一次
+      let idToken = res.idToken ?? null;
+      if (!idToken) {
+        const tokens = await getGoogleTokens();
+        idToken = tokens.idToken ?? null;
+      }
+
+      if (!idToken || idToken.length === 0) {
+        alert('未取得 Google idToken，請重試');
+        return;
+      }
+
+      // 4) 呼叫你原本的後端 API 換取 server access token
+      const serverGoogleLoginAccessToken = await googleLoginWithXStory({ idToken });
+
+      if (serverGoogleLoginAccessToken && serverGoogleLoginAccessToken.length > 0) {
+        await tokenStorage.setStoreToken(serverGoogleLoginAccessToken);
+        onLoginSuccess();
+      } else {
+        alert('serverGoogleLoginAccessToken is empty, please try again');
+      }
     } catch (e) {
-      alert("Google 登入錯誤: " + e.message);
+      alert('Google 登入錯誤: ' + (e?.message ?? String(e)));
     }
   };
 
