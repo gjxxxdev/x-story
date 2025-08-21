@@ -4,6 +4,7 @@ import ChapterScreen from "../screens/ChapterScreen";
 import HomeScreen from "../screens/HomeScreen";
 import ShowImageScreen from "../screens/ShowImageScreen";
 import StoryScreen from "../screens/StoryScreen";
+import ProfileScreen from '../screens/ProfileScreen';
 
 import colors from "../config/colors";
 import routes from "./routes";
@@ -28,6 +29,7 @@ const StoryNavigator = () => {
       <Stack.Screen name={routes.CHAPTER} component={ChapterScreen} />
       <Stack.Screen name={routes.STORY} component={StoryScreen} />
       <Stack.Screen name={routes.IMAGE} component={ShowImageScreen} />
+      <Stack.Screen name={routes.PROFILE} component={ProfileScreen} />
     </Stack.Navigator>
   );
 };

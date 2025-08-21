@@ -12,6 +12,7 @@ export default Object.freeze({
   CHAPTER: "Chapter",
   STORY: "Story",
   IMAGE: "Image",
+  PROFILE: 'PROFILE',
 });
 
 

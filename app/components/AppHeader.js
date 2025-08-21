@@ -1,57 +1,65 @@
 import React from 'react';
-import { View, StyleSheet, Image, Pressable } from 'react-native';
+import { View, StyleSheet, Image, Pressable, Text } from 'react-native';
 import { useNavigation, DrawerActions } from '@react-navigation/native';
-
-// import IconButton from "./IconButton";
-// import routes from "../navigations/routes";
-
-//navigation.dispatch(DrawerActions.openDrawer())
+import routes from '../navigations/routes';
 
 function AppHeader() {
   const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
+      {/* 左邊 Drawer 開關 */}
       <Pressable
         onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+        hitSlop={8}
       >
         <Image
-          style={styles.imgIcon}
+          style={styles.leftIcon}
           source={require('../../assets/blueeye.png')}
         />
       </Pressable>
-      {/* <IconButton
-        name="eye-outline"
-        size={35}
-        iconSize={35}
-        onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
-      /> */}
-      {/* <IconButton
-        name="book-open-outline"
-        size={35}
-        iconSize={35}
-        onPress={() => navigation.navigate(routes.OTHERS)}
-      /> */}
+
+      {/* 右邊 Profile + Coin */}
+      <View style={styles.rightContainer}>
+        <Pressable onPress={() => navigation.navigate(routes.PROFILE)} hitSlop={8}>
+          <Image style={styles.profileIcon} source={require('../../assets/profile.png')} />
+        </Pressable>
+        <View style={styles.coinRow}>
+          <Image style={styles.coinIcon} source={require('../../assets/coin.png')} />
+          <Text style={styles.coinText}>999</Text>
+        </View>
+      </View>
     </View>
   );
 }
 
+const HEADER_HEIGHT = 50;
+
 const styles = StyleSheet.create({
   container: {
-    height: 40,
+    width: '100%', // 撐滿整個螢幕
+    height: HEADER_HEIGHT,
     flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems:'center'
+    alignItems: 'center',
+    justifyContent: 'space-between', // 左右分散
+    paddingHorizontal: 10,
   },
-  text: {
-    fontWeight: 'bold',
-    fontSize: 30,
+  leftIcon: { width: 32, height: 32 },
+  rightContainer: {
+    alignItems: 'center',
   },
-  imgIcon: {
-    width: 40,
-    height: 40,
-    marginLeft: 10,
+  profileIcon: {
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    marginBottom: 2,
   },
+  coinRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  coinIcon: { width: 20, height: 20, marginRight: 4 },
+  coinText: { fontSize: 16, fontWeight: 'bold', color: '#FFD700' },
 });
 
 export default AppHeader;
