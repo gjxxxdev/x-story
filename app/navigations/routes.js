@@ -13,6 +13,8 @@ export default Object.freeze({
   STORY: "Story",
   IMAGE: "Image",
   PROFILE: 'PROFILE',
+  PURCHASE: 'PURCHASE', 
+  HISTORY: 'HISTORY',
 });
 
 

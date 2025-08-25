@@ -5,6 +5,8 @@ import HomeScreen from "../screens/HomeScreen";
 import ShowImageScreen from "../screens/ShowImageScreen";
 import StoryScreen from "../screens/StoryScreen";
 import ProfileScreen from '../screens/ProfileScreen';
+import ShopScreen from "../screens/ShopScreen";
+import HistoryScreen from "../screens/HistoryScreen";
 
 import colors from "../config/colors";
 import routes from "./routes";
@@ -30,6 +32,8 @@ const StoryNavigator = () => {
       <Stack.Screen name={routes.STORY} component={StoryScreen} />
       <Stack.Screen name={routes.IMAGE} component={ShowImageScreen} />
       <Stack.Screen name={routes.PROFILE} component={ProfileScreen} />
+      <Stack.Screen name={routes.PURCHASE} component={ShopScreen} />
+      <Stack.Screen name={routes.HISTORY} component={HistoryScreen} />
     </Stack.Navigator>
   );
 };
