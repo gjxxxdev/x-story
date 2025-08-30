@@ -9,7 +9,6 @@ import {
   Image,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import CoinHistoryScreen from './CoinHistoryScreen';
 import PurchaseHistoryScreen from './PurchaseHistoryScreen';
@@ -20,7 +19,7 @@ type TabKey = 'coin' | 'purchase';
 export default function HistoryScreen() {
   const [tab, setTab] = useState<TabKey>('coin');
   const navigation = useNavigation();
-  
+
   return (
     <SafeAreaView style={styles.safe}>
 

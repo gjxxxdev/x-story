@@ -1,10 +1,7 @@
 import React from 'react';
 import {
-  SafeAreaView, View, Text, StyleSheet, Image, ScrollView, Pressable,
+  SafeAreaView, View, Text, StyleSheet, Image, ScrollView,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import routes from '../navigations/routes';
 
 type CoinLog = {
   id: string;
@@ -24,8 +21,6 @@ const COIN_LOGS: CoinLog[] = [
 
 export default function CoinHistoryScreen({ embedded = false }: { embedded?: boolean }) {
   const Wrapper: any = embedded ? View : SafeAreaView;
-  const navigation = useNavigation();
-  const insets = useSafeAreaInsets();
 
   return (
     <Wrapper style={styles.safe}>
