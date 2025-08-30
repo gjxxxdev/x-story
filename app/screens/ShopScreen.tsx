@@ -1,8 +1,10 @@
+// app/screens/ShopScreen.tsx
 import React from 'react';
 import {
-  SafeAreaView, View, Text, StyleSheet, Image, ScrollView,
+  SafeAreaView, View, Text, StyleSheet, Image, ScrollView, Pressable,
 } from 'react-native';
-import AppHeader from '../components/AppHeader';
+import { useNavigation } from '@react-navigation/native';
+import routes from '../navigations/routes';
 import PackCard, { PackItem } from '../components/Purchase/PackCard';
 
 const PACKS: PackItem[] = [
@@ -17,17 +19,35 @@ const PACKS: PackItem[] = [
 const RIGHT_COLORS = ['#F2D4AE', '#F4B86F', '#F3A55D', '#F18F52', '#EF7D47', '#EA6A3E'];
 
 export default function ShopScreen() {
+  const navigation = useNavigation();
+
   const handlePressPack = (p: PackItem) => {
-    // TODO: 串接支付流程
     console.log('buy pack:', p.id);
   };
 
+  // icon 視覺高度（icon 32 + 上下餘量）：讓標題落在 icons 底下
+  const TITLE_TOP_PADDING = 56; // 你也可微調成 52~64
+
   return (
     <SafeAreaView style={styles.safe}>
-      <AppHeader />
+      {/* 左上角 blueeye（純展示，不占版面高度） */}
+      <Image
+        source={require('../../assets/blueeye.png')}
+        style={[styles.leftIcon, { top: 8 }]}
+        resizeMode="contain"
+      />
 
-      {/* 頁面標題 + 餘額 */}
-      <View style={styles.headerRow}>
+      {/* 右上角 Profile（點擊跳個人頁） */}
+      <Pressable
+        onPress={() => navigation.navigate(routes.PROFILE as never)}
+        hitSlop={8}
+        style={[styles.profileBtn, { top: 8 }]}
+      >
+        <Image style={styles.profileIcon} source={require('../../assets/profile.png')} />
+      </Pressable>
+
+      {/* 標題 + 餘額（上下留空；且位於 icons 之下） */}
+      <View style={[styles.headerRow, { paddingTop: TITLE_TOP_PADDING, paddingBottom: 18 }]}>
         <Text style={styles.title}>商城</Text>
         <View style={styles.balanceBox}>
           <Image style={styles.coin} source={require('../../assets/coin.png')} />
@@ -51,11 +71,29 @@ export default function ShopScreen() {
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: '#2b2f33' },
+
+  // --- 左上角 blueeye（絕對定位，不佔版面高度）---
+  leftIcon: {
+    position: 'absolute',
+    left: 12,
+    width: 32,
+    height: 32,
+    zIndex: 10,
+  },
+
+  // --- 右上角 Profile（絕對定位）---
+  profileBtn: {
+    position: 'absolute',
+    right: 12,
+    zIndex: 10,
+    padding: 6, // 擴大可點範圍
+  },
+  profileIcon: { width: 32, height: 32, borderRadius: 16 },
+
+  // --- 標題區（上下留空；確保在 icons 下方）---
   headerRow: {
     alignItems: 'center',
     gap: 6,
-    paddingTop: 8,
-    paddingBottom: 6,
   },
   title: { color: '#e7eef6', fontWeight: '700', fontSize: 18 },
   balanceBox: { flexDirection: 'row', alignItems: 'center', gap: 6 },

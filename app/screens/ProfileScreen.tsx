@@ -38,7 +38,7 @@ export default function ProfileScreen() {
   return (
     <SafeAreaView style={styles.safe}>
       <View style={[styles.topBar, { paddingTop: 8 }]}>
-        <Pressable onPress={() => navigation.navigate(routes.PROFILE as never)} hitSlop={8}>
+        <Pressable onPress={() => navigation.navigate(routes.MAIN as never)} hitSlop={8}>
           <Image style={styles.profileIconTop} source={require('../../assets/blueeye.png')} />
         </Pressable>
       </View>
