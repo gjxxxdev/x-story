@@ -1,18 +1,41 @@
 // app/screens/HistoryScreen.tsx
 import React, { useState } from 'react';
-import { SafeAreaView, View, Text, StyleSheet, Pressable } from 'react-native';
-import AppHeader from '../components/AppHeader';
+import {
+  SafeAreaView,
+  View,
+  Text,
+  StyleSheet,
+  Pressable,
+  Image,
+} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
 import CoinHistoryScreen from './CoinHistoryScreen';
 import PurchaseHistoryScreen from './PurchaseHistoryScreen';
+import routes from '../navigations/routes';
 
 type TabKey = 'coin' | 'purchase';
 
 export default function HistoryScreen() {
   const [tab, setTab] = useState<TabKey>('coin');
-
+  const navigation = useNavigation();
+  
   return (
     <SafeAreaView style={styles.safe}>
-      <AppHeader />
+
+      <View style={[styles.topBar, { paddingTop: 8 }]}>
+        {/* 左上：eye */}
+        <Pressable onPress={() => navigation.navigate(routes.MAIN as never)} hitSlop={8}>
+          <Image style={styles.eyeIcon} source={require('../../assets/blueeye.png')} />
+        </Pressable>
+
+        {/* 右上：profile */}
+        <Pressable onPress={() => navigation.navigate(routes.PROFILE as never)} hitSlop={8}>
+          <Image style={styles.profileIcon} source={require('../../assets/profile.png')} />
+        </Pressable>
+      </View>
+
 
       {/* Segmented 控制列 */}
       <View style={styles.segmentBar}>
@@ -28,9 +51,13 @@ export default function HistoryScreen() {
         />
       </View>
 
-      {/* 內容區：依 tab 切換；傳 embedded 讓子頁不渲染自己的 SafeAreaView/Header */}
+      {/* 內容區 */}
       <View style={styles.content}>
-        {tab === 'coin' ? <CoinHistoryScreen embedded /> : <PurchaseHistoryScreen embedded />}
+        {tab === 'coin' ? (
+          <CoinHistoryScreen embedded />
+        ) : (
+          <PurchaseHistoryScreen embedded />
+        )}
       </View>
     </SafeAreaView>
   );
@@ -61,6 +88,20 @@ function SegmentButton({
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: '#2b2f33' },
+
+  // 右上角 eye 容器
+  topBar: {
+    width: '100%',
+    paddingHorizontal: 10,
+    marginBottom: 6,
+    flexDirection: 'row',
+    justifyContent: 'space-between',  // ⬅️ 左右分散
+    alignItems: 'flex-start',
+  },
+  eyeIcon: { width: 40, height: 40 },
+  profileIcon: { width: 32, height: 32, borderRadius: 16 },
+
+
   segmentBar: {
     flexDirection: 'row',
     gap: 10,
