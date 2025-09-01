@@ -10,6 +10,7 @@ import {
   Dimensions,
 } from "react-native";
 import { translate } from "../i18n/i18n";
+import RichText from "../components/RichText";
 
 const loginOptions = [
   {
@@ -136,9 +137,16 @@ export default function RegisterScreen(props) {
           <View style={[styles.checkbox, agreeChecked && styles.checkboxChecked]}>
             {agreeChecked && <View style={styles.checkboxTick} />}
           </View>
-          <Text style={styles.agreeText}>
-            {translate("termsAgreement")}
-          </Text>
+          <RichText
+            text={translate("termsAgreement")}
+            baseStyle={[styles.legalText, styles.agreeText]}
+            linkStyle={{ textDecorationLine: "underline" }}
+            colorMap={{ tos: "#0abab5", pp: "#0abab5" }}
+            onPressMap={{
+              tos: props.onOpenTOS ?? (() => { }),
+              pp: props.onOpenPP ?? (() => { }),
+            }}
+          />
         </TouchableOpacity>
 
         {/* 底部登入文字 */}

@@ -187,7 +187,7 @@ const styles = StyleSheet.create({
   bottomTextLeft: {
     color: "#f0ad57",
     fontSize: 18,
-    textAlign: "Left",
+    textAlign: "left",
     textDecorationLine: "underline",
   },
   bottomRow: {
