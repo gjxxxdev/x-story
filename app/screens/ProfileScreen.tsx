@@ -92,7 +92,6 @@ export default function ProfileScreen() {
             >
               <Picker.Item label="女性" value="female" />
               <Picker.Item label="男性" value="male" />
-              <Picker.Item label="其他 / 不透露" value="other" />
             </Picker>
           </View>
         </View>
