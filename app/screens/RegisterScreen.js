@@ -43,6 +43,9 @@ const loginOptions = [
 
 export default function RegisterScreen(props) {
   const [agreeChecked, setAgreeChecked] = useState(false);
+  const deviceWidth = Dimensions.get("window").width;
+  const buttonWidth = Math.min(420, Math.max(260, Math.round(deviceWidth * 0.82)));
+
 
   const handlePress = (handlerName) => {
     if (props[handlerName] && typeof props[handlerName] === "function") {
@@ -77,7 +80,7 @@ export default function RegisterScreen(props) {
         <Text style={styles.title}>{translate("signUpPrompt")}</Text>
 
         <View style={{ height: 30 }} />
-        {loginOptions.map(({ key, title, onPressProp, icon }) => {
+                {loginOptions.map(({ key, title, onPressProp, icon }) => {
           const disabled = !agreeChecked;
           return (
             <TouchableOpacity
@@ -85,27 +88,35 @@ export default function RegisterScreen(props) {
               style={[
                 styles.button,
                 {
+                  width: buttonWidth,
+                  alignSelf: "center",
+                  justifyContent: "center",
                   backgroundColor: disabled ? "#555555" : "#000000",
                   borderColor: disabled ? "#999999" : "#0abab5",
                   borderWidth: 2,
                   borderRadius: 25,
                   opacity: disabled ? 0.5 : 1,
-                  justifyContent: "flex-start",
-                  paddingLeft: "25%",
-                  alignItems: "center",
+                  paddingHorizontal: 16,
+                  paddingVertical: 12,
                 },
               ]}
               onPress={() => {
                 if (!disabled) handlePress(onPressProp);
               }}
-              activeOpacity={disabled ? 1 : 0.7} // disabled時不透光變化
+              activeOpacity={disabled ? 1 : 0.7}
               disabled={disabled}
             >
               {icon && <Image source={icon} style={styles.icon} />}
-              <Text style={[styles.buttonText, { color: "white" }]}>{translate(title)}</Text>
+              <Text
+                style={[styles.buttonText, { color: "white", flexShrink: 1 }]}
+                numberOfLines={1}
+                ellipsizeMode="tail" >
+                {translate(title)}
+              </Text>
             </TouchableOpacity>
           );
         })}
+
 
 
         {Platform.OS === "ios" && (
@@ -218,11 +229,11 @@ const styles = StyleSheet.create({
   },
   bottomText: {
     color: "#ffffff",
-    fontSize: 14,
+    fontSize: 21,
   },
   loginLink: {
     color: "#b68a36",
-    fontSize: 14,
+    fontSize: 21,
     marginLeft: 5,
   },
   loginLinkPressed: {

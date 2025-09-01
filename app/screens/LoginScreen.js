@@ -40,6 +40,10 @@ const loginOptions = [
 ];
 
 export default function LoginScreen(props) {
+
+  const deviceWidth = Dimensions.get("window").width;
+  const buttonWidth = Math.min(420, Math.max(260, Math.round(deviceWidth * 0.82)));
+
   const handlePress = (handlerName) => {
     if (props[handlerName] && typeof props[handlerName] === "function") {
       props[handlerName]();
@@ -74,34 +78,41 @@ export default function LoginScreen(props) {
             style={[
               styles.button,
               {
+                width: buttonWidth,              // ← 動態寬度
+                alignSelf: "center",             // ← 置中
+                justifyContent: "center",        // ← 內部置中（不再用 paddingLeft 假置中）
                 backgroundColor: "#000000",
                 borderColor: "#0abab5",
                 borderWidth: 2,
                 borderRadius: 25,
-                justifyContent: "flex-start",
-                paddingLeft: "25%",
-                alignItems: "center",
+                paddingHorizontal: 16,
+                paddingVertical: 12,
               },
             ]}
             onPress={() => handlePress(onPressProp)}
             activeOpacity={0.7}
           >
             {icon && <Image source={icon} style={styles.icon} />}
-            <Text style={[styles.buttonText, { color: "white" }]}>{translate(title)}</Text>
+            <Text
+              style={[styles.buttonText, { color: "white", flexShrink: 1 }]}
+              numberOfLines={1}
+              ellipsizeMode="tail"
+            >
+              {translate(title)}
+            </Text>
           </TouchableOpacity>
         ))}
 
         {Platform.OS === "ios" && (
           <View
             style={[
-              styles.appleFrame,
+              { width: buttonWidth, alignSelf: "center" },
             ]}
-            pointerEvents={ "auto"}
+            pointerEvents={"auto"}
           >
             <AppleButton
               buttonType={AppleButton.Type.SIGN_IN}
               buttonStyle={AppleButton.Style.BLACK}
-              // 內層 Apple 按鈕自己的圓角，不被外層影響
               cornerRadius={23}
               style={styles.appleButton}
               onPress={() => handlePress("onAppleLogin")}
@@ -110,24 +121,32 @@ export default function LoginScreen(props) {
           </View>
         )}
 
+
         <View style={{ height: 15 }} />
 
         <TouchableOpacity
           style={[
             styles.button,
             {
+              width: buttonWidth,              // 同寬
+              alignSelf: "center",
+              justifyContent: "center",
               backgroundColor: "#000000",
               borderColor: "#0abab5",
               borderWidth: 2,
-              borderTopLeftRadius: 25,
-              borderBottomLeftRadius: 25,
-              borderTopRightRadius: 25,
-              borderBottomRightRadius: 25,
+              borderRadius: 25,
+              paddingHorizontal: 16,
+              paddingVertical: 12,
             },
           ]}
           onPress={handleTestLoginSuccess}
+          activeOpacity={0.7}
         >
-          <Text style={[styles.buttonText, { color: "#0abab5" }]}>
+          <Text
+            style={[styles.buttonText, { color: "#0abab5", flexShrink: 1 }]}
+            numberOfLines={1}
+            ellipsizeMode="tail"
+          >
             {translate("testLoginSuccess")}
           </Text>
         </TouchableOpacity>
