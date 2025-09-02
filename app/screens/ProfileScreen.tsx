@@ -9,6 +9,7 @@ import {
   TextInput,
   Pressable,
   Platform,
+  Dimensions,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -26,6 +27,8 @@ export default function ProfileScreen() {
   const [birthday, setBirthday] = useState<Date>(new Date(1995, 7, 5));
   const [gender, setGender] = useState<'female' | 'male' | 'other'>('female');
   const [showDatePicker, setShowDatePicker] = useState<boolean>(false);
+  const { width: screenWidth } = Dimensions.get('window');
+  const avatarSize = Math.round(screenWidth / 4);
 
   // ---- 事件：日期變更 ----
   const onChangeBirthday = (e: DateTimePickerEvent, date?: Date) => {
@@ -45,7 +48,13 @@ export default function ProfileScreen() {
 
       <View style={styles.container}>
         {/* 頭像 */}
-        <Image style={styles.avatar} source={require('../../assets/profile.png')} />
+        <Image
+          style={[
+            styles.avatar,
+            { width: avatarSize, height: avatarSize, borderRadius: avatarSize / 2 },
+          ]}
+          source={require('../../assets/profile2.png')}
+        />
 
         {/* 操作列（已移除金幣顯示 coinRow） */}
         <View style={styles.walletRow}>
@@ -97,7 +106,7 @@ export default function ProfileScreen() {
         </View>
 
         {/* CTA */}
-        <Pressable style={styles.submitBtn} onPress={() => {}}>
+        <Pressable style={styles.submitBtn} onPress={() => { }}>
           <Text style={styles.submitText}>完成並領取 50 金幣 🟡</Text>
         </Pressable>
       </View>
