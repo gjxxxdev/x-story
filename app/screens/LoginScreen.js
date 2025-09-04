@@ -154,7 +154,7 @@ export default function LoginScreen(props) {
         {/* 新增底部行 */}
         <View style={styles.bottomRow}>
           <TouchableOpacity onPress={props.onRegister}>
-            <Text style={styles.bottomTextLeft}>{translate("signUp")}</Text>
+            <Text style={styles.linkUnderlineOrangeText}>{translate("signUp")}</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -203,7 +203,7 @@ const styles = StyleSheet.create({
     height: 54,
     marginTop: 10,
   },
-  bottomTextLeft: {
+  linkUnderlineOrangeText: {
     color: "#f0ad57",
     fontSize: 18,
     textAlign: "left",

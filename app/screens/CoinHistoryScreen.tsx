@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
   title: { color: '#e7eef6', fontWeight: '700', fontSize: 18, marginBottom: 6 },
   balanceRow: { flexDirection: 'row', alignItems: 'center', gap: 6 },
   coin: { width: 18, height: 18 },
-  balanceText: { color: '#e7eef6', fontWeight: '700' },
+  balanceText: { color: "#f0ad57", fontWeight: '700' },
 
   list: { paddingTop: 6, paddingHorizontal: 16, paddingBottom: 24, gap: 18 },
 

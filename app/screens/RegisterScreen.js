@@ -168,7 +168,7 @@ export default function RegisterScreen(props) {
           <TouchableOpacity onPress={handleCancel} activeOpacity={0.7}>
             <Text
               style={[
-                styles.loginLink, styles.loginLinkPressed,
+                styles.loginLink,
               ]}
             >
               {translate("signIn")}
@@ -234,12 +234,10 @@ const styles = StyleSheet.create({
     fontSize: 21,
   },
   loginLink: {
-    color: "#b68a36",
+    color: "#f0ad57",
     fontSize: 21,
     marginLeft: 5,
-  },
-  loginLinkPressed: {
-    color: "#f5e0a8",
+    textDecorationLine: "underline",
   },
   agreeContainer: {
     flexDirection: "row",

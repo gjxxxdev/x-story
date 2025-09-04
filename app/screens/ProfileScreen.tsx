@@ -56,24 +56,37 @@ export default function ProfileScreen() {
           source={require('../../assets/profile2.png')}
         />
 
-        {/* 操作列（已移除金幣顯示 coinRow） */}
-        <View style={styles.walletRow}>
-          <Pressable style={styles.chargeBtn} onPress={() => navigation.navigate(routes.PURCHASE as never)}>
-            <Text style={styles.chargeText}>加值</Text>
-          </Pressable>
+        <Text style={styles.title}>我的資料</Text>
 
-          <Pressable onPress={() => navigation.navigate(routes.HISTORY as never)}>
-            <Text style={styles.linkText}>查看紀錄</Text>
-          </Pressable>
+        {/* 餘額 + 操作列（同一行顯示，從螢幕正中間開始往右排） */}
+        <View style={styles.balanceActionsRow}>
+          <View style={styles.flexSpacer} />  {/* 新增：左側彈性空間，確保中間對齊 */}
+
+          <View style={styles.balanceBox}>
+            <Image style={styles.coin} source={require('../../assets/coin.png')} />
+            <Text style={styles.balanceText}>50</Text>
+          </View>
+
+          <View style={[styles.walletRow, styles.walletRowRight]}>
+            <Pressable
+              style={styles.chargeBtn}
+              onPress={() => navigation.navigate(routes.PURCHASE as never)}
+            >
+              <Text style={styles.chargeText}>加值</Text>
+            </Pressable>
+
+            <Pressable onPress={() => navigation.navigate(routes.HISTORY as never)}>
+              <Text style={styles.linkText}>查看紀錄</Text>
+            </Pressable>
+          </View>
         </View>
-
-        {/* 名稱 */}
+        {/* 暱稱 */}
         <View style={styles.inputRow}>
-          <Text style={styles.label}>名稱</Text>
+          <Text style={styles.label}>暱稱</Text>
           <TextInput
             value={name}
             onChangeText={setName}
-            placeholder="請輸入名稱"
+            placeholder="請輸入暱稱"
             placeholderTextColor="#9aa3ad"
             style={styles.input}
           />
@@ -107,7 +120,10 @@ export default function ProfileScreen() {
 
         {/* CTA */}
         <Pressable style={styles.submitBtn} onPress={() => { }}>
-          <Text style={styles.submitText}>完成並領取 50 金幣 🟡</Text>
+          <View style={styles.btnRow}>
+            <Text style={styles.submitText}>完成並領取 50 金幣 </Text>
+            <Image style={styles.coinIcon} source={require('../../assets/coin.png')} />
+          </View>
         </Pressable>
       </View>
 
@@ -138,7 +154,8 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
   },
-  profileIconTop: { width: 32, height: 32, borderRadius: 16 },
+  profileIconTop: { width: 42, height: 42, borderRadius: 16 },
+  title: { color: '#e7eef6', fontWeight: '700', fontSize: 18, marginBottom: 6, textAlign: 'center' },
 
   // ---- 內容 ----
   container: { flex: 1, paddingHorizontal: 16 },
@@ -153,13 +170,32 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
 
-  // ---- 操作列（已移除 coinRow）----
+  // ---- 餘額 + 操作列（同一行）----
+  balanceActionsRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 14,
+    marginBottom: 16,
+  },
+  flexSpacer: { flex: 1 },
+  walletRowRight: {
+    flex: 1,
+    justifyContent: 'flex-start',
+    alignItems: 'flex-end', // 讓「查看紀錄」與「加值」的底部對齊
+    marginLeft: 14,
+  },
+
+  // 餘額方塊（你指定的樣式）
+  balanceBox: { flexDirection: 'row', alignItems: 'center', gap: 6 },
+  coin: { width: 16, height: 16, resizeMode: 'contain' },
+  balanceText: { color: '#e7eef6', fontSize: 16, fontWeight: '700' },
+
+  // 操作列（加值 / 查看紀錄）
   walletRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
     gap: 12,
-    marginBottom: 16,
   },
   chargeBtn: {
     backgroundColor: '#ff3344',
@@ -168,7 +204,11 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   chargeText: { color: '#fff', fontWeight: '700' },
-  linkText: { color: '#ffce6a', fontWeight: '600' },
+  linkText: {
+    color: '#f0ad57',
+    fontWeight: '600',
+    textDecorationLine: 'underline',
+  },
 
   // ---- 表單 ----
   inputRow: {
@@ -213,10 +253,23 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     alignItems: 'center',
   },
+  // 按鈕內橫向排列容器（文字 + 圖示）
+  btnRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   submitText: {
     color: '#eafff9',
     fontWeight: '800',
     fontSize: 16,
     letterSpacing: 0.3,
+  },
+  // 金幣圖示（按鈕內）
+  coinIcon: {
+    width: 18,
+    height: 18,
+    marginLeft: 6,
+    resizeMode: 'contain',
   },
 });

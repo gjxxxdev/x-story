@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   coinIcon: { width: 20, height: 20, marginRight: 4 },
-  coinText: { fontSize: 16, fontWeight: 'bold', color: '#FFD700' },
+  coinText: { fontSize: 16, fontWeight: 'bold', color: "#f0ad57", },
 });
 
 export default AppHeader;
