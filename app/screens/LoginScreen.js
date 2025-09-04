@@ -200,7 +200,7 @@ const styles = StyleSheet.create({
   },
   appleButton: {
     width: "100%",
-    height: 44,
+    height: 54,
     marginTop: 10,
   },
   bottomTextLeft: {

@@ -80,7 +80,7 @@ export default function RegisterScreen(props) {
         <Text style={styles.title}>{translate("signUpPrompt")}</Text>
 
         <View style={{ height: 30 }} />
-                {loginOptions.map(({ key, title, onPressProp, icon }) => {
+        {loginOptions.map(({ key, title, onPressProp, icon }) => {
           const disabled = !agreeChecked;
           return (
             <TouchableOpacity
@@ -117,27 +117,29 @@ export default function RegisterScreen(props) {
           );
         })}
 
-
-
         {Platform.OS === "ios" && (
           <View
             style={[
               styles.appleFrame,
               agreeChecked ? styles.appleFrameEnabled : styles.appleFrameDisabled,
+              { width: buttonWidth, alignSelf: "center" }, // 與其他按鈕同寬、置中
             ]}
             pointerEvents={agreeChecked ? "auto" : "none"} // 勾選前不可點
           >
+            {/* 未勾選時顯示柔和遮罩（不突兀） */}
+            {!agreeChecked && <View style={styles.appleOverlay} />}
+
             <AppleButton
-              buttonType={AppleButton.Type.SIGN_IN}
+              buttonType={AppleButton.Type.SIGN_UP}
               buttonStyle={AppleButton.Style.BLACK}
-              // 內層 Apple 按鈕自己的圓角，不被外層影響
-              cornerRadius={23}
+              cornerRadius={25}
               style={styles.appleButton}
               onPress={() => handlePress("onAppleRegister")}
               accessibilityRole="button"
             />
           </View>
         )}
+
 
         {/* 服務條款勾選區 */}
         <TouchableOpacity
@@ -218,7 +220,7 @@ const styles = StyleSheet.create({
   },
   appleButton: {
     width: "100%",
-    height: 44,
+    height: 54,
     marginTop: 10,
   },
   bottomRow: {

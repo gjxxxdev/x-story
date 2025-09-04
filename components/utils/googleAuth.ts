@@ -40,6 +40,8 @@ export function configureGoogleSignIn() {
     // 若你需要 serverAuthCode 給後端換 refresh_token，請打開：
     // offlineAccess: true,
     // forceCodeForRefreshToken: true, //（部分情境下需要）
+    offlineAccess: true,
+    forceCodeForRefreshToken: true,
   });
   configured = true;
 } export async function googleSignInInteractive(): Promise<GoogleAuthResult> {
