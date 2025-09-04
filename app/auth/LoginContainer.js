@@ -26,6 +26,24 @@ export default function LoginContainer({ onLoginSuccess }) {
   const [showRegisterView, setshowRegisterView] = useState(true);
   const [historyStack, setHistoryStack] = useState([]);
 
+  // 小工具：判斷是否為「使用者取消」的錯誤，不要跳出 alert
+  // （盡量涵蓋常見的 code / message 關鍵字，若第三方 SDK 實際回傳不同，可再擴充）
+  const isUserCancelError = (e) => {
+    const code = (e?.code ?? e?.errorCode ?? '').toString().toLowerCase();
+    const msg = (e?.message ?? '').toString().toLowerCase();
+    return (
+      code.includes('canceled') ||
+      code.includes('cancelled') ||
+      code.includes('user_cancel') ||
+      msg.includes('canceled') ||
+      msg.includes('cancelled') ||
+      msg.includes('user canceled') ||
+      msg.includes('user cancelled') ||
+      msg.includes('使用者取消') ||
+      msg.includes('取消')
+    );
+  };
+
   const handleXStoryLogin = () => {
     setHistoryStack((prev) => [...prev, 'emailLogin']);
     setShowEmailLogin(true);
@@ -54,6 +72,9 @@ export default function LoginContainer({ onLoginSuccess }) {
       if (Platform.OS === "ios") {
         // 走 Limited Login（id_token）
         const r = await facebookLimitedLoginIOS();
+        // 若使用者取消，SDK 通常會回傳 undefined/null；此時不提示，直接結束
+        if (!r) return;
+
         if (r?.idToken) {
           body = {
             token: r.idToken,      // id_token (JWT)
@@ -63,15 +84,17 @@ export default function LoginContainer({ onLoginSuccess }) {
       } else {
         // 走傳統 Access Token
         const accessToken = await facebookLogin();
-        if (accessToken) {
-          body = {
-            token: accessToken     // 統一欄位名為 token
-          };
-        }
+        // 若使用者取消，不提示，直接結束
+        if (!accessToken) return;
+
+        body = {
+          token: accessToken     // 統一欄位名為 token
+        };
       }
 
       if (!body) {
-        alert("Facebook 登入失敗或取消");
+        // 到這裡通常代表流程未取得必要憑證（多半是取消或無效回傳）
+        // 依需求：使用者取消就不 alert；因此直接 return
         return;
       }
 
@@ -83,6 +106,8 @@ export default function LoginContainer({ onLoginSuccess }) {
         alert("serverToken is empty, please try again");
       }
     } catch (e) {
+      // 取消不提示；其他錯誤才提示
+      if (isUserCancelError(e)) return;
       alert("Facebook 登入錯誤: " + e.message);
     }
   };
@@ -97,11 +122,16 @@ export default function LoginContainer({ onLoginSuccess }) {
 
       // 2) 取消或錯誤
       if (!res.ok) {
+        // 若是使用者取消，不要 alert
+        if (res.reason === 'cancelled' || res.code === 'canceled' || res.code === 'cancelled') {
+          return;
+        }
         const msg =
           res.reason === 'cancelled'
-            ? '你已取消 Google 登入'
+            ? '' // 已在上面 return，不會進到這裡
             : `Google 登入錯誤：${res.code ?? ''} ${res.message ?? ''}`;
-        alert(msg.trim());
+        const trimmed = msg.trim();
+        if (trimmed.length > 0) alert(trimmed);
         return;
       }
 
@@ -131,6 +161,8 @@ export default function LoginContainer({ onLoginSuccess }) {
         alert('serverGoogleLoginAccessToken is empty, please try again');
       }
     } catch (e) {
+      // 取消不提示；其他錯誤才提示
+      if (isUserCancelError(e)) return;
       alert('Google 登入錯誤: ' + (e?.message ?? String(e)));
     }
   };
@@ -138,19 +170,22 @@ export default function LoginContainer({ onLoginSuccess }) {
   const handleAppleLogin = async () => {
     try {
       const appletoken = await appleLogin();
+      // 若使用者取消或未回傳 token，不提示，直接返回
+      if (!appletoken) return;
+
       console.log('apple appletoken: ' + appletoken);
-      if (appletoken) {
-        const token = await appleLoginWithXStory({ idToken: appletoken });
-        if (token && token.length > 0) {
-          await tokenStorage.setStoreToken(token);
-          console.log('apple login: ' + token);
-          onLoginSuccess();
-        } else {
-          alert("token is empty, please try again");
-        }
+
+      const token = await appleLoginWithXStory({ idToken: appletoken });
+      if (token && token.length > 0) {
+        await tokenStorage.setStoreToken(token);
+        console.log('apple login: ' + token);
+        onLoginSuccess();
+      } else {
+        alert("token is empty, please try again");
       }
-      else alert("Apple 登入失敗或取消");
     } catch (e) {
+      // 取消不提示；其他錯誤才提示
+      if (isUserCancelError(e)) return;
       alert("Apple 登入錯誤: " + e.message);
     }
   };
@@ -158,13 +193,15 @@ export default function LoginContainer({ onLoginSuccess }) {
   const handleWeChatLogin = async () => {
     try {
       const code = await wechatLogin();
-      if (code) {
-        await tokenStorage.setStoreToken(code);
-        console.log('google login: ' + code);
-        onLoginSuccess();
-      }
-      else alert("WeChat 登入失敗或取消");
+      // 若使用者取消或未回傳 code，不提示，直接返回
+      if (!code) return;
+
+      await tokenStorage.setStoreToken(code);
+      console.log('google login: ' + code);
+      onLoginSuccess();
     } catch (e) {
+      // 取消不提示；其他錯誤才提示
+      if (isUserCancelError(e)) return;
       alert("WeChat 登入錯誤: " + e.message);
     }
   };
