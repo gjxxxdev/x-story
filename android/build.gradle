@@ -1,14 +1,18 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
+def KOTLIN_VERSION = (findProperty("KOTLIN_VERSION") ?: "2.1.20") as String
+def AGP_VERSION    = (findProperty("AGP_VERSION")    ?: "8.5.2")  as String
+
 buildscript {
   repositories {
     google()
     mavenCentral()
   }
   dependencies {
-    classpath('com.android.tools.build:gradle')
-    classpath('com.facebook.react:react-native-gradle-plugin')
-    classpath('org.jetbrains.kotlin:kotlin-gradle-plugin')
+    // 指定 AGP 與 Kotlin 明確版本（與 settings.gradle 的 plugins 方式擇一即可）
+    classpath("com.android.tools.build:gradle:${AGP_VERSION}")
+    classpath("com.facebook.react:react-native-gradle-plugin")
+    classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${KOTLIN_VERSION}")
   }
 }
 
@@ -22,16 +26,15 @@ def reactNativeAndroidDir = new File(
 
 allprojects {
   repositories {
-    maven {
-      // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
-      url(reactNativeAndroidDir)
-    }
+    // React Native AAR 來源（從 node_modules）
+    maven { url(reactNativeAndroidDir) }
 
     google()
     mavenCentral()
-    maven { url 'https://www.jitpack.io' }
+    maven { url "https://www.jitpack.io" }
   }
 }
 
+// Expo 與 RN 頂層外掛
 apply plugin: "expo-root-project"
 apply plugin: "com.facebook.react.rootproject"

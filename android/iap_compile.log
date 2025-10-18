@@ -1,0 +1,1477 @@
+Initialized native services in: /Users/gary/.gradle/native
+Initialized jansi services in: /Users/gary/.gradle/native
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.13/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Starting process 'Gradle build daemon'. Working directory: /Users/gary/.gradle/daemon/8.13 Command: /Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home/bin/java --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.prefs/java.util.prefs=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.prefs/java.util.prefs=ALL-UNNAMED --add-opens=java.base/java.nio.charset=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.xml/javax.xml.namespace=ALL-UNNAMED -XX:MaxMetaspaceSize=512m -Xmx2048m -Dfile.encoding=UTF-8 -Duser.country=TW -Duser.language=zh -Duser.variant -cp /Users/gary/.gradle/wrapper/dists/gradle-8.13-bin/5xuhj0ry160q40clulazy9h7d/gradle-8.13/lib/gradle-daemon-main-8.13.jar -javaagent:/Users/gary/.gradle/wrapper/dists/gradle-8.13-bin/5xuhj0ry160q40clulazy9h7d/gradle-8.13/lib/agents/gradle-instrumentation-agent-8.13.jar org.gradle.launcher.daemon.bootstrap.GradleDaemon 8.13
+Successfully started process 'Gradle build daemon'
+An attempt to start the daemon took 0.464 secs.
+The client will now receive all logging from the daemon (pid: 9639). The daemon log file: /Users/gary/.gradle/daemon/8.13/daemon-9639.out.log
+Daemon will be stopped at the end of the build 
+Using 10 worker leases.
+Received JVM installation metadata from '/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home': {JAVA_HOME=/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home, JAVA_VERSION=21.0.7, JAVA_VENDOR=Eclipse Adoptium, RUNTIME_NAME=OpenJDK Runtime Environment, RUNTIME_VERSION=21.0.7+6-LTS, VM_NAME=OpenJDK 64-Bit Server VM, VM_VERSION=21.0.7+6-LTS, VM_VENDOR=Eclipse Adoptium, OS_ARCH=aarch64}
+Watching the file system is configured to be enabled if available
+Now considering [/Volumes/SSD990/projects/react-native/x-story/android] as hierarchies to watch
+File system watching is active
+Starting Build
+Starting process 'command 'node''. Working directory: /Volumes/SSD990/projects/react-native/x-story/android Command: node --print require.resolve('@react-native/gradle-plugin/package.json', { paths: [require.resolve('react-native/package.json')] })
+Successfully started process 'command 'node''
+Starting process 'command 'node''. Working directory: /Volumes/SSD990/projects/react-native/x-story/android Command: node --print require.resolve('expo-modules-autolinking/package.json', { paths: [require.resolve('expo/package.json')] })
+Successfully started process 'command 'node''
+Now considering [/Volumes/SSD990/projects/react-native/x-story/node_modules/@react-native/gradle-plugin, /Volumes/SSD990/projects/react-native/x-story/android] as hierarchies to watch
+Resolved plugin [id: 'org.gradle.toolchains.foojay-resolver-convention', version: '0.5.0']
+Now considering [/Volumes/SSD990/projects/react-native/x-story/node_modules/expo-modules-autolinking/android/expo-gradle-plugin, /Volumes/SSD990/projects/react-native/x-story/node_modules/@react-native/gradle-plugin, /Volumes/SSD990/projects/react-native/x-story/android] as hierarchies to watch
+
+> Configure project :gradle-plugin
+Evaluating project ':gradle-plugin' using build file '/Volumes/SSD990/projects/react-native/x-story/node_modules/@react-native/gradle-plugin/build.gradle.kts'.
+Resolved plugin [id: 'org.jetbrains.kotlin.jvm', version: '2.0.21', apply: false]
+
+> Configure project :gradle-plugin:react-native-gradle-plugin
+Evaluating project ':gradle-plugin:react-native-gradle-plugin' using build file '/Volumes/SSD990/projects/react-native/x-story/node_modules/@react-native/gradle-plugin/react-native-gradle-plugin/build.gradle.kts'.
+Resolved plugin [id: 'org.jetbrains.kotlin.jvm', version: '2.0.21']
+Resolved plugin [id: 'java-gradle-plugin']
+Using Kotlin Gradle Plugin gradle85 variant
+kotlin scripting plugin: created the scripting discovery configuration: kotlinScriptDef
+kotlin scripting plugin: created the scripting discovery configuration: testKotlinScriptDef
+
+> Configure project :gradle-plugin:settings-plugin
+Evaluating project ':gradle-plugin:settings-plugin' using build file '/Volumes/SSD990/projects/react-native/x-story/node_modules/@react-native/gradle-plugin/settings-plugin/build.gradle.kts'.
+Resolved plugin [id: 'org.jetbrains.kotlin.jvm', version: '2.0.21']
+Resolved plugin [id: 'java-gradle-plugin']
+Using Kotlin Gradle Plugin gradle85 variant
+kotlin scripting plugin: created the scripting discovery configuration: kotlinScriptDef
+kotlin scripting plugin: created the scripting discovery configuration: testKotlinScriptDef
+
+> Configure project :gradle-plugin:shared
+Evaluating project ':gradle-plugin:shared' using build file '/Volumes/SSD990/projects/react-native/x-story/node_modules/@react-native/gradle-plugin/shared/build.gradle.kts'.
+Resolved plugin [id: 'org.jetbrains.kotlin.jvm', version: '2.0.21']
+Using Kotlin Gradle Plugin gradle85 variant
+kotlin scripting plugin: created the scripting discovery configuration: kotlinScriptDef
+kotlin scripting plugin: created the scripting discovery configuration: testKotlinScriptDef
+
+> Configure project :gradle-plugin:shared-testutil
+Evaluating project ':gradle-plugin:shared-testutil' using build file '/Volumes/SSD990/projects/react-native/x-story/node_modules/@react-native/gradle-plugin/shared-testutil/build.gradle.kts'.
+Resolved plugin [id: 'org.jetbrains.kotlin.jvm', version: '2.0.21']
+Using Kotlin Gradle Plugin gradle85 variant
+kotlin scripting plugin: created the scripting discovery configuration: kotlinScriptDef
+kotlin scripting plugin: created the scripting discovery configuration: testKotlinScriptDef
+Resolved plugin [id: 'com.facebook.react.settings']
+
+> Configure project :expo-gradle-plugin
+Evaluating project ':expo-gradle-plugin' using build file '/Volumes/SSD990/projects/react-native/x-story/node_modules/expo-modules-autolinking/android/expo-gradle-plugin/build.gradle.kts'.
+Resolved plugin [id: 'org.jetbrains.kotlin.jvm', version: '1.9.24', apply: false]
+Resolved plugin [id: 'java-gradle-plugin']
+
+> Configure project :expo-gradle-plugin:expo-autolinking-plugin
+Evaluating project ':expo-gradle-plugin:expo-autolinking-plugin' using build file '/Volumes/SSD990/projects/react-native/x-story/node_modules/expo-modules-autolinking/android/expo-gradle-plugin/expo-autolinking-plugin/build.gradle.kts'.
+Resolved plugin [id: 'org.jetbrains.kotlin.jvm']
+Resolved plugin [id: 'java-gradle-plugin']
+Using Kotlin Gradle Plugin gradle82 variant
+kotlin scripting plugin: created the scripting discovery configuration: kotlinScriptDef
+kotlin scripting plugin: created the scripting discovery configuration: testKotlinScriptDef
+
+> Configure project :expo-gradle-plugin:expo-autolinking-plugin-shared
+Evaluating project ':expo-gradle-plugin:expo-autolinking-plugin-shared' using build file '/Volumes/SSD990/projects/react-native/x-story/node_modules/expo-modules-autolinking/android/expo-gradle-plugin/expo-autolinking-plugin-shared/build.gradle.kts'.
+Resolved plugin [id: 'org.jetbrains.kotlin.jvm']
+Resolved plugin [id: 'org.jetbrains.kotlin.plugin.serialization', version: '1.9.24']
+Using Kotlin Gradle Plugin gradle82 variant
+kotlin scripting plugin: created the scripting discovery configuration: kotlinScriptDef
+kotlin scripting plugin: created the scripting discovery configuration: testKotlinScriptDef
+
+> Configure project :expo-gradle-plugin:expo-autolinking-settings-plugin
+Evaluating project ':expo-gradle-plugin:expo-autolinking-settings-plugin' using build file '/Volumes/SSD990/projects/react-native/x-story/node_modules/expo-modules-autolinking/android/expo-gradle-plugin/expo-autolinking-settings-plugin/build.gradle.kts'.
+Resolved plugin [id: 'org.jetbrains.kotlin.jvm']
+Resolved plugin [id: 'java-gradle-plugin']
+Using Kotlin Gradle Plugin gradle82 variant
+kotlin scripting plugin: created the scripting discovery configuration: kotlinScriptDef
+kotlin scripting plugin: created the scripting discovery configuration: testKotlinScriptDef
+Resolved plugin [id: 'expo-autolinking-settings']
+Starting process 'command '/usr/libexec/java_home''. Working directory: /Users/gary/.gradle/daemon/8.13 Command: /usr/libexec/java_home -V
+Successfully started process 'command '/usr/libexec/java_home''
+Starting process 'command '/Users/gary/.gradle/jdks/eclipse_adoptium-17-aarch64-os_x.2/jdk-17.0.15+6/Contents/Home/bin/java''. Working directory: /Users/gary/.gradle/.tmp/tmp-jvm3338362817431563724probe Command: /Users/gary/.gradle/jdks/eclipse_adoptium-17-aarch64-os_x.2/jdk-17.0.15+6/Contents/Home/bin/java -Xmx32m -Xms32m -cp . JavaProbe
+Successfully started process 'command '/Users/gary/.gradle/jdks/eclipse_adoptium-17-aarch64-os_x.2/jdk-17.0.15+6/Contents/Home/bin/java''
+Received JVM installation metadata from '/Users/gary/.gradle/jdks/eclipse_adoptium-17-aarch64-os_x.2/jdk-17.0.15+6/Contents/Home': {JAVA_HOME=/Users/gary/.gradle/jdks/eclipse_adoptium-17-aarch64-os_x.2/jdk-17.0.15+6/Contents/Home, JAVA_VERSION=17.0.15, JAVA_VENDOR=Eclipse Adoptium, RUNTIME_NAME=OpenJDK Runtime Environment, RUNTIME_VERSION=17.0.15+6, VM_NAME=OpenJDK 64-Bit Server VM, VM_VERSION=17.0.15+6, VM_VENDOR=Eclipse Adoptium, OS_ARCH=aarch64}
+Resolve mutations for :expo-gradle-plugin:expo-autolinking-plugin-shared:checkKotlinGradlePluginConfigurationErrors (Thread[#151,included builds,5,main]) started.
+Resolve mutations for :gradle-plugin:settings-plugin:checkKotlinGradlePluginConfigurationErrors (Thread[#161,Execution worker Thread 9,5,main]) started.
+:gradle-plugin:settings-plugin:checkKotlinGradlePluginConfigurationErrors (Thread[#161,Execution worker Thread 9,5,main]) started.
+:expo-gradle-plugin:expo-autolinking-plugin-shared:checkKotlinGradlePluginConfigurationErrors (Thread[#151,included builds,5,main]) started.
+
+> Task :gradle-plugin:settings-plugin:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Skipping task ':gradle-plugin:settings-plugin:checkKotlinGradlePluginConfigurationErrors' as task onlyIf 'errorDiagnostics are present' is false.
+Resolve mutations for :gradle-plugin:shared:checkKotlinGradlePluginConfigurationErrors (Thread[#161,Execution worker Thread 9,5,main]) started.
+:gradle-plugin:shared:checkKotlinGradlePluginConfigurationErrors (Thread[#161,Execution worker Thread 9,5,main]) started.
+
+> Task :gradle-plugin:shared:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Skipping task ':gradle-plugin:shared:checkKotlinGradlePluginConfigurationErrors' as task onlyIf 'errorDiagnostics are present' is false.
+Resolve mutations for :gradle-plugin:shared:compileKotlin (Thread[#161,Execution worker Thread 9,5,main]) started.
+:gradle-plugin:shared:compileKotlin (Thread[#161,Execution worker Thread 9,5,main]) started.
+
+> Task :expo-gradle-plugin:expo-autolinking-plugin-shared:checkKotlinGradlePluginConfigurationErrors
+Caching disabled for task ':expo-gradle-plugin:expo-autolinking-plugin-shared:checkKotlinGradlePluginConfigurationErrors' because:
+  Build cache is disabled
+Task ':expo-gradle-plugin:expo-autolinking-plugin-shared:checkKotlinGradlePluginConfigurationErrors' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Resolve mutations for :expo-gradle-plugin:expo-autolinking-plugin-shared:compileKotlin (Thread[#151,included builds,5,main]) started.
+:expo-gradle-plugin:expo-autolinking-plugin-shared:compileKotlin (Thread[#151,included builds,5,main]) started.
+
+> Task :expo-gradle-plugin:expo-autolinking-plugin-shared:compileKotlin UP-TO-DATE
+Caching disabled for task ':expo-gradle-plugin:expo-autolinking-plugin-shared:compileKotlin' because:
+  Build cache is disabled
+Skipping task ':expo-gradle-plugin:expo-autolinking-plugin-shared:compileKotlin' as it is up-to-date.
+
+> Task :gradle-plugin:shared:compileKotlin UP-TO-DATE
+Caching disabled for task ':gradle-plugin:shared:compileKotlin' because:
+  Build cache is disabled
+Skipping task ':gradle-plugin:shared:compileKotlin' as it is up-to-date.
+Resolve mutations for :expo-gradle-plugin:expo-autolinking-plugin-shared:compileJava (Thread[#151,included builds,5,main]) started.
+Resolve mutations for :gradle-plugin:shared:compileJava (Thread[#161,Execution worker Thread 9,5,main]) started.
+:gradle-plugin:shared:compileJava (Thread[#161,Execution worker Thread 9,5,main]) started.
+:expo-gradle-plugin:expo-autolinking-plugin-shared:compileJava (Thread[#151,included builds,5,main]) started.
+
+> Task :expo-gradle-plugin:expo-autolinking-plugin-shared:compileJava NO-SOURCE
+Skipping task ':expo-gradle-plugin:expo-autolinking-plugin-shared:compileJava' as it has no source files and no previous output files.
+
+> Task :gradle-plugin:shared:compileJava NO-SOURCE
+Skipping task ':gradle-plugin:shared:compileJava' as it has no source files and no previous output files.
+Resolve mutations for :expo-gradle-plugin:expo-autolinking-plugin-shared:processResources (Thread[#151,included builds,5,main]) started.
+Resolve mutations for :gradle-plugin:shared:processResources (Thread[#161,Execution worker Thread 9,5,main]) started.
+:expo-gradle-plugin:expo-autolinking-plugin-shared:processResources (Thread[#151,included builds,5,main]) started.
+:gradle-plugin:shared:processResources (Thread[#161,Execution worker Thread 9,5,main]) started.
+
+> Task :expo-gradle-plugin:expo-autolinking-plugin-shared:processResources NO-SOURCE
+Skipping task ':expo-gradle-plugin:expo-autolinking-plugin-shared:processResources' as it has no source files and no previous output files.
+Resolve mutations for :expo-gradle-plugin:expo-autolinking-plugin-shared:classes (Thread[#151,included builds,5,main]) started.
+:expo-gradle-plugin:expo-autolinking-plugin-shared:classes (Thread[#151,included builds,5,main]) started.
+
+> Task :gradle-plugin:shared:processResources NO-SOURCE
+Skipping task ':gradle-plugin:shared:processResources' as it has no source files and no previous output files.
+
+> Task :expo-gradle-plugin:expo-autolinking-plugin-shared:classes UP-TO-DATE
+Skipping task ':expo-gradle-plugin:expo-autolinking-plugin-shared:classes' as it has no actions.
+Resolve mutations for :gradle-plugin:shared:classes (Thread[#161,Execution worker Thread 9,5,main]) started.
+Resolve mutations for :expo-gradle-plugin:expo-autolinking-plugin-shared:jar (Thread[#151,included builds,5,main]) started.
+:gradle-plugin:shared:classes (Thread[#161,Execution worker Thread 9,5,main]) started.
+:expo-gradle-plugin:expo-autolinking-plugin-shared:jar (Thread[#151,included builds,5,main]) started.
+
+> Task :gradle-plugin:shared:classes UP-TO-DATE
+Skipping task ':gradle-plugin:shared:classes' as it has no actions.
+Resolve mutations for :gradle-plugin:shared:jar (Thread[#161,Execution worker Thread 9,5,main]) started.
+:gradle-plugin:shared:jar (Thread[#161,Execution worker Thread 9,5,main]) started.
+
+> Task :expo-gradle-plugin:expo-autolinking-plugin-shared:jar UP-TO-DATE
+Caching disabled for task ':expo-gradle-plugin:expo-autolinking-plugin-shared:jar' because:
+  Build cache is disabled
+  Not worth caching
+Skipping task ':expo-gradle-plugin:expo-autolinking-plugin-shared:jar' as it is up-to-date.
+
+> Task :gradle-plugin:shared:jar UP-TO-DATE
+Caching disabled for task ':gradle-plugin:shared:jar' because:
+  Build cache is disabled
+  Not worth caching
+Skipping task ':gradle-plugin:shared:jar' as it is up-to-date.
+work action resolve expo-autolinking-plugin-shared.jar (project :expo-gradle-plugin:expo-autolinking-plugin-shared) (Thread[#151,included builds,5,main]) started.
+work action resolve shared.jar (project :gradle-plugin:shared) (Thread[#153,Execution worker,5,main]) started.
+Resolve mutations for :expo-gradle-plugin:expo-autolinking-settings-plugin:checkKotlinGradlePluginConfigurationErrors (Thread[#151,included builds,5,main]) started.
+Resolve mutations for :gradle-plugin:settings-plugin:compileKotlin (Thread[#153,Execution worker,5,main]) started.
+:expo-gradle-plugin:expo-autolinking-settings-plugin:checkKotlinGradlePluginConfigurationErrors (Thread[#151,included builds,5,main]) started.
+:gradle-plugin:settings-plugin:compileKotlin (Thread[#153,Execution worker,5,main]) started.
+
+> Task :expo-gradle-plugin:expo-autolinking-settings-plugin:checkKotlinGradlePluginConfigurationErrors
+Caching disabled for task ':expo-gradle-plugin:expo-autolinking-settings-plugin:checkKotlinGradlePluginConfigurationErrors' because:
+  Build cache is disabled
+Task ':expo-gradle-plugin:expo-autolinking-settings-plugin:checkKotlinGradlePluginConfigurationErrors' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Resolve mutations for :expo-gradle-plugin:expo-autolinking-settings-plugin:compileKotlin (Thread[#151,included builds,5,main]) started.
+:expo-gradle-plugin:expo-autolinking-settings-plugin:compileKotlin (Thread[#151,included builds,5,main]) started.
+
+> Task :gradle-plugin:settings-plugin:compileKotlin UP-TO-DATE
+Caching disabled for task ':gradle-plugin:settings-plugin:compileKotlin' because:
+  Build cache is disabled
+Skipping task ':gradle-plugin:settings-plugin:compileKotlin' as it is up-to-date.
+Resolve mutations for :gradle-plugin:settings-plugin:compileJava (Thread[#153,Execution worker,5,main]) started.
+:gradle-plugin:settings-plugin:compileJava (Thread[#153,Execution worker,5,main]) started.
+
+> Task :gradle-plugin:settings-plugin:compileJava NO-SOURCE
+Skipping task ':gradle-plugin:settings-plugin:compileJava' as it has no source files and no previous output files.
+Resolve mutations for :gradle-plugin:settings-plugin:pluginDescriptors (Thread[#153,Execution worker,5,main]) started.
+:gradle-plugin:settings-plugin:pluginDescriptors (Thread[#153,Execution worker,5,main]) started.
+
+> Task :gradle-plugin:settings-plugin:pluginDescriptors UP-TO-DATE
+Caching disabled for task ':gradle-plugin:settings-plugin:pluginDescriptors' because:
+  Build cache is disabled
+  Not worth caching
+Skipping task ':gradle-plugin:settings-plugin:pluginDescriptors' as it is up-to-date.
+Resolve mutations for :gradle-plugin:settings-plugin:processResources (Thread[#153,Execution worker,5,main]) started.
+:gradle-plugin:settings-plugin:processResources (Thread[#153,Execution worker,5,main]) started.
+
+> Task :gradle-plugin:settings-plugin:processResources UP-TO-DATE
+Caching disabled for task ':gradle-plugin:settings-plugin:processResources' because:
+  Build cache is disabled
+  Not worth caching
+Skipping task ':gradle-plugin:settings-plugin:processResources' as it is up-to-date.
+Resolve mutations for :gradle-plugin:settings-plugin:classes (Thread[#153,Execution worker,5,main]) started.
+:gradle-plugin:settings-plugin:classes (Thread[#153,Execution worker,5,main]) started.
+
+> Task :gradle-plugin:settings-plugin:classes UP-TO-DATE
+Skipping task ':gradle-plugin:settings-plugin:classes' as it has no actions.
+Resolve mutations for :gradle-plugin:settings-plugin:jar (Thread[#153,Execution worker,5,main]) started.
+:gradle-plugin:settings-plugin:jar (Thread[#153,Execution worker,5,main]) started.
+
+> Task :expo-gradle-plugin:expo-autolinking-settings-plugin:compileKotlin UP-TO-DATE
+Caching disabled for task ':expo-gradle-plugin:expo-autolinking-settings-plugin:compileKotlin' because:
+  Build cache is disabled
+Skipping task ':expo-gradle-plugin:expo-autolinking-settings-plugin:compileKotlin' as it is up-to-date.
+Resolve mutations for :expo-gradle-plugin:expo-autolinking-settings-plugin:compileJava (Thread[#151,included builds,5,main]) started.
+:expo-gradle-plugin:expo-autolinking-settings-plugin:compileJava (Thread[#151,included builds,5,main]) started.
+
+> Task :expo-gradle-plugin:expo-autolinking-settings-plugin:compileJava NO-SOURCE
+Skipping task ':expo-gradle-plugin:expo-autolinking-settings-plugin:compileJava' as it has no source files and no previous output files.
+Resolve mutations for :expo-gradle-plugin:expo-autolinking-settings-plugin:pluginDescriptors (Thread[#151,included builds,5,main]) started.
+:expo-gradle-plugin:expo-autolinking-settings-plugin:pluginDescriptors (Thread[#151,included builds,5,main]) started.
+
+> Task :expo-gradle-plugin:expo-autolinking-settings-plugin:pluginDescriptors UP-TO-DATE
+Caching disabled for task ':expo-gradle-plugin:expo-autolinking-settings-plugin:pluginDescriptors' because:
+  Build cache is disabled
+  Not worth caching
+Skipping task ':expo-gradle-plugin:expo-autolinking-settings-plugin:pluginDescriptors' as it is up-to-date.
+Resolve mutations for :expo-gradle-plugin:expo-autolinking-settings-plugin:processResources (Thread[#151,included builds,5,main]) started.
+
+> Task :gradle-plugin:settings-plugin:jar UP-TO-DATE
+Caching disabled for task ':gradle-plugin:settings-plugin:jar' because:
+  Build cache is disabled
+  Not worth caching
+Skipping task ':gradle-plugin:settings-plugin:jar' as it is up-to-date.
+:expo-gradle-plugin:expo-autolinking-settings-plugin:processResources (Thread[#151,included builds,5,main]) started.
+
+> Task :expo-gradle-plugin:expo-autolinking-settings-plugin:processResources UP-TO-DATE
+Caching disabled for task ':expo-gradle-plugin:expo-autolinking-settings-plugin:processResources' because:
+  Build cache is disabled
+  Not worth caching
+Skipping task ':expo-gradle-plugin:expo-autolinking-settings-plugin:processResources' as it is up-to-date.
+Resolve mutations for :expo-gradle-plugin:expo-autolinking-settings-plugin:classes (Thread[#151,included builds,5,main]) started.
+:expo-gradle-plugin:expo-autolinking-settings-plugin:classes (Thread[#151,included builds,5,main]) started.
+
+> Task :expo-gradle-plugin:expo-autolinking-settings-plugin:classes UP-TO-DATE
+Skipping task ':expo-gradle-plugin:expo-autolinking-settings-plugin:classes' as it has no actions.
+Resolve mutations for :expo-gradle-plugin:expo-autolinking-settings-plugin:jar (Thread[#151,included builds,5,main]) started.
+:expo-gradle-plugin:expo-autolinking-settings-plugin:jar (Thread[#151,included builds,5,main]) started.
+
+> Task :expo-gradle-plugin:expo-autolinking-settings-plugin:jar UP-TO-DATE
+Caching disabled for task ':expo-gradle-plugin:expo-autolinking-settings-plugin:jar' because:
+  Build cache is disabled
+  Not worth caching
+Skipping task ':expo-gradle-plugin:expo-autolinking-settings-plugin:jar' as it is up-to-date.
+Starting process 'command 'node''. Working directory: /Volumes/SSD990/projects/react-native/x-story/android Command: node --print require.resolve('expo-modules-autolinking/package.json', { paths: [require.resolve('expo/package.json')] })
+Successfully started process 'command 'node''
+Starting process 'command 'node''. Working directory: /Volumes/SSD990/projects/react-native/x-story/android Command: node --no-warnings --eval require(require.resolve('expo-modules-autolinking', { paths: [require.resolve('expo/package.json')] }))(process.argv.slice(1)) -- resolve --platform android --json
+Successfully started process 'command 'node''
+Starting process 'command 'node''. Working directory: /Volumes/SSD990/projects/react-native/x-story/android Command: node --print require.resolve('react-native/package.json')
+Successfully started process 'command 'node''
+Starting process 'command 'node''. Working directory: /Volumes/SSD990/projects/react-native/x-story/android Command: node --print require.resolve('@react-native/gradle-plugin/package.json', { paths: [require.resolve('react-native/package.json')] })
+Successfully started process 'command 'node''
+Settings evaluated using settings file '/Volumes/SSD990/projects/react-native/x-story/android/settings.gradle'.
+Now considering [/Volumes/SSD990/projects/react-native/x-story/node_modules/expo-modules-core/expo-module-gradle-plugin, /Volumes/SSD990/projects/react-native/x-story/node_modules/expo-modules-autolinking/android/expo-gradle-plugin, /Volumes/SSD990/projects/react-native/x-story/node_modules/@react-native/gradle-plugin, /Volumes/SSD990/projects/react-native/x-story/android] as hierarchies to watch
+Projects loaded. Root project using build file '/Volumes/SSD990/projects/react-native/x-story/android/build.gradle'.
+Included projects: [root project 'xStory', project ':app', project ':expo', project ':expo-constants', project ':expo-modules-core', project ':invertase_react-native-apple-authentication', project ':react-native-async-storage_async-storage', project ':react-native-community_datetimepicker', project ':react-native-fbsdk-next', project ':react-native-gesture-handler', project ':react-native-google-signin_google-signin', project ':react-native-iap', project ':react-native-localize', project ':react-native-pager-view', project ':react-native-picker_picker', project ':react-native-reanimated', project ':react-native-safe-area-context', project ':react-native-screens', project ':react-native-webview', project ':react-native-wechat-lib']
+Registering project ':expo-gradle-plugin' in composite build. Will substitute for module ':expo-gradle-plugin'.
+Registering project ':expo-gradle-plugin:expo-autolinking-plugin' in composite build. Will substitute for module 'expo.modules:expo-autolinking-plugin'.
+Registering project ':expo-gradle-plugin:expo-autolinking-plugin-shared' in composite build. Will substitute for module 'expo.modules:expo-autolinking-plugin-shared'.
+Registering project ':expo-gradle-plugin:expo-autolinking-settings-plugin' in composite build. Will substitute for module 'expo.modules:expo-autolinking-settings-plugin'.
+
+> Configure project :expo-module-gradle-plugin
+Evaluating project ':expo-module-gradle-plugin' using build file '/Volumes/SSD990/projects/react-native/x-story/node_modules/expo-modules-core/expo-module-gradle-plugin/build.gradle.kts'.
+Resolved plugin [id: 'org.jetbrains.kotlin.jvm', version: '1.9.24']
+Resolved plugin [id: 'java-gradle-plugin']
+Using Kotlin Gradle Plugin gradle82 variant
+kotlin scripting plugin: created the scripting discovery configuration: kotlinScriptDef
+kotlin scripting plugin: created the scripting discovery configuration: testKotlinScriptDef
+Registering project ':expo-module-gradle-plugin' in composite build. Will substitute for module 'expo.modules:expo-module-gradle-plugin'.
+Registering project ':gradle-plugin' in composite build. Will substitute for module ':gradle-plugin-root'.
+Registering project ':gradle-plugin:react-native-gradle-plugin' in composite build. Will substitute for module 'com.facebook.react:react-native-gradle-plugin'.
+Registering project ':gradle-plugin:settings-plugin' in composite build. Will substitute for module 'com.facebook.react:settings-plugin'.
+Registering project ':gradle-plugin:shared' in composite build. Will substitute for module 'com.facebook.react:shared'.
+Registering project ':gradle-plugin:shared-testutil' in composite build. Will substitute for module 'com.facebook.react:shared-testutil'.
+Resolve mutations for :expo-gradle-plugin:expo-autolinking-plugin:checkKotlinGradlePluginConfigurationErrors (Thread[#160,Execution worker Thread 8,5,main]) started.
+Resolve mutations for :gradle-plugin:react-native-gradle-plugin:checkKotlinGradlePluginConfigurationErrors (Thread[#159,Execution worker Thread 7,5,main]) started.
+:expo-gradle-plugin:expo-autolinking-plugin:checkKotlinGradlePluginConfigurationErrors (Thread[#160,Execution worker Thread 8,5,main]) started.
+:gradle-plugin:react-native-gradle-plugin:checkKotlinGradlePluginConfigurationErrors (Thread[#159,Execution worker Thread 7,5,main]) started.
+Resolve mutations for :expo-module-gradle-plugin:checkKotlinGradlePluginConfigurationErrors (Thread[#154,Execution worker Thread 2,5,main]) started.
+work action resolve expo-autolinking-plugin-shared.jar (project :expo-gradle-plugin:expo-autolinking-plugin-shared) (Thread[#155,Execution worker Thread 3,5,main]) started.
+:expo-module-gradle-plugin:checkKotlinGradlePluginConfigurationErrors (Thread[#154,Execution worker Thread 2,5,main]) started.
+
+> Task :gradle-plugin:react-native-gradle-plugin:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Skipping task ':gradle-plugin:react-native-gradle-plugin:checkKotlinGradlePluginConfigurationErrors' as task onlyIf 'errorDiagnostics are present' is false.
+
+> Task :expo-gradle-plugin:expo-autolinking-plugin:checkKotlinGradlePluginConfigurationErrors
+Caching disabled for task ':expo-gradle-plugin:expo-autolinking-plugin:checkKotlinGradlePluginConfigurationErrors' because:
+  Build cache is disabled
+Task ':expo-gradle-plugin:expo-autolinking-plugin:checkKotlinGradlePluginConfigurationErrors' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Resolve mutations for :expo-gradle-plugin:expo-autolinking-plugin:compileKotlin (Thread[#160,Execution worker Thread 8,5,main]) started.
+Resolve mutations for :gradle-plugin:react-native-gradle-plugin:compileKotlin (Thread[#159,Execution worker Thread 7,5,main]) started.
+:expo-gradle-plugin:expo-autolinking-plugin:compileKotlin (Thread[#160,Execution worker Thread 8,5,main]) started.
+:gradle-plugin:react-native-gradle-plugin:compileKotlin (Thread[#159,Execution worker Thread 7,5,main]) started.
+
+> Task :expo-module-gradle-plugin:checkKotlinGradlePluginConfigurationErrors
+Caching disabled for task ':expo-module-gradle-plugin:checkKotlinGradlePluginConfigurationErrors' because:
+  Build cache is disabled
+Task ':expo-module-gradle-plugin:checkKotlinGradlePluginConfigurationErrors' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+Resolve mutations for :expo-module-gradle-plugin:pluginDescriptors (Thread[#154,Execution worker Thread 2,5,main]) started.
+:expo-module-gradle-plugin:pluginDescriptors (Thread[#154,Execution worker Thread 2,5,main]) started.
+
+> Task :expo-module-gradle-plugin:pluginDescriptors UP-TO-DATE
+Caching disabled for task ':expo-module-gradle-plugin:pluginDescriptors' because:
+  Build cache is disabled
+  Not worth caching
+Skipping task ':expo-module-gradle-plugin:pluginDescriptors' as it is up-to-date.
+Resolve mutations for :expo-module-gradle-plugin:processResources (Thread[#154,Execution worker Thread 2,5,main]) started.
+:expo-module-gradle-plugin:processResources (Thread[#154,Execution worker Thread 2,5,main]) started.
+
+> Task :expo-module-gradle-plugin:processResources UP-TO-DATE
+Caching disabled for task ':expo-module-gradle-plugin:processResources' because:
+  Build cache is disabled
+  Not worth caching
+Skipping task ':expo-module-gradle-plugin:processResources' as it is up-to-date.
+
+> Task :expo-gradle-plugin:expo-autolinking-plugin:compileKotlin UP-TO-DATE
+Caching disabled for task ':expo-gradle-plugin:expo-autolinking-plugin:compileKotlin' because:
+  Build cache is disabled
+Skipping task ':expo-gradle-plugin:expo-autolinking-plugin:compileKotlin' as it is up-to-date.
+Resolve mutations for :expo-gradle-plugin:expo-autolinking-plugin:compileJava (Thread[#160,Execution worker Thread 8,5,main]) started.
+:expo-gradle-plugin:expo-autolinking-plugin:compileJava (Thread[#160,Execution worker Thread 8,5,main]) started.
+
+> Task :expo-gradle-plugin:expo-autolinking-plugin:compileJava NO-SOURCE
+Skipping task ':expo-gradle-plugin:expo-autolinking-plugin:compileJava' as it has no source files and no previous output files.
+Resolve mutations for :expo-gradle-plugin:expo-autolinking-plugin:pluginDescriptors (Thread[#160,Execution worker Thread 8,5,main]) started.
+:expo-gradle-plugin:expo-autolinking-plugin:pluginDescriptors (Thread[#160,Execution worker Thread 8,5,main]) started.
+
+> Task :expo-gradle-plugin:expo-autolinking-plugin:pluginDescriptors UP-TO-DATE
+Caching disabled for task ':expo-gradle-plugin:expo-autolinking-plugin:pluginDescriptors' because:
+  Build cache is disabled
+  Not worth caching
+Skipping task ':expo-gradle-plugin:expo-autolinking-plugin:pluginDescriptors' as it is up-to-date.
+Resolve mutations for :expo-gradle-plugin:expo-autolinking-plugin:processResources (Thread[#160,Execution worker Thread 8,5,main]) started.
+:expo-gradle-plugin:expo-autolinking-plugin:processResources (Thread[#160,Execution worker Thread 8,5,main]) started.
+
+> Task :expo-gradle-plugin:expo-autolinking-plugin:processResources UP-TO-DATE
+Caching disabled for task ':expo-gradle-plugin:expo-autolinking-plugin:processResources' because:
+  Build cache is disabled
+  Not worth caching
+Skipping task ':expo-gradle-plugin:expo-autolinking-plugin:processResources' as it is up-to-date.
+Resolve mutations for :expo-gradle-plugin:expo-autolinking-plugin:classes (Thread[#160,Execution worker Thread 8,5,main]) started.
+:expo-gradle-plugin:expo-autolinking-plugin:classes (Thread[#160,Execution worker Thread 8,5,main]) started.
+
+> Task :expo-gradle-plugin:expo-autolinking-plugin:classes UP-TO-DATE
+Skipping task ':expo-gradle-plugin:expo-autolinking-plugin:classes' as it has no actions.
+Resolve mutations for :expo-gradle-plugin:expo-autolinking-plugin:jar (Thread[#160,Execution worker Thread 8,5,main]) started.
+:expo-gradle-plugin:expo-autolinking-plugin:jar (Thread[#160,Execution worker Thread 8,5,main]) started.
+
+> Task :expo-gradle-plugin:expo-autolinking-plugin:jar UP-TO-DATE
+Caching disabled for task ':expo-gradle-plugin:expo-autolinking-plugin:jar' because:
+  Build cache is disabled
+  Not worth caching
+Skipping task ':expo-gradle-plugin:expo-autolinking-plugin:jar' as it is up-to-date.
+
+> Task :gradle-plugin:react-native-gradle-plugin:compileKotlin UP-TO-DATE
+Caching disabled for task ':gradle-plugin:react-native-gradle-plugin:compileKotlin' because:
+  Build cache is disabled
+Skipping task ':gradle-plugin:react-native-gradle-plugin:compileKotlin' as it is up-to-date.
+other build task :gradle-plugin:react-native-gradle-plugin:compileKotlin (Thread[#159,Execution worker Thread 7,5,main]) started.
+Resolve mutations for :gradle-plugin:react-native-gradle-plugin:compileJava (Thread[#156,Execution worker Thread 4,5,main]) started.
+:gradle-plugin:react-native-gradle-plugin:compileJava (Thread[#156,Execution worker Thread 4,5,main]) started.
+
+> Task :gradle-plugin:react-native-gradle-plugin:compileJava NO-SOURCE
+Skipping task ':gradle-plugin:react-native-gradle-plugin:compileJava' as it has no source files and no previous output files.
+other build task :gradle-plugin:react-native-gradle-plugin:compileJava (Thread[#156,Execution worker Thread 4,5,main]) started.
+Resolve mutations for :gradle-plugin:react-native-gradle-plugin:pluginDescriptors (Thread[#159,Execution worker Thread 7,5,main]) started.
+work action resolve main (project :gradle-plugin:react-native-gradle-plugin) (Thread[#159,Execution worker Thread 7,5,main]) started.
+work action resolve main (project :gradle-plugin:react-native-gradle-plugin) (Thread[#159,Execution worker Thread 7,5,main]) started.
+Resolve mutations for :expo-module-gradle-plugin:compileKotlin (Thread[#159,Execution worker Thread 7,5,main]) started.
+:gradle-plugin:react-native-gradle-plugin:pluginDescriptors (Thread[#154,Execution worker Thread 2,5,main]) started.
+:expo-module-gradle-plugin:compileKotlin (Thread[#159,Execution worker Thread 7,5,main]) started.
+
+> Task :gradle-plugin:react-native-gradle-plugin:pluginDescriptors UP-TO-DATE
+Caching disabled for task ':gradle-plugin:react-native-gradle-plugin:pluginDescriptors' because:
+  Build cache is disabled
+  Not worth caching
+Skipping task ':gradle-plugin:react-native-gradle-plugin:pluginDescriptors' as it is up-to-date.
+Resolve mutations for :gradle-plugin:react-native-gradle-plugin:processResources (Thread[#154,Execution worker Thread 2,5,main]) started.
+:gradle-plugin:react-native-gradle-plugin:processResources (Thread[#154,Execution worker Thread 2,5,main]) started.
+
+> Task :gradle-plugin:react-native-gradle-plugin:processResources UP-TO-DATE
+Caching disabled for task ':gradle-plugin:react-native-gradle-plugin:processResources' because:
+  Build cache is disabled
+  Not worth caching
+Skipping task ':gradle-plugin:react-native-gradle-plugin:processResources' as it is up-to-date.
+Resolve mutations for :gradle-plugin:react-native-gradle-plugin:classes (Thread[#154,Execution worker Thread 2,5,main]) started.
+:gradle-plugin:react-native-gradle-plugin:classes (Thread[#154,Execution worker Thread 2,5,main]) started.
+
+> Task :gradle-plugin:react-native-gradle-plugin:classes UP-TO-DATE
+Skipping task ':gradle-plugin:react-native-gradle-plugin:classes' as it has no actions.
+Resolve mutations for :gradle-plugin:react-native-gradle-plugin:jar (Thread[#154,Execution worker Thread 2,5,main]) started.
+:gradle-plugin:react-native-gradle-plugin:jar (Thread[#154,Execution worker Thread 2,5,main]) started.
+
+> Task :gradle-plugin:react-native-gradle-plugin:jar UP-TO-DATE
+Caching disabled for task ':gradle-plugin:react-native-gradle-plugin:jar' because:
+  Build cache is disabled
+  Not worth caching
+Skipping task ':gradle-plugin:react-native-gradle-plugin:jar' as it is up-to-date.
+
+> Task :expo-module-gradle-plugin:compileKotlin UP-TO-DATE
+Caching disabled for task ':expo-module-gradle-plugin:compileKotlin' because:
+  Build cache is disabled
+Skipping task ':expo-module-gradle-plugin:compileKotlin' as it is up-to-date.
+Resolve mutations for :expo-module-gradle-plugin:compileJava (Thread[#159,Execution worker Thread 7,5,main]) started.
+:expo-module-gradle-plugin:compileJava (Thread[#159,Execution worker Thread 7,5,main]) started.
+
+> Task :expo-module-gradle-plugin:compileJava NO-SOURCE
+Skipping task ':expo-module-gradle-plugin:compileJava' as it has no source files and no previous output files.
+Resolve mutations for :expo-module-gradle-plugin:classes (Thread[#159,Execution worker Thread 7,5,main]) started.
+:expo-module-gradle-plugin:classes (Thread[#154,Execution worker Thread 2,5,main]) started.
+
+> Task :expo-module-gradle-plugin:classes UP-TO-DATE
+Skipping task ':expo-module-gradle-plugin:classes' as it has no actions.
+Resolve mutations for :expo-module-gradle-plugin:jar (Thread[#154,Execution worker Thread 2,5,main]) started.
+:expo-module-gradle-plugin:jar (Thread[#154,Execution worker Thread 2,5,main]) started.
+
+> Task :expo-module-gradle-plugin:jar UP-TO-DATE
+Caching disabled for task ':expo-module-gradle-plugin:jar' because:
+  Build cache is disabled
+  Not worth caching
+Skipping task ':expo-module-gradle-plugin:jar' as it is up-to-date.
+
+> Configure project :app
+Evaluating project ':app' using build file '/Volumes/SSD990/projects/react-native/x-story/android/app/build.gradle'.
+Using default execution profile
+Using Kotlin Gradle Plugin gradle85 variant
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+
+> Configure project :
+Evaluating root project 'xStory' using build file '/Volumes/SSD990/projects/react-native/x-story/android/build.gradle'.
+Found project 'project :expo-gradle-plugin:expo-autolinking-plugin' as substitute for module 'expo.modules:expo-autolinking-plugin'.
+Found project 'project :expo-module-gradle-plugin' as substitute for module 'expo.modules:expo-module-gradle-plugin'.
+Found project 'project :gradle-plugin:react-native-gradle-plugin' as substitute for module 'com.facebook.react:react-native-gradle-plugin'.
+Found project 'project :expo-gradle-plugin:expo-autolinking-plugin-shared' as substitute for module 'expo.modules:expo-autolinking-plugin-shared'.
+Found project 'project :gradle-plugin:react-native-gradle-plugin' as substitute for module 'com.facebook.react:react-native-gradle-plugin'.
+Found project 'project :expo-gradle-plugin:expo-autolinking-plugin-shared' as substitute for module 'expo.modules:expo-autolinking-plugin-shared'.
+Ignoring listeners of task graph ready event, as this build (:expo-gradle-plugin) has already executed work.
+Ignoring listeners of task graph ready event, as this build (:gradle-plugin) has already executed work.
+Starting process 'command 'node''. Working directory: /Volumes/SSD990/projects/react-native/x-story/android Command: node --print require.resolve('react-native/package.json')
+Successfully started process 'command 'node''
+[32m[ExpoRootProject][0m Using the following versions:
+  - buildTools:  [32m35.0.0[0m
+  - minSdk:      [32m24[0m
+  - compileSdk:  [32m35[0m
+  - targetSdk:   [32m35[0m
+  - ndk:         [32m27.1.12297006[0m
+  - kotlin:      [32m2.0.21[0m
+  - ksp:         [32m2.0.21-1.0.28[0m
+
+> Configure project :expo-constants
+Evaluating project ':expo-constants' using build file '/Volumes/SSD990/projects/react-native/x-story/node_modules/expo-constants/android/build.gradle'.
+Resolved plugin [id: 'com.android.library']
+Resolved plugin [id: 'expo-module-gradle-plugin']
+Using default execution profile
+Using Kotlin Gradle Plugin gradle85 variant
+Starting process 'command 'node''. Working directory: /Volumes/SSD990/projects/react-native/x-story/node_modules/expo-constants/android Command: node -e console.log(require('path').dirname(require.resolve('expo-constants/package.json')));
+Successfully started process 'command 'node''
+
+> Configure project :expo-modules-core
+Evaluating project ':expo-modules-core' using build file '/Volumes/SSD990/projects/react-native/x-story/node_modules/expo-modules-core/android/build.gradle'.
+Using default execution profile
+Using Kotlin Gradle Plugin gradle85 variant
+Starting process 'command 'node''. Working directory: /Volumes/SSD990/projects/react-native/x-story/android Command: node --print require.resolve('react-native/package.json')
+Successfully started process 'command 'node''
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+
+> Configure project :expo
+Evaluating project ':expo' using build file '/Volumes/SSD990/projects/react-native/x-story/node_modules/expo/android/build.gradle'.
+Using default execution profile
+Using Kotlin Gradle Plugin gradle85 variant
+
+Using expo modules
+  - [32mexpo-constants[0m (17.1.7)
+  - [32mexpo-modules-core[0m (2.4.2)
+  - [33m[📦][0m [32mexpo-asset[0m (11.1.7)
+  - [33m[📦][0m [32mexpo-av[0m (15.1.7)
+  - [33m[📦][0m [32mexpo-blur[0m (14.1.5)
+  - [33m[📦][0m [32mexpo-file-system[0m (18.1.11)
+  - [33m[📦][0m [32mexpo-font[0m (13.3.2)
+  - [33m[📦][0m [32mexpo-haptics[0m (14.1.4)
+  - [33m[📦][0m [32mexpo-image[0m (2.3.2)
+  - [33m[📦][0m [32mexpo-keep-awake[0m (14.1.4)
+  - [33m[📦][0m [32mexpo-linking[0m (7.1.7)
+  - [33m[📦][0m [32mexpo-secure-store[0m (14.2.3)
+  - [33m[📦][0m [32mexpo-splash-screen[0m (0.30.10)
+  - [33m[📦][0m [32mexpo-system-ui[0m (5.0.10)
+  - [33m[📦][0m [32mexpo-web-browser[0m (14.2.0)
+
+
+> Configure project :invertase_react-native-apple-authentication
+Evaluating project ':invertase_react-native-apple-authentication' using build file '/Volumes/SSD990/projects/react-native/x-story/node_modules/@invertase/react-native-apple-authentication/android/build.gradle'.
+Using default execution profile
+Using Kotlin Gradle Plugin gradle85 variant
+:invertase_react-native-apple-authentication:reactNativeAndroidRoot /Volumes/SSD990/projects/react-native/x-story/node_modules/react-native/android
+
+> Configure project :react-native-async-storage_async-storage
+Evaluating project ':react-native-async-storage_async-storage' using build file '/Volumes/SSD990/projects/react-native/x-story/node_modules/@react-native-async-storage/async-storage/android/build.gradle'.
+Using default execution profile
+[AsyncStorage] Config used: {kotlinVersion=2.0.21, kspVersion=1.9.24-1.0.20, roomVersion=2.6.1, minSdkVersion=24, targetSdkVersion=35, compileSdkVersion=35, useNextStorage=false, databaseSizeMB=6, isNewArchitectureEnabled=true, useDedicatedExecutor=false}
+
+> Configure project :react-native-community_datetimepicker
+Evaluating project ':react-native-community_datetimepicker' using build file '/Volumes/SSD990/projects/react-native/x-story/node_modules/@react-native-community/datetimepicker/android/build.gradle'.
+Using default execution profile
+Using Kotlin Gradle Plugin gradle85 variant
+
+> Configure project :react-native-fbsdk-next
+Evaluating project ':react-native-fbsdk-next' using build file '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-fbsdk-next/android/build.gradle'.
+Using default execution profile
+
+> Configure project :react-native-gesture-handler
+Evaluating project ':react-native-gesture-handler' using build file '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-gesture-handler/android/build.gradle'.
+Using default execution profile
+Using Kotlin Gradle Plugin gradle85 variant
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+
+> Configure project :react-native-google-signin_google-signin
+Evaluating project ':react-native-google-signin_google-signin' using build file '/Volumes/SSD990/projects/react-native/x-story/node_modules/@react-native-google-signin/google-signin/android/build.gradle'.
+Using default execution profile
+Using Kotlin Gradle Plugin gradle85 variant
+
+> Configure project :react-native-iap
+Evaluating project ':react-native-iap' using build file '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/build.gradle'.
+Using default execution profile
+Using Kotlin Gradle Plugin gradle85 variant
+[NitroModules] 🔥 NitroIap is boosted by nitro!
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+
+> Configure project :react-native-localize
+Evaluating project ':react-native-localize' using build file '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-localize/android/build.gradle'.
+Using default execution profile
+Using Kotlin Gradle Plugin gradle85 variant
+
+> Configure project :react-native-pager-view
+Evaluating project ':react-native-pager-view' using build file '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-pager-view/android/build.gradle'.
+Using default execution profile
+Using Kotlin Gradle Plugin gradle85 variant
+:react-native-pager-view:reactNativeAndroidRoot /Volumes/SSD990/projects/react-native/x-story/node_modules/react-native/android
+
+> Configure project :react-native-picker_picker
+Evaluating project ':react-native-picker_picker' using build file '/Volumes/SSD990/projects/react-native/x-story/node_modules/@react-native-picker/picker/android/build.gradle'.
+Using default execution profile
+
+> Configure project :react-native-reanimated
+Evaluating project ':react-native-reanimated' using build file '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-reanimated/android/build.gradle'.
+Using default execution profile
+Android gradle plugin: 8.8.2
+Gradle: 8.13
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+
+> Configure project :react-native-safe-area-context
+Evaluating project ':react-native-safe-area-context' using build file '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-safe-area-context/android/build.gradle'.
+Using default execution profile
+Using Kotlin Gradle Plugin gradle85 variant
+
+> Configure project :react-native-screens
+Evaluating project ':react-native-screens' using build file '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-screens/android/build.gradle'.
+Using default execution profile
+Using Kotlin Gradle Plugin gradle85 variant
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+C/C++: android.ndkVersion from module build.gradle is [27.1.12297006]
+C/C++: android.ndkPath from module build.gradle is not set
+C/C++: ndk.dir in local.properties is not set
+C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+C/C++: sdkFolder is /Users/gary/Library/Android/sdk
+
+> Configure project :react-native-webview
+Evaluating project ':react-native-webview' using build file '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-webview/android/build.gradle'.
+Using default execution profile
+Using Kotlin Gradle Plugin gradle85 variant
+
+> Configure project :react-native-wechat-lib
+Evaluating project ':react-native-wechat-lib' using build file '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-wechat-lib/android/build.gradle'.
+Using default execution profile
+All projects evaluated.
+Task path ':react-native-iap:compileReleaseKotlin' matched project ':react-native-iap'
+Task name matched 'compileReleaseKotlin'
+Selected primary task 'compileReleaseKotlin' from project :react-native-iap
+Starting process 'command '/usr/libexec/java_home''. Working directory: /Users/gary/.gradle/daemon/8.13 Command: /usr/libexec/java_home -V
+Successfully started process 'command '/usr/libexec/java_home''
+Tasks to be executed: [task ':react-native-iap:checkKotlinGradlePluginConfigurationErrors', task ':react-native-iap:preBuild', task ':react-native-iap:preReleaseBuild', task ':react-native-iap:generateReleaseBuildConfig', task ':react-native-iap:generateReleaseResValues', task ':react-native-iap:generateReleaseResources', task ':react-native-iap:packageReleaseResources', task ':react-native-iap:parseReleaseLocalResources', task ':react-native-iap:generateReleaseRFile', task ':react-native-iap:compileReleaseKotlin']
+Tasks that were excluded: []
+Resolve mutations for :react-native-iap:checkKotlinGradlePluginConfigurationErrors (Thread[#158,Execution worker Thread 6,5,main]) started.
+:react-native-iap:checkKotlinGradlePluginConfigurationErrors (Thread[#158,Execution worker Thread 6,5,main]) started.
+
+> Task :react-native-iap:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Skipping task ':react-native-iap:checkKotlinGradlePluginConfigurationErrors' as task onlyIf 'errorDiagnostics are present' is false.
+Resolve mutations for :react-native-iap:preBuild (Thread[#158,Execution worker Thread 6,5,main]) started.
+:react-native-iap:preBuild (Thread[#158,Execution worker Thread 6,5,main]) started.
+
+> Task :react-native-iap:preBuild UP-TO-DATE
+Skipping task ':react-native-iap:preBuild' as it has no actions.
+Resolve mutations for :react-native-iap:preReleaseBuild (Thread[#158,Execution worker Thread 6,5,main]) started.
+:react-native-iap:preReleaseBuild (Thread[#158,Execution worker Thread 6,5,main]) started.
+
+> Task :react-native-iap:preReleaseBuild UP-TO-DATE
+Skipping task ':react-native-iap:preReleaseBuild' as it has no actions.
+Resolve mutations for :react-native-iap:generateReleaseBuildConfig (Thread[#158,Execution worker Thread 6,5,main]) started.
+:react-native-iap:generateReleaseBuildConfig (Thread[#158,Execution worker Thread 6,5,main]) started.
+
+> Task :react-native-iap:generateReleaseBuildConfig UP-TO-DATE
+Caching disabled for task ':react-native-iap:generateReleaseBuildConfig' because:
+  Build cache is disabled
+Skipping task ':react-native-iap:generateReleaseBuildConfig' as it is up-to-date.
+Resolve mutations for :react-native-iap:generateReleaseResValues (Thread[#158,Execution worker Thread 6,5,main]) started.
+:react-native-iap:generateReleaseResValues (Thread[#158,Execution worker Thread 6,5,main]) started.
+
+> Task :react-native-iap:generateReleaseResValues UP-TO-DATE
+Caching disabled for task ':react-native-iap:generateReleaseResValues' because:
+  Build cache is disabled
+Skipping task ':react-native-iap:generateReleaseResValues' as it is up-to-date.
+Resolve mutations for :react-native-iap:generateReleaseResources (Thread[#158,Execution worker Thread 6,5,main]) started.
+:react-native-iap:generateReleaseResources (Thread[#158,Execution worker Thread 6,5,main]) started.
+
+> Task :react-native-iap:generateReleaseResources UP-TO-DATE
+Caching disabled for task ':react-native-iap:generateReleaseResources' because:
+  Build cache is disabled
+Skipping task ':react-native-iap:generateReleaseResources' as it is up-to-date.
+Resolve mutations for :react-native-iap:packageReleaseResources (Thread[#158,Execution worker Thread 6,5,main]) started.
+:react-native-iap:packageReleaseResources (Thread[#158,Execution worker Thread 6,5,main]) started.
+
+> Task :react-native-iap:packageReleaseResources UP-TO-DATE
+Caching disabled for task ':react-native-iap:packageReleaseResources' because:
+  Build cache is disabled
+Skipping task ':react-native-iap:packageReleaseResources' as it is up-to-date.
+Resolve mutations for :react-native-iap:parseReleaseLocalResources (Thread[#158,Execution worker Thread 6,5,main]) started.
+:react-native-iap:parseReleaseLocalResources (Thread[#158,Execution worker Thread 6,5,main]) started.
+
+> Task :react-native-iap:parseReleaseLocalResources UP-TO-DATE
+Caching disabled for task ':react-native-iap:parseReleaseLocalResources' because:
+  Build cache is disabled
+Skipping task ':react-native-iap:parseReleaseLocalResources' as it is up-to-date.
+Resolve mutations for :react-native-iap:generateReleaseRFile (Thread[#158,Execution worker Thread 6,5,main]) started.
+:react-native-iap:generateReleaseRFile (Thread[#158,Execution worker Thread 6,5,main]) started.
+
+> Task :react-native-iap:generateReleaseRFile UP-TO-DATE
+Caching disabled for task ':react-native-iap:generateReleaseRFile' because:
+  Build cache is disabled
+Skipping task ':react-native-iap:generateReleaseRFile' as it is up-to-date.
+Resolve mutations for :react-native-iap:compileReleaseKotlin (Thread[#158,Execution worker Thread 6,5,main]) started.
+:react-native-iap:compileReleaseKotlin (Thread[#158,Execution worker Thread 6,5,main]) started.
+
+> Task :react-native-iap:compileReleaseKotlin FAILED
+GradleBuildProject.Builder should not be accessed through AnalyticsConfiguratorService after AnalyticsService is created. Analytics information of this build might be incomplete.
+Caching disabled for task ':react-native-iap:compileReleaseKotlin' because:
+  Build cache is disabled
+Task ':react-native-iap:compileReleaseKotlin' is not up-to-date because:
+  Task has failed previously.
+The input changes require a full rebuild for incremental task ':react-native-iap:compileReleaseKotlin'.
+file or directory '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/release/kotlin', not found
+file or directory '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/release/java', not found
+file or directory '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/release/kotlin', not found
+file or directory '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/release/kotlin', not found
+file or directory '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/release/java', not found
+file or directory '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/kotlin', not found
+file or directory '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/kotlin', not found
+file or directory '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/kotlin', not found
+file or directory '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/release/java', not found
+file or directory '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/release/kotlin', not found
+file or directory '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/release/java', not found
+file or directory '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/release/kotlin', not found
+file or directory '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/release/kotlin', not found
+file or directory '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/release/java', not found
+file or directory '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/kotlin', not found
+file or directory '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/release/kotlin', not found
+file or directory '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/release/java', not found
+file or directory '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/release/kotlin', not found
+file or directory '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/release/kotlin', not found
+file or directory '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/release/java', not found
+file or directory '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/kotlin', not found
+file or directory '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/kotlin', not found
+file or directory '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/kotlin', not found
+file or directory '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/release/java', not found
+file or directory '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/release/kotlin', not found
+file or directory '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/release/java', not found
+file or directory '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/release/kotlin', not found
+file or directory '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/release/kotlin', not found
+file or directory '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/release/java', not found
+file or directory '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/kotlin', not found
+file or directory '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/kotlin', not found
+file or directory '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/kotlin', not found
+file or directory '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/release/java', not found
+file or directory '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/release/kotlin', not found
+file or directory '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/release/java', not found
+file or directory '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/release/kotlin', not found
+file or directory '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/release/kotlin', not found
+file or directory '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/release/java', not found
+file or directory '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/kotlin', not found
+file or directory '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/kotlin', not found
+file or directory '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/kotlin', not found
+file or directory '/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/release/java', not found
+Kotlin source files: /Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt, /Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/RnIapLog.kt, /Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/Types.kt, /Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/NitroSubscriptionStatus.kt, /Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/RequestPurchaseResult.kt, /Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/NitroPurchase.kt, /Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/Func_void_NitroProduct.kt, /Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/NitroPurchaseRequest.kt, /Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/NitroRequestPurchaseAndroid.kt, /Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/NitroReceiptValidationAndroidOptions.kt, /Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/Variant_NitroReceiptValidationResultIOS_NitroReceiptValidationResultAndroid.kt, /Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/IapPlatform.kt, /Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/PurchaseAndroid.kt, /Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/HybridRnIapSpec.kt, /Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/NitroSubscriptionRenewalInfo.kt, /Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/NitroFinishTransactionIosParams.kt, /Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/AndroidSubscriptionOfferInput.kt, /Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/NitroAvailablePurchasesAndroidOptions.kt, /Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/NitroFinishTransactionAndroidParams.kt, /Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/NitroReceiptValidationParams.kt, /Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/NitroRequestPurchaseIos.kt, /Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/Func_void_NitroPurchaseResult.kt, /Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/NitroFinishTransactionParams.kt, /Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/NitroReceiptValidationResultAndroid.kt, /Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/NitroDeepLinkOptionsAndroid.kt, /Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/NitroIapOnLoad.kt, /Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/PurchaseIOS.kt, /Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/PurchaseOfferIOS.kt, /Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/NitroAvailablePurchasesOptions.kt, /Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/NitroReceiptValidationResultIOS.kt, /Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/Variant_Boolean_NitroPurchaseResult.kt, /Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/NitroPurchaseResult.kt, /Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/NitroAvailablePurchasesIosOptions.kt, /Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/Func_void_NitroPurchase.kt, /Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/NitroAvailablePurchasesAndroidType.kt, /Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/Purchase.kt, /Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/PurchaseState.kt, /Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/NitroProduct.kt
+Java source files: /Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/NitroIapPackage.java, /Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/build/generated/source/buildConfig/release/com/margelo/nitro/iap/BuildConfig.java
+Script source files: 
+Script file extensions: 
+Using Kotlin/JVM incremental compilation
+[KOTLIN] Kotlin compilation 'jdkHome' argument: null
+Options for KOTLIN DAEMON: IncrementalCompilationOptions(super=CompilationOptions(compilerMode=INCREMENTAL_COMPILER, targetPlatform=JVM, reportCategories=[0, 3], reportSeverity=2, requestedCompilationResults=[0], kotlinScriptExtensions=[]), areFileChangesKnown=false, modifiedFiles=null, deletedFiles=null, classpathChanges=NotAvailableForNonIncrementalRun, workingDir=/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/build/kotlin/compileReleaseKotlin/cacheable, multiModuleICSettings=MultiModuleICSettings(buildHistoryFile=/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/build/kotlin/compileReleaseKotlin/local-state/build-history.bin, useModuleDetection=true), usePreciseJavaTracking=true, icFeatures=IncrementalCompilationFeatures(withAbiSnapshot=false, preciseCompilationResultsBackup=true, keepIncrementalCompilationCachesInMemory=true, enableUnsafeIncrementalCompilationForMultiplatform=false), outputFiles=[/Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/build/tmp/kotlin-classes/release, /Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/build/kotlin/compileReleaseKotlin/cacheable, /Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/build/kotlin/compileReleaseKotlin/local-state])
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:4:26 Unresolved reference 'NitroModules'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:5:26 Unresolved reference 'core'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:42:9 Unresolved reference 'NitroModules'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:59:36 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:60:16 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:69:13 Suspend function 'suspend fun <T> withContext(context: CoroutineContext, block: suspend CoroutineScope.() -> T): T
+    [R|Contract description]
+     <
+        CallsInPlace(block, EXACTLY_ONCE)
+    >' should be called only from a coroutine or another suspend function.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:81:45 Suspend function 'suspend fun await(): Boolean' should be called only from a coroutine or another suspend function.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:125:21 Suspend function 'suspend fun <T> withContext(context: CoroutineContext, block: suspend CoroutineScope.() -> T): T
+    [R|Contract description]
+     <
+        CallsInPlace(block, EXACTLY_ONCE)
+    >' should be called only from a coroutine or another suspend function.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:165:35 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:166:16 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:168:35 Suspend function 'suspend fun invoke(): Boolean' should be called only from a coroutine or another suspend function.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:178:68 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:179:16 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:192:30 Unresolved reference 'await'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:205:47 Suspend function 'suspend fun invoke(p1: @ParameterName(...) ProductRequest): FetchProductsResult' should be called only from a coroutine or another suspend function.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:219:43 Suspend function 'suspend fun invoke(p1: @ParameterName(...) ProductRequest): FetchProductsResult' should be called only from a coroutine or another suspend function.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:240:66 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:241:16 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:265:34 Unresolved reference 'await'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:266:17 Suspend function 'suspend fun <T> withContext(context: CoroutineContext, block: suspend CoroutineScope.() -> T): T
+    [R|Contract description]
+     <
+        CallsInPlace(block, EXACTLY_ONCE)
+    >' should be called only from a coroutine or another suspend function.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:273:37 Suspend function 'suspend fun invoke(p1: @ParameterName(...) ProductRequest): FetchProductsResult' should be called only from a coroutine or another suspend function.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:348:30 Suspend function 'suspend fun <T> withContext(context: CoroutineContext, block: suspend CoroutineScope.() -> T): T
+    [R|Contract description]
+     <
+        CallsInPlace(block, EXACTLY_ONCE)
+    >' should be called only from a coroutine or another suspend function.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:377:83 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:378:16 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:380:30 Unresolved reference 'await'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:403:25 Suspend function 'suspend fun getAvailableItems(type: ProductQueryType): List<Purchase>' should be called only from a coroutine or another suspend function.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:406:25 Suspend function 'suspend fun invoke(p1: @ParameterName(...) PurchaseOptions?): List<Purchase>' should be called only from a coroutine or another suspend function.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:417:75 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:418:16 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:447:34 Unresolved reference 'await'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:463:29 Suspend function 'suspend fun invoke(p1: @ParameterName(...) String): Boolean' should be called only from a coroutine or another suspend function.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:465:29 Suspend function 'suspend fun invoke(p1: @ParameterName(...) String): Boolean' should be called only from a coroutine or another suspend function.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:494:5 'memorySize' overrides nothing.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:762:38 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:763:16 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:769:42 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:770:16 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:776:42 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:777:16 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:779:34 Unresolved reference 'await'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:781:37 Suspend function 'suspend fun getStorefront(): String' should be called only from a coroutine or another suspend function.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:792:88 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:793:16 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:795:34 Unresolved reference 'await'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:799:33 Suspend function 'suspend fun invoke(p1: @ParameterName(...) DeepLinkOptions?): Unit' should be called only from a coroutine or another suspend function.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:809:43 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:810:16 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:816:47 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:817:16 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:824:43 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:825:16 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:831:51 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:832:16 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:839:41 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:840:16 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:846:54 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:847:16 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:855:48 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:856:16 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:858:13 Cannot infer type for this parameter. Please specify it explicitly.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:862:48 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:863:16 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:869:73 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:870:16 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:925:54 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:926:16 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:931:54 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:932:16 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:937:53 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:938:16 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:943:47 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:944:16 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:949:29 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:950:16 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:957:63 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:958:16 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:963:39 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:964:16 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:969:35 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:970:16 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:975:46 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:976:16 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:981:57 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:982:16 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:987:53 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/android/src/main/java/com/margelo/nitro/iap/HybridRnIap.kt:988:16 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/AndroidSubscriptionOfferInput.kt:12:26 Unresolved reference 'core'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/Func_void_NitroProduct.kt:13:26 Unresolved reference 'core'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/Func_void_NitroPurchase.kt:13:26 Unresolved reference 'core'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/Func_void_NitroPurchaseResult.kt:13:26 Unresolved reference 'core'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/HybridRnIapSpec.kt:13:26 Unresolved reference 'core'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/HybridRnIapSpec.kt:26:33 Unresolved reference 'HybridObject'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/HybridRnIapSpec.kt:31:5 Unresolved reference 'HybridObject'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/HybridRnIapSpec.kt:31:11 Unresolved reference 'updateNative'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/HybridRnIapSpec.kt:34:3 'updateNative' overrides nothing.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/HybridRnIapSpec.kt:36:5 Unresolved reference 'HybridObject'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/HybridRnIapSpec.kt:36:11 Unresolved reference 'updateNative'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/HybridRnIapSpec.kt:45:34 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/HybridRnIapSpec.kt:49:33 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/HybridRnIapSpec.kt:53:66 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/HybridRnIapSpec.kt:57:64 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/HybridRnIapSpec.kt:61:81 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/HybridRnIapSpec.kt:65:73 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/HybridRnIapSpec.kt:123:36 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/HybridRnIapSpec.kt:127:40 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/HybridRnIapSpec.kt:131:45 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/HybridRnIapSpec.kt:135:41 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/HybridRnIapSpec.kt:139:41 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/HybridRnIapSpec.kt:143:49 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/HybridRnIapSpec.kt:147:39 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/HybridRnIapSpec.kt:151:52 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/HybridRnIapSpec.kt:155:52 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/HybridRnIapSpec.kt:159:52 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/HybridRnIapSpec.kt:163:51 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/HybridRnIapSpec.kt:167:45 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/HybridRnIapSpec.kt:171:27 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/HybridRnIapSpec.kt:175:46 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/HybridRnIapSpec.kt:179:46 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/HybridRnIapSpec.kt:183:61 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/HybridRnIapSpec.kt:187:37 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/HybridRnIapSpec.kt:191:33 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/HybridRnIapSpec.kt:195:44 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/HybridRnIapSpec.kt:199:55 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/HybridRnIapSpec.kt:203:51 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/HybridRnIapSpec.kt:207:71 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/HybridRnIapSpec.kt:211:40 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/HybridRnIapSpec.kt:215:86 Unresolved reference 'Promise'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/NitroAvailablePurchasesAndroidOptions.kt:12:26 Unresolved reference 'core'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/NitroAvailablePurchasesIosOptions.kt:12:26 Unresolved reference 'core'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/NitroAvailablePurchasesOptions.kt:12:26 Unresolved reference 'core'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/NitroDeepLinkOptionsAndroid.kt:12:26 Unresolved reference 'core'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/NitroFinishTransactionAndroidParams.kt:12:26 Unresolved reference 'core'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/NitroFinishTransactionIosParams.kt:12:26 Unresolved reference 'core'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/NitroFinishTransactionParams.kt:12:26 Unresolved reference 'core'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/NitroProduct.kt:12:26 Unresolved reference 'core'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/NitroPurchase.kt:12:26 Unresolved reference 'core'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/NitroPurchaseRequest.kt:12:26 Unresolved reference 'core'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/NitroPurchaseResult.kt:12:26 Unresolved reference 'core'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/NitroReceiptValidationAndroidOptions.kt:12:26 Unresolved reference 'core'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/NitroReceiptValidationParams.kt:12:26 Unresolved reference 'core'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/NitroReceiptValidationResultAndroid.kt:12:26 Unresolved reference 'core'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/NitroReceiptValidationResultIOS.kt:12:26 Unresolved reference 'core'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/NitroRequestPurchaseAndroid.kt:12:26 Unresolved reference 'core'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/NitroRequestPurchaseIos.kt:12:26 Unresolved reference 'core'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/NitroSubscriptionRenewalInfo.kt:12:26 Unresolved reference 'core'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/NitroSubscriptionStatus.kt:12:26 Unresolved reference 'core'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/PurchaseAndroid.kt:12:26 Unresolved reference 'core'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/PurchaseIOS.kt:12:26 Unresolved reference 'core'.
+e: file:///Volumes/SSD990/projects/react-native/x-story/node_modules/react-native-iap/nitrogen/generated/android/kotlin/com/margelo/nitro/iap/PurchaseOfferIOS.kt:12:26 Unresolved reference 'core'.
+Finished executing kotlin compiler using DAEMON strategy
+
+[Incubating] Problems report is available at: file:///Volumes/SSD990/projects/react-native/x-story/android/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':react-native-iap:compileReleaseKotlin'.
+> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+   > Compilation error. See log for more details
+
+* Try:
+> Run with --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+* Exception is:
+org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':react-native-iap:compileReleaseKotlin'.
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.lambda$executeIfValid$1(ExecuteActionsTaskExecuter.java:130)
+	at org.gradle.internal.Try$Failure.ifSuccessfulOrElse(Try.java:293)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:128)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:116)
+	at org.gradle.api.internal.tasks.execution.ProblemsTaskPathTrackingTaskExecuter.execute(ProblemsTaskPathTrackingTaskExecuter.java:40)
+	at org.gradle.api.internal.tasks.execution.FinalizePropertiesTaskExecuter.execute(FinalizePropertiesTaskExecuter.java:46)
+	at org.gradle.api.internal.tasks.execution.ResolveTaskExecutionModeExecuter.execute(ResolveTaskExecutionModeExecuter.java:51)
+	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:57)
+	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:74)
+	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:36)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:210)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:205)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:54)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter.execute(EventFiringTaskExecuter.java:52)
+	at org.gradle.execution.plan.LocalTaskNodeExecutor.execute(LocalTaskNodeExecutor.java:42)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:331)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:318)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.lambda$execute$0(DefaultTaskExecutionGraph.java:314)
+	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:85)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:314)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:303)
+	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:459)
+	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:376)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:48)
+Caused by: org.gradle.workers.internal.DefaultWorkerExecutor$WorkExecutionException: A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+	at org.gradle.workers.internal.DefaultWorkerExecutor$WorkItemExecution.waitForCompletion(DefaultWorkerExecutor.java:287)
+	at org.gradle.internal.work.DefaultAsyncWorkTracker.lambda$waitForItemsAndGatherFailures$2(DefaultAsyncWorkTracker.java:130)
+	at org.gradle.internal.Factories$1.create(Factories.java:31)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.withoutLocks(DefaultWorkerLeaseService.java:335)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.withoutLocks(DefaultWorkerLeaseService.java:318)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.withoutLock(DefaultWorkerLeaseService.java:323)
+	at org.gradle.internal.work.DefaultAsyncWorkTracker.waitForItemsAndGatherFailures(DefaultAsyncWorkTracker.java:126)
+	at org.gradle.internal.work.DefaultAsyncWorkTracker.waitForItemsAndGatherFailures(DefaultAsyncWorkTracker.java:92)
+	at org.gradle.internal.work.DefaultAsyncWorkTracker.waitForAll(DefaultAsyncWorkTracker.java:78)
+	at org.gradle.internal.work.DefaultAsyncWorkTracker.waitForCompletion(DefaultAsyncWorkTracker.java:66)
+	at org.gradle.api.internal.tasks.execution.TaskExecution$3.run(TaskExecution.java:252)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:30)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:27)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.run(DefaultBuildOperationRunner.java:48)
+	at org.gradle.api.internal.tasks.execution.TaskExecution.executeAction(TaskExecution.java:229)
+	at org.gradle.api.internal.tasks.execution.TaskExecution.executeActions(TaskExecution.java:212)
+	at org.gradle.api.internal.tasks.execution.TaskExecution.executeWithPreviousOutputFiles(TaskExecution.java:195)
+	at org.gradle.api.internal.tasks.execution.TaskExecution.execute(TaskExecution.java:162)
+	at org.gradle.internal.execution.steps.ExecuteStep.executeInternal(ExecuteStep.java:105)
+	at org.gradle.internal.execution.steps.ExecuteStep.access$000(ExecuteStep.java:44)
+	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:59)
+	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:56)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:210)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:205)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:54)
+	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:56)
+	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:44)
+	at org.gradle.internal.execution.steps.CancelExecutionStep.execute(CancelExecutionStep.java:42)
+	at org.gradle.internal.execution.steps.TimeoutStep.executeWithoutTimeout(TimeoutStep.java:75)
+	at org.gradle.internal.execution.steps.TimeoutStep.execute(TimeoutStep.java:55)
+	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:50)
+	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:28)
+	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:67)
+	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:37)
+	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:61)
+	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:26)
+	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:69)
+	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:46)
+	at org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:40)
+	at org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:29)
+	at org.gradle.internal.execution.steps.BuildCacheStep.executeWithoutCache(BuildCacheStep.java:189)
+	at org.gradle.internal.execution.steps.BuildCacheStep.lambda$execute$1(BuildCacheStep.java:75)
+	at org.gradle.internal.Either$Right.fold(Either.java:175)
+	at org.gradle.internal.execution.caching.CachingState.fold(CachingState.java:62)
+	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:73)
+	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:48)
+	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:46)
+	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:35)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.executeBecause(SkipUpToDateStep.java:75)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.lambda$execute$2(SkipUpToDateStep.java:53)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:53)
+	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:35)
+	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:37)
+	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:27)
+	at org.gradle.internal.execution.steps.ResolveIncrementalCachingStateStep.executeDelegate(ResolveIncrementalCachingStateStep.java:49)
+	at org.gradle.internal.execution.steps.ResolveIncrementalCachingStateStep.executeDelegate(ResolveIncrementalCachingStateStep.java:27)
+	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:71)
+	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:39)
+	at org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:65)
+	at org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:36)
+	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:107)
+	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:56)
+	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:64)
+	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:43)
+	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.executeWithNonEmptySources(AbstractSkipEmptyWorkStep.java:125)
+	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:61)
+	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:36)
+	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsStartedStep.execute(MarkSnapshottingInputsStartedStep.java:38)
+	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:36)
+	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:23)
+	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:75)
+	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:41)
+	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.lambda$execute$0(AssignMutableWorkspaceStep.java:35)
+	at org.gradle.api.internal.tasks.execution.TaskExecution$4.withWorkspace(TaskExecution.java:289)
+	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:31)
+	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:22)
+	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:40)
+	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:23)
+	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.lambda$execute$2(ExecuteWorkBuildOperationFiringStep.java:67)
+	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:67)
+	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:39)
+	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:46)
+	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:34)
+	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:48)
+	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:35)
+	at org.gradle.internal.execution.impl.DefaultExecutionEngine$1.execute(DefaultExecutionEngine.java:61)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:127)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:116)
+	at org.gradle.api.internal.tasks.execution.ProblemsTaskPathTrackingTaskExecuter.execute(ProblemsTaskPathTrackingTaskExecuter.java:40)
+	at org.gradle.api.internal.tasks.execution.FinalizePropertiesTaskExecuter.execute(FinalizePropertiesTaskExecuter.java:46)
+	at org.gradle.api.internal.tasks.execution.ResolveTaskExecutionModeExecuter.execute(ResolveTaskExecutionModeExecuter.java:51)
+	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:57)
+	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:74)
+	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:36)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:210)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:205)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:54)
+	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter.execute(EventFiringTaskExecuter.java:52)
+	at org.gradle.execution.plan.LocalTaskNodeExecutor.execute(LocalTaskNodeExecutor.java:42)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:331)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:318)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.lambda$execute$0(DefaultTaskExecutionGraph.java:314)
+	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:85)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:314)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:303)
+	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:459)
+	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:376)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:48)
+Caused by: org.jetbrains.kotlin.gradle.tasks.CompilationErrorException: Compilation error. See log for more details
+	at org.jetbrains.kotlin.gradle.tasks.TasksUtilsKt.throwExceptionIfCompilationFailed(tasksUtils.kt:21)
+	at org.jetbrains.kotlin.compilerRunner.GradleKotlinCompilerWork.run(GradleKotlinCompilerWork.kt:119)
+	at org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction.execute(GradleCompilerRunnerWithWorkers.kt:76)
+	at org.gradle.workers.internal.DefaultWorkerServer.execute(DefaultWorkerServer.java:63)
+	at org.gradle.workers.internal.NoIsolationWorkerFactory$1$1.create(NoIsolationWorkerFactory.java:66)
+	at org.gradle.workers.internal.NoIsolationWorkerFactory$1$1.create(NoIsolationWorkerFactory.java:62)
+	at org.gradle.internal.classloader.ClassLoaderUtils.executeInClassloader(ClassLoaderUtils.java:100)
+	at org.gradle.workers.internal.NoIsolationWorkerFactory$1.lambda$execute$0(NoIsolationWorkerFactory.java:62)
+	at org.gradle.workers.internal.AbstractWorker$1.call(AbstractWorker.java:44)
+	at org.gradle.workers.internal.AbstractWorker$1.call(AbstractWorker.java:41)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:210)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:205)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:54)
+	at org.gradle.workers.internal.AbstractWorker.executeWrappedInBuildOperation(AbstractWorker.java:41)
+	at org.gradle.workers.internal.NoIsolationWorkerFactory$1.execute(NoIsolationWorkerFactory.java:59)
+	at org.gradle.workers.internal.DefaultWorkerExecutor.lambda$submitWork$0(DefaultWorkerExecutor.java:174)
+	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.runExecution(DefaultConditionalExecutionQueue.java:194)
+	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.access$700(DefaultConditionalExecutionQueue.java:127)
+	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner$1.run(DefaultConditionalExecutionQueue.java:169)
+	at org.gradle.internal.Factories$1.create(Factories.java:31)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.withLocks(DefaultWorkerLeaseService.java:263)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:127)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:132)
+	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.runBatch(DefaultConditionalExecutionQueue.java:164)
+	at org.gradle.internal.work.DefaultConditionalExecutionQueue$ExecutionRunner.run(DefaultConditionalExecutionQueue.java:133)
+	... 2 more
+
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.13/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD FAILED in 10s
+35 actionable tasks: 5 executed, 30 up-to-date
+Watched directory hierarchies: [/Volumes/SSD990/projects/react-native/x-story/node_modules/expo-modules-core/expo-module-gradle-plugin, /Volumes/SSD990/projects/react-native/x-story/node_modules/expo-modules-autolinking/android/expo-gradle-plugin, /Volumes/SSD990/projects/react-native/x-story/node_modules/@react-native/gradle-plugin]

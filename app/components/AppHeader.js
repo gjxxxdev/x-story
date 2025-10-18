@@ -20,15 +20,18 @@ function AppHeader() {
       </Pressable>
 
       {/* 右邊 Profile + Coin */}
-      <View style={styles.rightContainer}>
-        <Pressable onPress={() => navigation.navigate(routes.PROFILE)} hitSlop={8}>
-          <Image style={styles.profileIcon} source={require('../../assets/profile.png')} />
-        </Pressable>
+      <Pressable
+        style={styles.rightContainer}
+        onPress={() => navigation.navigate(routes.PROFILE)}
+        hitSlop={8}
+      >
+        <Image style={styles.profileIcon} source={require('../../assets/profile.png')} />
         <View style={styles.coinRow}>
           <Image style={styles.coinIcon} source={require('../../assets/coin.png')} />
           <Text style={styles.coinText}>999</Text>
         </View>
-      </View>
+      </Pressable>
+      Ｆ
     </View>
   );
 }

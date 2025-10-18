@@ -9,7 +9,7 @@ import {
   Image,
 } from "react-native";
 import { translate } from "../i18n/i18n";
-import { registerWithXStory } from "../config/authApiClient";
+import { registerWithXStory, resentRegisterMail, ResentRegisterMailRequest } from "../config/authApiClient";
 
 interface Props {
   onCancel: () => void;
@@ -26,23 +26,16 @@ export function RegisterXStoryScreen({ onCancel, onSuccess }: Props) {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
+  // --- 重發驗證信 覆蓋層狀態（非 Modal / 非 navigation） ---
+  const [showResendOverlay, setShowResendOverlay] = useState(false);
+  const [resendEmail, setResendEmail] = useState("");
+  const [isResending, setIsResending] = useState(false);
+
   const sendVerificationEmail = async () => {
-    if (!email) {
-      alert("請輸入 Email");
-      return;
-    }
-    if (!password) {
-      alert("請輸入密碼");
-      return;
-    }
-    if (!confirmPassword) {
-      alert("請確認密碼");
-      return;
-    }
-    if (password !== confirmPassword) {
-      alert("兩次輸入的密碼不相同");
-      return;
-    }
+    if (!email) { alert("請輸入 Email"); return; }
+    if (!password) { alert("請輸入密碼"); return; }
+    if (!confirmPassword) { alert("請確認密碼"); return; }
+    if (password !== confirmPassword) { alert("兩次輸入的密碼不相同"); return; }
 
     const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,20}$/;
     if (!passwordPattern.test(password)) {
@@ -51,31 +44,39 @@ export function RegisterXStoryScreen({ onCancel, onSuccess }: Props) {
     }
 
     setIsSending(true);
-
-    const registerAccount = await registerWithXStory({
-      email: email,
-      password: password,
-    });
-    
+    const registerAccount = await registerWithXStory({ email, password });
     setIsSending(false);
     setWaitingVerification(true);
 
     if (registerAccount) {
       setWaitingVerification(false);
       onSuccess();
-    }
-    else {
+    } else {
       setWaitingVerification(false);
+    }
+  };
+
+  // --- 重發驗證信：送出 ---
+  const onResendSubmit = async () => {
+    if (!resendEmail) { alert("請輸入 Email"); return; }
+    try {
+      setIsResending(true);
+      const request: ResentRegisterMailRequest = { email: resendEmail };
+      await resentRegisterMail(request);
+      alert("已寄出驗證信，請至信箱收信");
+      setShowResendOverlay(false); // 關閉覆蓋層
+    } catch (e: any) {
+      alert("重發失敗：" + (e?.message ?? String(e)));
+    } finally {
+      setIsResending(false);
     }
   };
 
   return (
     <View style={styles.container}>
+      {/* 左上角圖示（保持） */}
       <View style={styles.logoContainer}>
-        <Image
-          style={styles.imgIcon}
-          source={require("../../assets/blueeye.png")}
-        />
+        <Image style={styles.imgIcon} source={require("../../assets/blueeye.png")} />
       </View>
 
       <Text style={styles.title}>{translate("registerAccount")}</Text>
@@ -106,10 +107,7 @@ export function RegisterXStoryScreen({ onCancel, onSuccess }: Props) {
               autoCapitalize="none"
               autoCorrect={false}
             />
-            <TouchableOpacity
-              style={styles.eyeButton}
-              onPress={() => setShowPassword((prev) => !prev)}
-            >
+            <TouchableOpacity style={styles.eyeButton} onPress={() => setShowPassword(p => !p)}>
               <Image
                 source={
                   showPassword
@@ -133,10 +131,7 @@ export function RegisterXStoryScreen({ onCancel, onSuccess }: Props) {
               autoCapitalize="none"
               autoCorrect={false}
             />
-            <TouchableOpacity
-              style={styles.eyeButton}
-              onPress={() => setShowConfirmPassword((prev) => !prev)}
-            >
+            <TouchableOpacity style={styles.eyeButton} onPress={() => setShowConfirmPassword(p => !p)}>
               <Image
                 source={
                   showConfirmPassword
@@ -148,43 +143,78 @@ export function RegisterXStoryScreen({ onCancel, onSuccess }: Props) {
             </TouchableOpacity>
           </View>
 
-          <Text style={styles.passwordHelpText}>
-            {translate("passwordRule")}
-          </Text>
+          <Text style={styles.passwordHelpText}>{translate("passwordRule")}</Text>
 
           {isSending ? (
-            <ActivityIndicator
-              size="large"
-              color="#0ABAB5"
-              style={{ marginVertical: 20 }}
-            />
+            <ActivityIndicator size="large" color="#0ABAB5" style={{ marginVertical: 20 }} />
           ) : (
-            <TouchableOpacity
-              style={styles.sendButton}
-              onPress={sendVerificationEmail}
-            >
+            <TouchableOpacity style={styles.sendButton} onPress={sendVerificationEmail}>
               <Text style={styles.sendButtonText}>{translate("sendVerification")}</Text>
             </TouchableOpacity>
           )}
 
+          <TouchableOpacity style={styles.cancelButton} onPress={onCancel} disabled={isSending}>
+            <Text style={styles.cancelButtonText}>{translate("cancel")}</Text>
+          </TouchableOpacity>
+
+          {/* 重發驗證信（在同頁加覆蓋層呈現） */}
           <TouchableOpacity
-            style={styles.cancelButton}
-            onPress={onCancel}
+            style={styles.resendLinkWrap}
+            onPress={() => {
+              setResendEmail(email);     // 預帶目前輸入的 email
+              setShowResendOverlay(true);
+            }}
             disabled={isSending}
           >
-            <Text style={styles.cancelButtonText}>{translate("cancel")}</Text>
+            <Text style={styles.resendmailtext}>重發驗證信</Text>
           </TouchableOpacity>
         </>
       ) : (
-        <Text style={styles.waitingText}>
-          {translate("verificationSent")}
-        </Text>
+        <Text style={styles.waitingText}>{translate("verificationSent")}</Text>
+      )}
+
+      {/* 覆蓋層：顯示重發驗證信表單（不使用 Modal / navigation） */}
+      {showResendOverlay && (
+        <View style={styles.overlay} pointerEvents="auto">
+          <View style={styles.overlayCard}>
+            <Text style={styles.overlayTitle}>重發驗證信</Text>
+
+            <TextInput
+              style={styles.input}
+              placeholder="請輸入 Email"
+              placeholderTextColor="#7F7F7F"
+              value={resendEmail}
+              onChangeText={setResendEmail}
+              keyboardType="email-address"
+              autoCapitalize="none"
+              autoCorrect={false}
+              editable={!isResending}
+            />
+
+            {isResending ? (
+              <ActivityIndicator size="large" color="#0ABAB5" style={{ marginVertical: 20 }} />
+            ) : (
+              <TouchableOpacity style={styles.sendButton} onPress={onResendSubmit}>
+                <Text style={styles.sendButtonText}>送出</Text>
+              </TouchableOpacity>
+            )}
+
+            <TouchableOpacity
+              style={styles.cancelButton}
+              onPress={() => setShowResendOverlay(false)}
+              disabled={isResending}
+            >
+              <Text style={styles.cancelButtonText}>取消</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
       )}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  // 共用：深色背景置中
   container: {
     flex: 1,
     backgroundColor: "#39393B",
@@ -197,6 +227,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "white",
     marginBottom: 40,
+    textAlign: "center",
   },
   input: {
     width: "100%",
@@ -247,17 +278,9 @@ const styles = StyleSheet.create({
     textAlign: "center",
     paddingHorizontal: 20,
   },
-  imgIcon: {
-    width: 40,
-    height: 40,
-    resizeMode: "contain",
-  },
-  logoContainer: {
-    position: "absolute",
-    top: 20,
-    left: 20,
-    zIndex: 10,
-  },
+  imgIcon: { width: 40, height: 40, resizeMode: "contain" },
+  logoContainer: { position: "absolute", top: 20, left: 20, zIndex: 10 },
+
   passwordInputWrapper: {
     width: "100%",
     height: 50,
@@ -268,17 +291,47 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     marginBottom: 10,
   },
-  passwordInput: {
-    flex: 1,
-    fontSize: 16,
+  passwordInput: { flex: 1, fontSize: 16, color: "white" },
+  eyeButton: { padding: 5 },
+  eyeIcon: { width: 24, height: 24, tintColor: "#AAAAAA" },
+
+  resendmailtext: {
+    color: "#f0ad57",
+    fontWeight: "600",
+    textDecorationLine: "underline",
+  },
+  resendLinkWrap: {
+    width: "100%",
+    marginTop: 10,
+    alignItems: "flex-start",
+  },
+
+  // 覆蓋層樣式（半透明背景 + 置中卡片）
+  overlay: {
+    position: "absolute",
+    inset: 0 as any,            // RN 0.71+ 支援；若舊版可改為 top: 0, right: 0, bottom: 0, left: 0
+    backgroundColor: "rgba(0,0,0,0.6)",
+    justifyContent: "center",
+    alignItems: "center",
+    paddingHorizontal: 24,
+  },
+  overlayCard: {
+    width: "100%",
+    maxWidth: 520,
+    backgroundColor: "#2f3136",
+    borderRadius: 16,
+    paddingHorizontal: 20,
+    paddingVertical: 24,
+    shadowColor: "#000",
+    shadowOpacity: 0.25,
+    shadowRadius: 12,
+    elevation: 6,
+  },
+  overlayTitle: {
+    fontSize: 22,
+    fontWeight: "bold",
     color: "white",
-  },
-  eyeButton: {
-    padding: 5,
-  },
-  eyeIcon: {
-    width: 24,
-    height: 24,
-    tintColor: "#AAAAAA", // 可自訂顏色
+    marginBottom: 24,
+    textAlign: "center",
   },
 });
