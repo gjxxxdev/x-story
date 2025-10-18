@@ -113,8 +113,15 @@ export default function LoginScreen(props) {
             <AppleButton
               buttonType={AppleButton.Type.SIGN_IN}
               buttonStyle={AppleButton.Style.BLACK}
-              cornerRadius={23}
-              style={styles.appleButton}
+              cornerRadius={25}
+              style={[
+                styles.appleButton,
+                {
+                  borderColor: "#0abab5",
+                  borderWidth: 1,
+                  borderRadius: 25,
+                },
+              ]}
               onPress={() => handlePress("onAppleLogin")}
               accessibilityRole="button"
             />

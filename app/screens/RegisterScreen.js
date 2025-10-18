@@ -93,9 +93,9 @@ export default function RegisterScreen(props) {
                   justifyContent: "center",
                   backgroundColor: disabled ? "#555555" : "#000000",
                   borderColor: disabled ? "#999999" : "#0abab5",
-                  borderWidth: 2,
+                  borderWidth: 1,
                   borderRadius: 25,
-                  opacity: disabled ? 0.5 : 1,
+                  opacity: disabled ? 0.5 : 1, // <--- 禁用時的灰階效果
                   paddingHorizontal: 16,
                   paddingVertical: 12,
                 },
@@ -120,20 +120,27 @@ export default function RegisterScreen(props) {
         {Platform.OS === "ios" && (
           <View
             style={[
-              styles.appleFrame,
-              agreeChecked ? styles.appleFrameEnabled : styles.appleFrameDisabled,
-              { width: buttonWidth, alignSelf: "center" }, // 與其他按鈕同寬、置中
+              { opacity: agreeChecked ? 1 : 0.5 },
+              { width: buttonWidth, alignSelf: "center" },
+              { backgroundColor: agreeChecked ? "transparent" : "#000000"}
             ]}
-            pointerEvents={agreeChecked ? "auto" : "none"} // 勾選前不可點
+            pointerEvents={"auto"} 
           >
-            {/* 未勾選時顯示柔和遮罩（不突兀） */}
-            {!agreeChecked && <View style={styles.appleOverlay} />}
-
             <AppleButton
               buttonType={AppleButton.Type.SIGN_UP}
               buttonStyle={AppleButton.Style.BLACK}
               cornerRadius={25}
-              style={styles.appleButton}
+              style={[
+                styles.appleButton,
+                {
+                  // 根據 agreeChecked 調整邊框顏色
+                  borderColor: agreeChecked ? "#0abab5" : "#999999",
+                  // 統一邊框寬度為 2
+                  borderWidth: 2, 
+                  // 確保邊框有圓角
+                  borderRadius: 25,
+                },
+              ]}
               onPress={() => handlePress("onAppleRegister")}
               accessibilityRole="button"
             />
