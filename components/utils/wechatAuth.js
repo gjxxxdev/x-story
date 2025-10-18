@@ -1,6 +1,6 @@
 //import * as WeChat from "react-native-wechat-lib";
 
-const WX_APP_ID = ''; // 先用空字串或 undefined 代替
+const WX_APP_ID = 'wx277826ce3d9510c6';
 
 if (WX_APP_ID && WX_APP_ID !== '') {
   //WeChat.registerApp(WX_APP_ID);
