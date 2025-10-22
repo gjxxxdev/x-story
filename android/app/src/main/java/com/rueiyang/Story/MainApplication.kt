@@ -2,42 +2,45 @@ package com.rueiyang.story
 
 import android.app.Application
 import android.content.res.Configuration
+import android.util.Log
 
 import com.facebook.react.PackageList
 import com.facebook.react.ReactApplication
+import com.facebook.react.ReactHost
 import com.facebook.react.ReactNativeHost
 import com.facebook.react.ReactPackage
-import com.facebook.react.ReactHost
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint.load
 import com.facebook.react.defaults.DefaultReactNativeHost
 import com.facebook.react.soloader.OpenSourceMergedSoMapping
 import com.facebook.soloader.SoLoader
+
 import com.facebook.FacebookSdk
 import com.facebook.appevents.AppEventsLogger
-import android.util.Log
 
 import expo.modules.ApplicationLifecycleDispatcher
 import expo.modules.ReactNativeHostWrapper
 
+// ✅ 來自 react-native-wechat-lib
+import com.wechatlib.WeChatLibPackage
+
 class MainApplication : Application(), ReactApplication {
 
   override val reactNativeHost: ReactNativeHost = ReactNativeHostWrapper(
-        this,
-        object : DefaultReactNativeHost(this) {
-          override fun getPackages(): List<ReactPackage> {
-            val packages = PackageList(this).packages
-            // Packages that cannot be autolinked yet can be added manually here, for example:
-            // packages.add(MyReactNativePackage())
-            return packages
-          }
+    this,
+    object : DefaultReactNativeHost(this) {
 
-          override fun getJSMainModuleName(): String = ".expo/.virtual-metro-entry"
-
-          override fun getUseDeveloperSupport(): Boolean = BuildConfig.DEBUG
-
-          override val isNewArchEnabled: Boolean = BuildConfig.IS_NEW_ARCHITECTURE_ENABLED
-          override val isHermesEnabled: Boolean = BuildConfig.IS_HERMES_ENABLED
+      // 等同 Java 的 protected List<ReactPackage> getPackages()
+      override fun getPackages(): List<ReactPackage> {
+        val packages = PackageList(this).packages.toMutableList()
+        packages.add(WeChatLibPackage())   // ← 關鍵：手動加入 wechat-lib
+        return packages
       }
+
+      override fun getJSMainModuleName(): String = ".expo/.virtual-metro-entry"
+      override fun getUseDeveloperSupport(): Boolean = BuildConfig.DEBUG
+      override val isNewArchEnabled: Boolean = BuildConfig.IS_NEW_ARCHITECTURE_ENABLED
+      override val isHermesEnabled: Boolean = BuildConfig.IS_HERMES_ENABLED
+    }
   )
 
   override val reactHost: ReactHost
@@ -46,22 +49,18 @@ class MainApplication : Application(), ReactApplication {
   override fun onCreate() {
     super.onCreate()
 
-    // Facebook SDK 初始化，這行是重點
-    
-    val appId = getString(R.string.facebook_app_id)          // Facebook App ID
-    val clientToken = getString(R.string.facebook_client_token)  // Facebook Client Token
-
+    val appId = getString(R.string.facebook_app_id)
+    val clientToken = getString(R.string.facebook_client_token)
     Log.e("tag", "appId: $appId")
     Log.e("tag", "clientToken: $clientToken")
 
-    FacebookSdk.setApplicationId(getString(R.string.facebook_app_id))
-    FacebookSdk.setClientToken(getString(R.string.facebook_client_token))
+    FacebookSdk.setApplicationId(appId)
+    FacebookSdk.setClientToken(clientToken)
     FacebookSdk.sdkInitialize(applicationContext)
     AppEventsLogger.activateApp(this)
 
     SoLoader.init(this, OpenSourceMergedSoMapping)
     if (BuildConfig.IS_NEW_ARCHITECTURE_ENABLED) {
-      // If you opted-in for the New Architecture, we load the native entry point for this app.
       load()
     }
     ApplicationLifecycleDispatcher.onApplicationCreate(this)

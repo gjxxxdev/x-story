@@ -143,7 +143,7 @@ export function RegisterXStoryScreen({ onCancel, onSuccess }: Props) {
             </TouchableOpacity>
           </View>
 
-          <Text style={styles.passwordHelpText}>{translate("passwordRule")}</Text>
+          <Text style={styles.passwordHelpText}>{translate("createPassword")}</Text>
 
           {isSending ? (
             <ActivityIndicator size="large" color="#0ABAB5" style={{ marginVertical: 20 }} />
